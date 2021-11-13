@@ -8,7 +8,8 @@ namespace ScroogeS_Wealth.Models
 {
     public class User
     {
-        public string NameUser { get; set; }
-        public int IdUser { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        
     }
 }

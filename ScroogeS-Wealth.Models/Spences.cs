@@ -8,9 +8,9 @@ namespace ScroogeS_Wealth.Models
 {
     public class Spences
     {
-        public decimal SpencesAmount { get; set; }
-        public Card SpencesToCard { get; set; }
-        public Data SpencesData { get; set; }
-        public Data FixSpencesData { get; set; }
+        public decimal Amount { get; set; }
+        public Card FromCard { get; set; }
+        public Data Data { get; set; }
+        public Data FixData { get; set; }
     }
 }

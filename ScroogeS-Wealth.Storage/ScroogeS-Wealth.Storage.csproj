@@ -2,12 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>ScroogeS_Wealth.Business</RootNamespace>
+    <RootNamespace>ScroogeS_Wealth.Storage</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ScroogeS-Wealth.Models\ScroogeS-Wealth.Models.csproj" />
-    <ProjectReference Include="..\ScroogeS-Wealth.Storage\ScroogeS-Wealth.Storage.csproj" />
   </ItemGroup>
 
 </Project>
