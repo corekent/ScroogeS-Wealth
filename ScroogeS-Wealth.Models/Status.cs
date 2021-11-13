@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScroogeS_Wealth.Storage
+namespace ScroogeS_Wealth.Models
 {
-    public class DepositStorage
+    public enum Status
     {
-
+        Bad = 0,
+        Ok = 1
     }
 }
