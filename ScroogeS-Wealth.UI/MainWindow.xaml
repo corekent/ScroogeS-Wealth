@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="ScroogeS Wealth Alpha1.0" Height="500" Width="900" WindowStyle="ThreeDBorderWindow">
+    <Grid Background="#ffdadada">
+        <Border MinWidth="400" MaxWidth ="500" Margin="10,10,400,260" Background="White" Padding="30" CornerRadius="30">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Color="Black" ShadowDepth="0" />
+            </Border.Effect>
+            <StackPanel Margin="104 0 0 0">
+                <TextBlock Text="Введите имя" FontSize="13" FontFamily="Minecraftia" />
+                <TextBox x:Name="userNameBox"/>
+                <TextBox x:Name="cardNameBox"/>
+                <TextBox x:Name="moneyAmountBox"/>
+                <Button Content="Добавить пользователя" Margin ="0 30 100 0" Click="Button_Create_User_Click" FontFamily="SimSun-ExtB"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
