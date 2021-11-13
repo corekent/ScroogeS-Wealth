@@ -9,9 +9,9 @@ namespace ScroogeS_Wealth.Storage
 {
     public static class SpencesStorage
     {
-        public static List<Spences> Spences = new List<Spences>
+        public static List<Expenses> Spences = new List<Expenses>
         { 
-            new Spences{Amount, FromCard,Data}
+            new Expenses{Amount, FromCard,Data}
         };
 
 
