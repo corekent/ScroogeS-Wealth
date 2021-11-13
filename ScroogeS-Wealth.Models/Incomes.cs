@@ -8,9 +8,10 @@ namespace ScroogeS_Wealth.Models
 {
     public class Incomes
     {
-        public decimal AmountIncomes { get; set; }
-        public Card IncomesToCard { get; set; }
-        public Data IncomeData { get; set; }
-        public Data FixedIncomeData { get; set; }
+        public decimal Amount { get; set; }
+        public Card ToCard { get; set; }
+        public Data Data { get; set; }
+        public Data FixedData { get; set; }
+
     }
 }

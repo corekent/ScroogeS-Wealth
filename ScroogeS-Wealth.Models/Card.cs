@@ -8,8 +8,10 @@ namespace ScroogeS_Wealth.Models
 {
     public class Card
     {
-        public string NameCard { get; set; }
-        public decimal BalanceCard { get; set; }
-        
+        public string Name { get; set; }
+        public decimal Balance { get; set; }
+        public int id { get; set; }
+
+
     }
 }

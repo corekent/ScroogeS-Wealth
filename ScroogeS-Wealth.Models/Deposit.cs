@@ -8,8 +8,8 @@ namespace ScroogeS_Wealth.Models
 {
     public class Deposit
     {
-        public string NameDeposit { get; set; }
-        public decimal BalanceDeposit { get; set; }
-        public string TypeDeposit { get; set; }
+        public string Name { get; set; }
+        public decimal Balance { get; set; }
+        public string Type { get; set; }
     }
 }
