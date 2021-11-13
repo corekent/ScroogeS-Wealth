@@ -10,5 +10,12 @@ namespace ScroogeS_Wealth.Models
     {
         public string Name { get; set; }
         public decimal Balance { get; set; }
+        public int Id { get; set; }
+        public Cash() { }
+        public Cash(string name, decimal balance)
+        {
+            Name = name;
+            Balance = balance;
+        }
     }
 }

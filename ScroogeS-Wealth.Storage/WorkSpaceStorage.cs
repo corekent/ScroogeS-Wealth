@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Storage
 {
-    public static class CardStorage
+    public static class WorkSpaceStorage
     {
-        public static List<Card> Cards = new List<Card>
-        {
-            new Card{Id = 1, Name = "AlfaBank", Balance = 0, }, 
-        };
+        public static List<WorkSpace> workSpaces = new List<WorkSpace>();     
     }
 }

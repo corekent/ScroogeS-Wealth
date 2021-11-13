@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Data
+    public enum Status
     {
-
+        Bad = 0,
+        Ok = 1
     }
 }

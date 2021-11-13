@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Storage
 {
-    class DepositStorage
+    public class DepositStorage
     {
+
     }
 }

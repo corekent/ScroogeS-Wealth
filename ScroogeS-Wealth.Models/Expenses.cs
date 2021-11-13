@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Spences
+    public class Expenses
     {
         public decimal Amount { get; set; }
         public Card FromCard { get; set; }
