@@ -10,8 +10,6 @@ namespace ScroogeS_Wealth.Models
     {
         public decimal Amount { get; set; }
         public Card ToCard { get; set; }
-        public Data Data { get; set; }
-        public Data FixedData { get; set; }
 
     }
 }

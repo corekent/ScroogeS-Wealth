@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScroogeS_Wealth.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,36 @@ namespace ScroogeS_Wealth.UI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Create_User_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = userNameBox.Text.Trim();
+            //string cardName = cardNameBox.Text.Trim();
+            //int moneyAmount = Convert.ToInt32(moneyAmountBox.Text.Trim());
+
+            if (userName == "")
+            {
+                userNameBox.ToolTip ="Это поле нельзя оставлять пустым";
+                userNameBox.Background = Brushes.Red;
+            }
+            else if (moneyAmountBox.Text.Contains(" ") || moneyAmountBox.Text.Contains("?"))
+            {
+                moneyAmountBox.ToolTip = "Это поле введено некорректно";
+                moneyAmountBox.Background = Brushes.Red;
+            }
+            else
+            {
+                userNameBox.ToolTip = "";
+                userNameBox.Background = Brushes.Transparent;
+                moneyAmountBox.ToolTip = "";
+                moneyAmountBox.Background = Brushes.Transparent;
+
+                UserLogic user = new UserLogic();
+                user.CreateUser(userName);
+                MessageBox.Show("Пользователь успешно добавлен =)");
+            }
+
         }
     }
 }
