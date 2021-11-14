@@ -11,7 +11,11 @@ namespace ScroogeS_Wealth.Storage
     {
         public static List<Expenses> Spences = new List<Expenses>
         { 
+<<<<<<< Updated upstream
             
+=======
+           // new Expenses{Amount, FromCard,Data}
+>>>>>>> Stashed changes
         };
 
 

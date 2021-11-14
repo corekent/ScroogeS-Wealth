@@ -10,5 +10,10 @@ namespace ScroogeS_Wealth.Models
     {
         public decimal Amount { get; set; }
         public Card FromCard { get; set; }
+<<<<<<< Updated upstream
+=======
+        public DateTime Data { get; set; }
+        //public DateTime FixData { get; set; }
+>>>>>>> Stashed changes
     }
 }
