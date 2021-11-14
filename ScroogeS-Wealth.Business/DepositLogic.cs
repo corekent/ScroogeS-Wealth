@@ -37,7 +37,7 @@ namespace ScroogeS_Wealth.Business
 
             workSpace.Deposits.Add(deposit);
 
-            return new Result<Deposit>(1, deposit, "Карта добавлена");            
+            return new Result<Deposit>(1, deposit, "Вклад добавлен");            
         }
     }
 }
