@@ -9,7 +9,7 @@ namespace ScroogeS_Wealth.Storage
 {
     public class DepositStorage
     {
-        public static List<Deposit> Deposites = new List<Deposit> { };
+        public static List<Deposit> Deposits = new List<Deposit> { };
         
     }
 }
