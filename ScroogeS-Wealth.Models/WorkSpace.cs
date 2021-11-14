@@ -9,10 +9,10 @@ namespace ScroogeS_Wealth.Models
     public class WorkSpace
     {
         public User GeneralUser { get; set; }
-        public List<Card> Cards { get; set; }
-        public List<Deposit> Deposits { get; set; }
-        public List<Account> Accounts { get; set; }
-        public List<Cash> Cash { get; set; }
+        public List<Card> Cards { get; set; } = new List<Card>();
+        public List<Deposit> Deposits { get; set; } = new List<Deposit>();
+        public List<Account> Accounts { get; set; } = new List<Account>();
+        public List<Cash> Cash { get; set; } = new List<Cash>();
         
         public WorkSpace(User user)
         {

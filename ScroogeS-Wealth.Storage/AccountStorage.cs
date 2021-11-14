@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Storage
 {
-    public static class SpencesStorage
+    public class AccountStorage
     {
-        public static List<Expenses> Spences = new List<Expenses>
-        { 
-            
-        };
-
-
+        public static List<Account> Account = new List<Account> { };
     }
 }
