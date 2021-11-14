@@ -1,4 +1,6 @@
 ﻿using ScroogeS_Wealth.Business;
+using ScroogeS_Wealth.Models;
+using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +31,8 @@ namespace ScroogeS_Wealth.UI
         private void Button_Create_User_Click(object sender, RoutedEventArgs e)
         {
             string userName = userNameBox.Text.Trim();
-            //string cardName = cardNameBox.Text.Trim();
-            //int moneyAmount = Convert.ToInt32(moneyAmountBox.Text.Trim());
+            string cardName = cardNameBox.Text.Trim();
+            int moneyAmount = Convert.ToInt32(moneyAmountBox.Text.Trim());
 
             if (userName == "")
             {
@@ -51,6 +53,8 @@ namespace ScroogeS_Wealth.UI
 
                 UserLogic user = new UserLogic();
                 user.CreateUser(userName);
+                CardLogic card = new CardLogic();
+                card.CreateCard(cardName, moneyAmount, UserStorage.Users.Last().Id);
                 MessageBox.Show("Пользователь успешно добавлен =)");
             }
 
