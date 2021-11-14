@@ -16,17 +16,17 @@ namespace ScroogeS_Wealth.Business
 
             Deposit deposit = new Deposit(name, balance);
 
-            if (DepositStorage.Deposites.Count == 0)
+            if (DepositStorage.Deposits.Count == 0)
             {
                 lastId = 1;
             }
             else
             {
-                lastId = DepositStorage.Deposites.Last().Id + 1;
+                lastId = DepositStorage.Deposits.Last().Id + 1;
             }
             deposit.Id = lastId;
 
-            DepositStorage.Deposites.Add(deposit);
+            DepositStorage.Deposits.Add(deposit);
 
             var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
 
