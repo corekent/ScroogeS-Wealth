@@ -28,7 +28,7 @@ namespace ScroogeS_Wealth.Business
         public void Set(DateTime time)
         {
             int index = IncomesStorage.Incomes.Count - 1;
-            IncomesStorage.Incomes[index].Data = time;
+            IncomesStorage.Incomes[index].Date = time;
         }
         public void DeleteLast()
         {
@@ -36,9 +36,9 @@ namespace ScroogeS_Wealth.Business
             IncomesStorage.Incomes.RemoveAt(index);
         }
         //продумать поступление постоянного дохода.Константы? If time==fixtime? Или в аналитику?
-        public void AddPermanentIncome(decimal fixsum, Card cardName, DateTime fixtime)
+        public void AddPermanentIncome(decimal fixSum, Card cardName, DateTime fixTime)
         {
-            Incomes fixIncome = new Incomes(fixsum, cardName, fixtime);
+            Incomes fixIncome = new Incomes(fixSum, cardName, fixTime);
             IncomesStorage.Incomes.Add(fixIncome);
         }
 

@@ -10,13 +10,13 @@ namespace ScroogeS_Wealth.Models
     {
         public decimal Amount { get; set; }
         public Card ToCard { get; set; }
-        public DateTime Data { get; set; }
+        public DateTime Date { get; set; }
         //public DateTime FixedData { get; set; }
         public Incomes(decimal amount, Card cardname, DateTime data)
         {
             Amount = amount;
             ToCard = cardname;
-            Data = data;
+            Date = data;
         }
     }
 }
