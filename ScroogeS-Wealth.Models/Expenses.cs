@@ -8,7 +8,9 @@ namespace ScroogeS_Wealth.Models
 {
     public class Expenses
     {
+        public string Name { get; set; }
         public decimal Amount { get; set; }
         public Card FromCard { get; set; }
+        public Deposit FromDeposit { get; set; }
     }
 }
