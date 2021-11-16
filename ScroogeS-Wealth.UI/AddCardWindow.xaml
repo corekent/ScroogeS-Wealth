@@ -16,8 +16,8 @@
                 <TextBox x:Name="cardNameBox"/>
                 <TextBlock Text="Введите баланс" HorizontalAlignment="Center"/>
                 <TextBox x:Name="balanceBox" />
-                <Button Content="Добавить карту" Margin ="50 20 50 0" Click="Button_CreateCard_Click" FontFamily="SimSun-ExtB"/>
-                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB"/>
+                <Button Content="Добавить карту" Margin ="50 20 50 0" Click="Button_CreateCard_Click" FontFamily="SimSun-ExtB" Background="MistyRose"/>
+                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB" Background="DarkOrange"/>
             </StackPanel>
         </Border>
     </Grid>

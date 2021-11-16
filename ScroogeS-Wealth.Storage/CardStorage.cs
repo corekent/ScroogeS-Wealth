@@ -11,7 +11,7 @@ namespace ScroogeS_Wealth.Storage
     {
         public static List<Card> Cards = new List<Card>
         {
-            new Card{Id = 1, Name = "AlfaBank", Balance = 0, }, 
+            new Card{Id = 1, Name = "AlfaBank", Balance = 1000, }, 
         };
     }
 }

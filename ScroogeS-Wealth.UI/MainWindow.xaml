@@ -14,8 +14,8 @@
             <StackPanel Margin="0 0 0 0">
                 <TextBlock Text="Введите имя" FontSize="13"  HorizontalAlignment="Center" FontFamily="Arial Black" FontWeight="Bold" />
                 <TextBox x:Name="userNameBox"/>
-                <Button Content="Добавить пользователя" Margin ="50 20 50 0" Click="Button_CreateUser_Click" FontFamily="SimSun-ExtB"/>
-                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB"/>
+                <Button Content="Добавить пользователя" Margin ="50 20 50 0" Click="Button_CreateUser_Click" FontFamily="SimSun-ExtB" Background="MistyRose"/>
+                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB" Background="DarkOrange"/>
             </StackPanel>
         </Border>
     </Grid>

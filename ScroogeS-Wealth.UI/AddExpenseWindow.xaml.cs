@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ScroogeS_Wealth.Business;
+using ScroogeS_Wealth.Models;
+using ScroogeS_Wealth.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +20,11 @@ namespace ScroogeS_Wealth.UI
     /// <summary>
     /// Interaction logic for AddIncomeWindow.xaml
     /// </summary>
-    public partial class AddIncomeWindow : Window
+    public partial class AddExpenseWindow : Window
     {
-        public AddIncomeWindow()
+        
+
+        public AddExpenseWindow()
         {
             InitializeComponent();
         }
@@ -27,8 +32,8 @@ namespace ScroogeS_Wealth.UI
         private void Button_AddIncome_Click(object sender, RoutedEventArgs e)
         {
             CheckInput(amountBox.Text, incomeNameBox.Text);
-            string incomeName = incomeNameBox.Text.Trim();
-            //DateTime dateTime = Convert.ToDateTime(dateTimeBox.Text());
+            string expenseName = incomeNameBox.Text.Trim();
+            DateTime dateTime = DateTime.Parse(dateTimeBox.Text.Trim());
 
             decimal amount = 0;
 
@@ -37,10 +42,11 @@ namespace ScroogeS_Wealth.UI
                 amount = Convert.ToDecimal(amountBox.Text.Trim());
             }
 
-            if (incomeName != "" && amount != 0)
+            if (expenseName != "" && amount != 0)
             {
-                // Создание экземпляра класса дохода
-                // Добавление дохода
+                ExpenseLogic expenseLogic = new ExpenseLogic();
+                expenseLogic.Add(expenseName, amount, 1, dateTime);
+                
             }
         }
 

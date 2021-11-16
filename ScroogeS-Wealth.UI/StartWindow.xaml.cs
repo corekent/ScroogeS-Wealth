@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ScroogeS_Wealth.Models;
+using ScroogeS_Wealth.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +21,6 @@ namespace ScroogeS_Wealth.UI
     /// </summary>
     public partial class StartWindow : Window
     {
-        private string _userName;
-
-
-
         public StartWindow()
         {
             InitializeComponent();
@@ -41,7 +39,8 @@ namespace ScroogeS_Wealth.UI
         }
         private void Button_TransitionToCreateIncome_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
+            addExpenseWindow.Show();
         }
 
         private void Button_TransitionToCreateAccount_Click(object sender, RoutedEventArgs e)
