@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Expenses
+    public class Income
     {
-        public string Name { get; set; }
         public decimal Amount { get; set; }
-        public Card FromCard { get; set; }
-        public Deposit FromDeposit { get; set; }
+        public Card ToCard { get; set; }
+
     }
 }
