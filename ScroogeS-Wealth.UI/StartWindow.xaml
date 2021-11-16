@@ -14,29 +14,34 @@
                     <DropShadowEffect BlurRadius="10" Color="Black" ShadowDepth="0" />
                 </Border.Effect>
                 <StackPanel Margin="0,0,-8,4">
-                    <TextBlock Text="Имя пользователя" FontSize="13"  HorizontalAlignment="Left" FontFamily="Arial Black" FontWeight="Bold" />
-                    <Button Content="Добавить пользователя" Background="gold"
-                            MinWidth="200" MaxWidth="200" Margin ="0 200 0 0" 
+                    <Button Content="Добавить пользователя" Background="MistyRose"
+                            MinWidth="200" MaxWidth="200" Margin ="160 0 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateUser_Click" 
                             FontFamily="SimSun-ExtB" FontWeight="Bold"/>
+                    <TextBlock Text="Имя пользователя:" HorizontalAlignment="Right" Width="200" Margin="0 10 0 0"/>
+                    <TextBlock Text="{Binding userName}" HorizontalAlignment="Right" Width="200"/>
+                    <TextBlock Text="Карта:" HorizontalAlignment="Right" Width="200" Margin="0 10 0 0"/>
+                    <TextBlock Text="{Binding cardName}" HorizontalAlignment="Right" Width="200"/>
+                    <TextBlock Text="Деньги:" HorizontalAlignment="Right" Width="200" Margin="0 10 0 0"/>
+                    <TextBlock Text="{Binding balance}" HorizontalAlignment="Right" Width="200"/>
                     <Button Content="Добавить карту" Background="gold" 
-                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            MinWidth="200" MaxWidth="200" Margin ="0 50 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateCard_Click"
                             FontFamily="SimSun-ExtB" Width="193" />
                     <Button Content="Добавить счет" Background="gold"
-                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            MinWidth="200" MaxWidth="200" Margin ="0 20 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateAccount_Click"
                             FontFamily="SimSun-ExtB"/>
                     <Button Content="Добавить вклад" Background="gold"
-                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            MinWidth="200" MaxWidth="200" Margin ="0 20 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateDeposit_Click"
                             FontFamily="SimSun-ExtB"/>
                     <Button Content="Добавить копилку" Background="gold"
-                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            MinWidth="200" MaxWidth="200" Margin ="0 20 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateCash_Click"
                             FontFamily="SimSun-ExtB"/>
                     <Button Content="Добавить доход" Background="gold"
-                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            MinWidth="200" MaxWidth="200" Margin ="0 20 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateIncome_Click"
                             FontFamily="SimSun-ExtB"/>
                 </StackPanel>

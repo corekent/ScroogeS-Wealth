@@ -26,35 +26,52 @@ namespace ScroogeS_Wealth.UI
             InitializeComponent();
         }
 
-        private void Button_Create_Card_Click(object sender, RoutedEventArgs e)
+        private void Button_CreateCard_Click(object sender, RoutedEventArgs e)
         {
-            CheckInput(cardNameBox.Text);
+            CheckInput(cardNameBox.Text, balanceBox.Text);
             string cardName = cardNameBox.Text.Trim();
-            CheckInput(balanceBox.Text);
-            decimal balance = Convert.ToDecimal(balanceBox.Text.Trim());
-            CardLogic cardLogic = new CardLogic();
-            cardLogic.CreateCard(cardName, balance, CardStorage.Cards.Last().Id);
-        }
+            decimal balance = 0;
 
-        private void Button_Close_Click(object sender, RoutedEventArgs e)
-        {
-            Hide();
-        }
-
-        private void CheckInput(string stringToCheck)
-        {
-            if (stringToCheck is null)
+            if (balanceBox.Text != "")
             {
-                balanceBox.ToolTip = "Это поле введено некорректно";
-                balanceBox.Background = Brushes.Red;
+                balance = Convert.ToDecimal(balanceBox.Text.Trim());
+            }
+
+            if (cardName != "" && balance != 0)
+            {
+                CardLogic cardLogic = new CardLogic();
+                cardLogic.CreateCard(cardName, balance, CardStorage.Cards.Last().Id);
+            }
+        }
+
+        private void CheckInput(string cardName, string balance)
+        {
+            if (cardName == "")
+            { 
+                cardNameBox.ToolTip = "Это поле не может быть пустым";
+                cardNameBox.Background = Brushes.Red;
             }
             else
             {
                 cardNameBox.ToolTip = "";
                 cardNameBox.Background = Brushes.Transparent;
+            }
+
+            if (balance == "")
+            {
+                balanceBox.ToolTip = "Это поле не может быть пустым";
+                balanceBox.Background = Brushes.Red;
+            }
+            else
+            {
                 balanceBox.ToolTip = "";
                 balanceBox.Background = Brushes.Transparent;
             }
         }
+        private void Button_Close_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+        }
+
     }
 }

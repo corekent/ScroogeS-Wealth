@@ -19,6 +19,10 @@ namespace ScroogeS_Wealth.UI
     /// </summary>
     public partial class StartWindow : Window
     {
+        private string _userName;
+
+
+
         public StartWindow()
         {
             InitializeComponent();
@@ -35,25 +39,25 @@ namespace ScroogeS_Wealth.UI
             AddCardWindow addCardWindow = new AddCardWindow();
             addCardWindow.Show();
         }
+        private void Button_TransitionToCreateIncome_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         private void Button_TransitionToCreateAccount_Click(object sender, RoutedEventArgs e)
         {
-
+            throw new NotImplementedException();
         }
 
         private void Button_TransitionToCreateDeposit_Click(object sender, RoutedEventArgs e)
         {
-
+            throw new NotImplementedException();
         }
 
         private void Button_TransitionToCreateCash_Click(object sender, RoutedEventArgs e)
         {
-
+            throw new NotImplementedException();
         }
 
-        private void Button_TransitionToCreateIncome_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

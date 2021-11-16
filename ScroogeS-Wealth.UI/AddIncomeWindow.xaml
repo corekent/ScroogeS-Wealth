@@ -12,12 +12,14 @@
                 <DropShadowEffect BlurRadius="10" Color="Black" ShadowDepth="0" />
             </Border.Effect>
             <StackPanel Margin="0 0 0 0">
-                <TextBlock Text="Сколько кладем?" HorizontalAlignment="Center"/>
-                <TextBox x:Name="incomeNameBox"/>
-                <TextBlock Text="" HorizontalAlignment="Center"/>
-                <TextBox x:Name="balanceBox" />
-                <Button Content="Пополнить" Margin ="50 20 50 0" Click="Button_AddIncome_Click" FontFamily="SimSun-ExtB"/>
-                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB"/>
+                <TextBlock Text="Введите кол-во денег" HorizontalAlignment="Center"/>
+                <TextBox x:Name="amountBox"/>
+                <TextBlock Text="Введите название дохода" HorizontalAlignment="Center"/>
+                <TextBox x:Name="incomeNameBox" />
+                <TextBlock Text="Введите дату и время поступления" HorizontalAlignment="Center"/>
+                <TextBox x:Name="dateTimeBox"/>
+                <Button Content="Пополнить" Margin ="50 20 50 0" Click="Button_AddIncome_Click" FontFamily="SimSun-ExtB" Background="MistyRose"/>
+                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB" Background="DarkOrange"/>
             </StackPanel>
         </Border>
     </Grid>

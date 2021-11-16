@@ -32,8 +32,13 @@ namespace ScroogeS_Wealth.UI
         {
             string userName = userNameBox.Text.Trim();
             CheckInput(userName);
-            UserLogic user = new UserLogic();
-            user.CreateUser(userName);
+
+            if (userName != "")
+            {
+                UserLogic user = new UserLogic();
+                user.CreateUser(userName);
+                MessageBox.Show("Пользователь успешно добавлен! =)");
+            }
         }
 
         private void Button_Close_Click(object sender, RoutedEventArgs e)
