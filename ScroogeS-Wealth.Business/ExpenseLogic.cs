@@ -38,27 +38,18 @@ namespace ScroogeS_Wealth.Business
         }
         public void GetFromCard(Card fromCard)
         {
-            ExpensesStorage.Expenses.Select(x => x.FromCard.Id == fromCard.Id).ToList();
         }
         public void Set(decimal sum)
         {
-            int index = ExpensesStorage.Expenses.Count - 1;
-            ExpensesStorage.Incomes[index].Amount = sum;
         }
         public void Set(Card cardName)
         {
-            int index = IncomesStorage.Incomes.Count - 1;
-            IncomesStorage.Incomes[index].ToCard = cardName;
         }
         public void Set(DateTime time)
         {
-            int index = IncomesStorage.Incomes.Count - 1;
-            IncomesStorage.Incomes[index].Date = time;
         }
         public void DeleteLast()
         {
-            int index = IncomesStorage.Incomes.Count - 1;
-            IncomesStorage.Incomes.RemoveAt(index);
         }
     }
 }
