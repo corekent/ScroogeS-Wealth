@@ -12,6 +12,8 @@ namespace ScroogeS_Wealth.Storage
         public static List<Expenses> Spences = new List<Expenses>
         { 
             
+           // new Expenses{Amount, FromCard,Data}
+>>>>>>> Stashed changes
         };
 
 
