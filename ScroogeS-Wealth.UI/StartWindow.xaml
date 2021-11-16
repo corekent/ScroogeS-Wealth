@@ -1,0 +1,47 @@
+﻿<Window x:Class="ScroogeS_Wealth.UI.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
+        mc:Ignorable="d"
+        Title="ScroogeS Wealth Alpha1.0" Height="500" Width="600" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <Border/>
+        <Grid Background="#F0DC82">
+            <Border  Margin="5 5 5 5" Background="White" Padding="30" CornerRadius="30">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Black" ShadowDepth="0" />
+                </Border.Effect>
+                <StackPanel Margin="0,0,-8,4">
+                    <TextBlock Text="Имя пользователя" FontSize="13"  HorizontalAlignment="Left" FontFamily="Arial Black" FontWeight="Bold" />
+                    <Button Content="Добавить пользователя" Background="gold"
+                            MinWidth="200" MaxWidth="200" Margin ="0 200 0 0" 
+                            HorizontalAlignment="Left" Click="Button_TransitionToCreateUser_Click" 
+                            FontFamily="SimSun-ExtB" FontWeight="Bold"/>
+                    <Button Content="Добавить карту" Background="gold" 
+                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            HorizontalAlignment="Left" Click="Button_TransitionToCreateCard_Click"
+                            FontFamily="SimSun-ExtB" Width="193" />
+                    <Button Content="Добавить счет" Background="gold"
+                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            HorizontalAlignment="Left" Click="Button_TransitionToCreateAccount_Click"
+                            FontFamily="SimSun-ExtB"/>
+                    <Button Content="Добавить вклад" Background="gold"
+                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            HorizontalAlignment="Left" Click="Button_TransitionToCreateDeposit_Click"
+                            FontFamily="SimSun-ExtB"/>
+                    <Button Content="Добавить копилку" Background="gold"
+                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            HorizontalAlignment="Left" Click="Button_TransitionToCreateCash_Click"
+                            FontFamily="SimSun-ExtB"/>
+                    <Button Content="Добавить доход" Background="gold"
+                            MinWidth="200" MaxWidth="200" Margin ="0 10 0 0" 
+                            HorizontalAlignment="Left" Click="Button_TransitionToCreateIncome_Click"
+                            FontFamily="SimSun-ExtB"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+    </Grid>
+</Window>
