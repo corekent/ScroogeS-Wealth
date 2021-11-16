@@ -32,8 +32,16 @@ namespace ScroogeS_Wealth.Business
             expense.Card = card;
 
             ExpenseStorage.Expenses.Add(expense);
+            if (card.Balance >= amount)
+            {
+                card.Balance -= amount;
+                return new Result<Expense>(1, expense, "Расход учтён");
+            }
+            else
+            {
+                return new Result<Expense>(0, expense, "на карте меньше нуля");
+            }
 
-            return new Result<Expense>(1, expense, "Расход учтён");
 
         }
     }
