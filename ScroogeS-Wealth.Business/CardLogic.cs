@@ -39,5 +39,11 @@ namespace ScroogeS_Wealth.Business
 
             return new Result<Card>(1, card, "Карта добавлена");
         }
+        public decimal GetBalance(int id)
+        {
+            var card = CardStorage.Cards.FirstOrDefault(x => x.Id == id);
+            decimal balance = card.Balance;
+            return balance;
+        }
     }
 }
