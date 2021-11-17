@@ -8,8 +8,17 @@ namespace ScroogeS_Wealth.Models
 {
     public class Incomes
     {
+        public string Name { get; set; }
         public decimal Amount { get; set; }
-        public Card ToCard { get; set; }
-
+        public Card Card { get; set; }
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public Incomes() { }
+        public Incomes(string name, decimal amount, DateTime date)
+        {
+            Name = name;
+            Amount = amount;
+            Date = date;
+        }
     }
 }
