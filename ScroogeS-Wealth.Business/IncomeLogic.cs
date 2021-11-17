@@ -42,6 +42,7 @@ namespace ScroogeS_Wealth.Business
                 return new Result<Incomes>(0, income, "на карте меньше нуля");
             }
 
-
         }
     }
+}
+
