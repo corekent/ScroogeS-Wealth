@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
         mc:Ignorable="d"
-        Title="ScroogeS Wealth Alpha1.0" Height="500" Width="600" WindowStyle="ThreeDBorderWindow">
+        Title="ScroogeS Wealth Alpha1.0" Height="600" Width="600" WindowStyle="ThreeDBorderWindow">
     <Grid>
         <Border/>
         <Grid Background="#F0DC82">
@@ -19,11 +19,11 @@
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateUser_Click" 
                             FontFamily="SimSun-ExtB" FontWeight="Bold"/>
                     <TextBlock Text="Имя пользователя:" HorizontalAlignment="Right" Width="200" Margin="0 10 0 0"/>
-                    <TextBlock Text="{Binding userName}" HorizontalAlignment="Right" Width="200"/>
+                    <TextBlock Text="{Binding UserName}" HorizontalAlignment="Right" Width="200"/>
                     <TextBlock Text="Карта:" HorizontalAlignment="Right" Width="200" Margin="0 10 0 0"/>
-                    <TextBlock Text="{Binding cardName}" HorizontalAlignment="Right" Width="200"/>
-                    <TextBlock Text="Деньги:" HorizontalAlignment="Right" Width="200" Margin="0 10 0 0"/>
-                    <TextBlock Text="{Binding balance}" HorizontalAlignment="Right" Width="200"/>
+                    <TextBlock Text="{Binding Path = cardName}" HorizontalAlignment="Right" Width="200"/>
+                    <TextBlock Text="Средства:" HorizontalAlignment="Right" Width="200" Margin="0 10 0 0"/>
+                    <TextBlock Text="{Binding Path = CardBalance}" HorizontalAlignment="Right" Width="200"/>
                     <Button Content="Добавить карту" Background="gold" 
                             MinWidth="200" MaxWidth="200" Margin ="0 50 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateCard_Click"
@@ -41,6 +41,10 @@
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateCash_Click"
                             FontFamily="SimSun-ExtB"/>
                     <Button Content="Добавить расход" Background="gold"
+                            MinWidth="200" MaxWidth="200" Margin ="0 20 0 0" 
+                            HorizontalAlignment="Left" Click="Button_TransitionToCreateExpense_Click"
+                            FontFamily="SimSun-ExtB"/>
+                    <Button Content="Добавить доход" Background="gold"
                             MinWidth="200" MaxWidth="200" Margin ="0 20 0 0" 
                             HorizontalAlignment="Left" Click="Button_TransitionToCreateIncome_Click"
                             FontFamily="SimSun-ExtB"/>

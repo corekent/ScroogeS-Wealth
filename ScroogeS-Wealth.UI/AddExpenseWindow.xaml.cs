@@ -22,8 +22,6 @@ namespace ScroogeS_Wealth.UI
     /// </summary>
     public partial class AddExpenseWindow : Window
     {
-        
-
         public AddExpenseWindow()
         {
             InitializeComponent();
@@ -31,8 +29,8 @@ namespace ScroogeS_Wealth.UI
 
         private void Button_AddIncome_Click(object sender, RoutedEventArgs e)
         {
-            CheckInput(amountBox.Text, incomeNameBox.Text);
-            string expenseName = incomeNameBox.Text.Trim();
+            CheckInput(amountBox.Text, expenseNameBox.Text);
+            string expenseName = expenseNameBox.Text.Trim();
             DateTime dateTime = DateTime.Parse(dateTimeBox.Text.Trim());
 
             decimal amount = 0;
@@ -46,7 +44,7 @@ namespace ScroogeS_Wealth.UI
             {
                 ExpenseLogic expenseLogic = new ExpenseLogic();
                 expenseLogic.Add(expenseName, amount, 1, dateTime);
-                
+                MessageBox.Show("Расход добавлен!");
             }
         }
 

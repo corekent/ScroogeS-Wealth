@@ -1,29 +1,33 @@
 ﻿using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace ScroogeS_Wealth.UI
 {
     /// <summary>
     /// Interaction logic for StartWindow.xaml
     /// </summary>
+    public class StartWindowState
+    {
+        public string UserName { get; set; }
+        public decimal CardBalance { get; set; } 
+    }
+
     public partial class StartWindow : Window
     {
+        private StartWindowState _state;
+        public string UserName { get; set; }
         public StartWindow()
         {
             InitializeComponent();
+
+            CardStorage cardStorage = new CardStorage();
+            decimal balance = CardStorage.Cards.Last().Balance;
+            _state = new StartWindowState { CardBalance = balance, UserName = "Борис" };
+            DataContext = _state;
         }
 
         private void Button_TransitionToCreateUser_Click(object sender, RoutedEventArgs e)
@@ -37,7 +41,7 @@ namespace ScroogeS_Wealth.UI
             AddCardWindow addCardWindow = new AddCardWindow();
             addCardWindow.Show();
         }
-        private void Button_TransitionToCreateIncome_Click(object sender, RoutedEventArgs e)
+        private void Button_TransitionToCreateExpense_Click(object sender, RoutedEventArgs e)
         {
             AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
             addExpenseWindow.Show();
@@ -58,5 +62,10 @@ namespace ScroogeS_Wealth.UI
             throw new NotImplementedException();
         }
 
+        private void Button_TransitionToCreateIncome_Click(object sender, RoutedEventArgs e)
+        {
+            AddIncomeWindow addIncomeWindow = new AddIncomeWindow();
+            addIncomeWindow.Show();
+        }
     }
 }

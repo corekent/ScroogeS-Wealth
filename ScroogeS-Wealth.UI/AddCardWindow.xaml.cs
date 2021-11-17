@@ -41,6 +41,7 @@ namespace ScroogeS_Wealth.UI
             {
                 CardLogic cardLogic = new CardLogic();
                 cardLogic.CreateCard(cardName, balance, CardStorage.Cards.Last().Id);
+                MessageBox.Show("Карта добавлена!");
             }
         }
 
