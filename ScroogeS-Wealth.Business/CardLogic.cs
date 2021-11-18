@@ -45,5 +45,28 @@ namespace ScroogeS_Wealth.Business
             decimal balance = card.Balance;
             return balance;
         }
+        public Result<Card> RemoveCard(int id)
+        {
+            var card = CardStorage.Cards.FirstOrDefault(x => x.Id == id);
+            if (card == null)
+            {
+                return new Result<Card>(0, "Карта не найдена");
+            }
+            CardStorage.Cards.Remove(card);
+
+            return new Result<Card>(1, "Карта удалена");
+        }
+        public Result<Card>  ChangeBalance(int id, decimal newbalance)
+        //возвращать что? может, decimal?
+        {
+            var card = CardStorage.Cards.FirstOrDefault(x => x.Id == id);
+            if (card == null)
+            {
+                return new Result<Card>(0, "Карта не найдена");
+            }
+            card.Balance = newbalance;
+            
+            return new Result<Card>(1, card, "Баланс карты изменен");
+        }
     }
 }
