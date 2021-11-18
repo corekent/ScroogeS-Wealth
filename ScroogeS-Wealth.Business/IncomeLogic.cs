@@ -41,8 +41,11 @@ namespace ScroogeS_Wealth.Business
             {
                 return new Result<Incomes>(0, income, "на карте меньше нуля");
             }
-
         }
+        //public Result<Incomes> Remove(string name, decimal amount, int cardId, DateTime time)
+        //{
+
+        //}
     }
 }
 
