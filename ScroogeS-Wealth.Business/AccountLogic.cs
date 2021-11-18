@@ -22,7 +22,7 @@ namespace ScroogeS_Wealth.Business
             }
             else
             {
-                lastId = CardStorage.Cards.Last().Id + 1;
+                lastId = AccountStorage.Account.Last().Id + 1;
             }
             account.Id = lastId;
 
@@ -37,7 +37,31 @@ namespace ScroogeS_Wealth.Business
 
             workSpace.Accounts.Add(account);
 
-            return new Result<Account>(1, account, "Карта добавлена");
+            return new Result<Account>(1, account, "Счет добавлен");
+        }
+        public Result<Account> RemoveAccount(int id)
+        {
+            var account = AccountStorage.Account.FirstOrDefault(x => x.Id == id);
+            if (account == null)
+            {
+                return new Result<Account>(0, "Карта не найдена");
+            }
+            AccountStorage.Account.Remove(account);
+
+            return new Result<Account>(1, "Карта удалена");
+        }
+        public Result<Account> ChangeBalance(int id, decimal newbalance)
+        //возвращать что? может, decimal?
+        {
+            var account = AccountStorage.Account.FirstOrDefault(x => x.Id == id);
+            if (account == null)
+            {
+                return new Result<Account>(0, "Карта не найдена");
+            }
+            account.Balance = newbalance;
+            AccountStorage.Account.Find(x => x.Id == id).Balance = newbalance;
+
+            return new Result<Account>(1, account, "Баланс счета изменен");
         }
     }
 }

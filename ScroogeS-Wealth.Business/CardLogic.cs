@@ -65,7 +65,8 @@ namespace ScroogeS_Wealth.Business
                 return new Result<Card>(0, "Карта не найдена");
             }
             card.Balance = newbalance;
-            
+            CardStorage.Cards.Find(x => x.Id == id).Balance=newbalance;
+
             return new Result<Card>(1, card, "Баланс карты изменен");
         }
     }
