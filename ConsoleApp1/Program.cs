@@ -11,15 +11,20 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            GenericStorage<Card> cardDate = new GenericStorage<Card>();
-            var acc = new Card("Kisa", 400);
+            DateTime date1 = new DateTime(2020, 06, 01);
+            DateTime date2 = new DateTime(2021, 06, 01);
+            
 
-            Console.WriteLine(acc.GetType().Name);
-            cardDate.Update(acc, 0);
-            foreach (var cardt in cardDate.Get())
-            {
-                Console.WriteLine($"Id : {cardt.Id}, Name: {cardt.Name}");
-            }
+
+            //GenericStorage<Card> cardDate = new GenericStorage<Card>();
+            //var acc = new Card("Kisa", 400);
+
+            //Console.WriteLine(acc.GetType().Name);
+            //cardDate.Update(acc, 0);
+            //foreach (var cardt in cardDate.Get())
+            //{
+            //    Console.WriteLine($"Id : {cardt.Id}, Name: {cardt.Name}");
+            //}
 
             //var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //Console.WriteLine(appDir);
