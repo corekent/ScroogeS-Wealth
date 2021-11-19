@@ -69,8 +69,22 @@ namespace ScroogeS_Wealth.Business
             return balance;
         }
 
-       
+        public int SubtructDays(double procent, DateTime start, DateTime end)
+        {            
+            TimeSpan Days = end - start;
+            int allDays = Days.Days;
+            return allDays;
+        }
 
-        
+        public decimal CalcAnount(int id, double procent, DateTime start, DateTime end)
+        {
+            double dayProcent = procent / 365;
+            decimal summProcent = SubtructDays(procent, start, end);
+            decimal anount = (decimal)dayProcent * summProcent;
+            return summProcent;
+        }
+
+
+
     }
 }
