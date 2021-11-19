@@ -8,36 +8,34 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class AccountLogic
+    public class AccountLogic 
     {
-        //public Result<Account> CreateAccount(string name, decimal balance, int userId)
-        //{
-        //    int lastId;
+        GenericStorage<Deposit> depositStore = new GenericStorage<Deposit>();
+        GenericStorage<WorkSpace> workSpaceStore = new GenericStorage<WorkSpace>();
 
-        //    Account account = new Account(name, balance);
-
-        //    if (AccountStorage.Account.Count == 0)
-        //    {
-        //        lastId = 1;
-        //    }
-        //    else
-        //    {
-        //        lastId = AccountStorage.Account.Last().Id + 1;
-        //    }
-        //    account.Id = lastId;
-
-        //    AccountStorage.Account.Add(account);
-
-        //    var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
-
-        //    if (workSpace is null)
-        //    {
-        //        return new Result<Account>(0, "Рабочее пространство не найдено");
-        //    }
-
-        //    workSpace.Accounts.Add(account);
-
-        //    return new Result<Account>(1, account, "Карта добавлена");
-        //}
+        public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
+        {
+            int lastId;
+            var deposits = depositStore.Get();
+            var workSpases = workSpaceStore.Get();
+            Deposit deposit = new Deposit(name, balance);
+            if (deposits.Count == 0)
+            {
+                lastId = 1;
+            }
+            else
+            {
+                lastId = deposits.Last().Id + 1;
+            }
+            deposit.Id = lastId;
+            deposits.Add(deposit);
+            var workSpace = workSpases.FirstOrDefault(x => x.GeneralUser.Id == userId);
+            if (workSpace is null)
+            {
+                return new Result<Deposit>(0, "Рабочее пространство не найдено");
+            }
+            workSpace.Deposits.Add(deposit);
+            return new Result<Deposit>(1, deposit, "Вклад добавлен");
+        }
     }
 }

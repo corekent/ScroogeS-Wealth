@@ -29,8 +29,9 @@ namespace ScroogeS_Wealth.Business
                 lastId = deposits.Last().Id + 1;
             }
             deposit.Id = lastId;
-            deposits.Add(deposit);
+            depositStore.Add(deposit);
             var workSpace = workSpases.FirstOrDefault(x => x.GeneralUser.Id == userId);
+
             if (workSpace is null)
             {
                 return new Result<Deposit>(0, "Рабочее пространство не найдено");

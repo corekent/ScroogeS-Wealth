@@ -43,10 +43,7 @@ namespace ScroogeS_Wealth.UI
             }
 
             if (expenseName != "" && amount != 0)
-            {
-                ExpenseLogic expenseLogic = new ExpenseLogic();
-                expenseLogic.Add(expenseName, amount, 1, dateTime);
-                
+            {              
             }
         }
 
