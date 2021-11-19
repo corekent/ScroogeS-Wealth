@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class WorkSpace : BaseModel
+    public class WorkSpace : BaseModel, IBaseModel
     {
         public User GeneralUser { get; set; }
         public List<Card> Cards { get; set; } = new List<Card>();

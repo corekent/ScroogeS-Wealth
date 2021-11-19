@@ -10,14 +10,15 @@ namespace ScroogeS_Wealth.Business
 {
     public class WorkSpaceLogic
     {
-        //public Result<WorkSpace> Get(int userId)
-        //{
-        //    var workSapce = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
-        //    if(workSapce is null)
-        //    {
-        //        return new Result<WorkSpace>(0, "Рабочее пространство не найдено");
-        //    }
-        //    return new Result<WorkSpace>(1, workSapce, "Ок");
-        //}
+        GenericStorage<WorkSpace> workSpaceStore = new GenericStorage<WorkSpace>();
+        public Result<WorkSpace> Get(int userId)
+        {
+           var workSpace = workSpaceStore.Get().FirstOrDefault(x => x.GeneralUser.Id == userId);
+            if(workSpace is null)
+            {
+                return new Result<WorkSpace>(0, "Рабочее пространство не найдено");
+            }
+            return new Result<WorkSpace>(1, workSpace, "Ок");
+        }
     }
 }
