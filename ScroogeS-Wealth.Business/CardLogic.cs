@@ -27,6 +27,6 @@ namespace ScroogeS_Wealth.Business
             cardStore.Get().Add(card);
             return new Result<Card>(1, card, "Карта добавлена");
         }
-        public Varifi
+        //public Varifi
     }
 }

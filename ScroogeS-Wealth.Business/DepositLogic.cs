@@ -10,33 +10,37 @@ namespace ScroogeS_Wealth.Business
 {
     public class DepositLogic
     {
-        //public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
-        //{
-        //    int lastId;
+        GenericStorage<Deposit> depositStore = new GenericStorage<Deposit>();
+        GenericStorage<WorkSpace> workSpaceStore = new GenericStorage<WorkSpace>();
 
-        //    Deposit deposit = new Deposit(name, balance);
 
-        //    if (DepositStorage.Deposits.Count == 0)
-        //    {
-        //        lastId = 1;
-        //    }
-        //    else
-        //    {
-        //        lastId = DepositStorage.Deposits.Last().Id + 1;
-        //    }
-        //    deposit.Id = lastId;
+        public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
+        {
+            int lastId;
 
-        //    DepositStorage.Deposits.Add(deposit);
+            Deposit deposit = new Deposit(name, balance);
 
-        //    var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
+            if (depositStore.Get().Count == 0)     
+            {
+                lastId = 1;
+            }
+            else
+            {
+                lastId = depositStore.Get().Last().Id + 1;
+            }
+            deposit.Id = lastId;
 
-        //    if (workSpace is null)
-        //    {
-        //        return new Result<Deposit>(0, "Рабочее пространство не найдено");
-        //    }
+            depositStore.Get().Add(deposit);
 
-        //    workSpace.Deposits.Add(deposit);
-        //    return new Result<Deposit>(1, deposit, "Вклад добавлен");                     
-        //}
+            var workSpace = workSpaceStore.Get().FirstOrDefault(x => x.GeneralUser.Id == userId);
+
+            if (workSpace is null)
+            {
+                return new Result<Deposit>(0, "Рабочее пространство не найдено");
+            }
+
+            workSpace.Deposits.Add(deposit);
+            return new Result<Deposit>(1, deposit, "Вклад добавлен");
+        }
     }
 }
