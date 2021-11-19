@@ -1,4 +1,5 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using Core;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -8,41 +9,42 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class ExpenseLogic
+    public class ExpenseLogic<T> where T: IMoneyStora
     {
-        //public Result<Expense> Add(string name, decimal amount, int cardId, DateTime time)
-        //{
-        //    int lastId;
+        GenericStorage<T> store = new GenericStorage<T>();
+        GenericStorage<Expense> expenseStore = new GenericStorage<Expense>();
 
-        //    Expense expense = new Expense(name, amount, time);
+        public Result<Expense> Add(string name, decimal amount, DateTime time, int fromId)
+        {
+            var expenses = expenseStore.Get();
 
-        //    if (ExpenseStorage.Expenses.Count == 0)
-        //        lastId = 1;
-        //    else
-        //        lastId = ExpenseStorage.Expenses.Last().Id + 1;
+            var element = store.Get().FirstOrDefault(x => x.Id == fromId);
+            
+            Expense expense = new Expense(name, amount, time);
 
-        //    expense.Id = lastId;
-        //    var card = ExpenseStorage.Expenses.FirstOrDefault(x => x.Id == cardId);
+            int lastId = Varification(expenses);
 
-        //    if (card is null)
-        //    {
-        //        return new Result<Expense>(0, "Карта не найдена");
-        //    }
+            expense.Id = lastId;
 
-        //    expense.Card = card;
+            element.Expense = expense;
 
-        //    ExpenseStorage.Expenses.Add(expense);
-        //    if (card.Balance >= amount)
-        //    {
-        //        card.Balance -= amount;
-        //        return new Result<Expense>(1, expense, "Расход учтён");
-        //    }
-        //    else
-        //    {
-        //        return new Result<Expense>(0, expense, "на карте меньше нуля");
-        //    }
-
-
-        //}
+            expenseStore.Add(expense);
+            store.Update(element, element.Id);
+            
+            return new Result<Expense>(1, "расход добавлен");
+        }
+        private int Varification(List<Expense> expenses)
+        {
+            int lastId;
+            if (expenses.Count == 0)
+            {
+                lastId = 1;
+            }
+            else
+            {
+                lastId = expenses.Last().Id + 1;
+            }
+            return lastId;
+        }
     }
 }

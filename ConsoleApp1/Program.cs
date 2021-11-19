@@ -2,6 +2,9 @@
 using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace ConsoleApp1
 {
@@ -9,16 +12,50 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            GenericStorage<Card> cardDate = new GenericStorage<Card>();
-            var acc = new Card("Kisa", 400);
-            
-            Console.WriteLine(acc.GetType().Name);
-            cardDate.Update(acc, 0);
-            foreach(var cardt in cardDate.Get())
-            {
-                Console.WriteLine($"Id : {cardt.Id}, Name: {cardt.Name}");
-            }
+            GenericStorage<Expense> depositDate = new GenericStorage<Expense>();
+            GenericStorage<Card> userDate = new GenericStorage<Card>();
+            ExpenseLogic<Card> expenseLogic = new ExpenseLogic<Card>();
+            expenseLogic.Add("PipiskaExpence", 100, DateTime.Now, 2);
+            var card = userDate.Get().FirstOrDefault(x => x.Id == 2);
+            Console.WriteLine(card.Expense.Name);
+            //foreach (var us in userDate.Get())
+            //{
+            //    Console.WriteLine($"Id : {us.Id}, NameExp: {us.Expense.Name}");
+            //}
+            DepositLogic dep = new DepositLogic();
+            dep.CreateDeposit("aaaaa", 300, 1);
+            //Console.WriteLine(acc.GetType().Name);
+            //depositDate.Add(acc);
+            //foreach (var cardt in depositDate.Get())
+            //{
+            //    Console.WriteLine($"Id : {cardt.Id}, Name: {cardt.Name}");
+            //}
+
             Console.ReadLine();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            ////var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            ////Console.WriteLine(appDir);
+            ////var relativePath = @"Data\\Card.json";
+            ////var fullPath = Path.Combine(appDir, relativePath);
+            ////Console.WriteLine(fullPath);
+            //var baseFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//
+            //string type = "Card";
+            //var appStorageFolder = Path.Combine(baseFolder, $"ScroogeS-Wealth\\App_Data\\{type}.json");
+            //Console.WriteLine(appStorageFolder);
         }
     }
 }

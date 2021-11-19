@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
 namespace ScroogeS_Wealth.Storage
 {
-    public class GenericStorage<T> where T: BaseModel
+    public class GenericStorage<T> where T: IBaseModel
     {
         private string _filePath;
         public GenericStorage()
@@ -74,7 +73,7 @@ namespace ScroogeS_Wealth.Storage
         }
         private string GetFilePath()
         {
-            var type = typeof(T).Name;
+            var type = typeof(T).Name;            
             return $"C:\\Users\\darrk\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
 
         }
