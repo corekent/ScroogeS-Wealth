@@ -12,21 +12,9 @@ namespace ScroogeS_Wealth.Business
     {
         public Result<User> CreateUser(string name)
         {
-            int lastId;
             User user = new User(name);
-            if (UserStorage.Users.Count == 0)
-            {
-                lastId = 1;
-            }
-            else
-            {
-                lastId = UserStorage.Users.Last().Id + 1;
-            }
-            user.Id = lastId;
-            UserStorage.Users.Add(user);
-            WorkSpace workSpace = new WorkSpace(user);
-            WorkSpaceStorage.workSpaces.Add(workSpace);
-            return new Result<User>(1, user,"ok");
+
+            return new Result<User>(1, user, "ok");
         }
     }
 }

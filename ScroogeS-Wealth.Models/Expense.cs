@@ -13,7 +13,6 @@ namespace ScroogeS_Wealth.Models
         public Card Card { get; set; }
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public Expense() { }
         public Expense(string name, decimal amount, DateTime date)
         {
             Name = name;

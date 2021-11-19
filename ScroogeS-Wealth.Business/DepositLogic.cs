@@ -10,33 +10,33 @@ namespace ScroogeS_Wealth.Business
 {
     public class DepositLogic
     {
-        public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
-        {
-            int lastId;
+        //public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
+        //{
+        //    int lastId;
 
-            Deposit deposit = new Deposit(name, balance);
+        //    Deposit deposit = new Deposit(name, balance);
 
-            if (DepositStorage.Deposits.Count == 0)
-            {
-                lastId = 1;
-            }
-            else
-            {
-                lastId = DepositStorage.Deposits.Last().Id + 1;
-            }
-            deposit.Id = lastId;
+        //    if (DepositStorage.Deposits.Count == 0)
+        //    {
+        //        lastId = 1;
+        //    }
+        //    else
+        //    {
+        //        lastId = DepositStorage.Deposits.Last().Id + 1;
+        //    }
+        //    deposit.Id = lastId;
 
-            DepositStorage.Deposits.Add(deposit);
+        //    DepositStorage.Deposits.Add(deposit);
 
-            var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
+        //    var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
 
-            if (workSpace is null)
-            {
-                return new Result<Deposit>(0, "Рабочее пространство не найдено");
-            }
+        //    if (workSpace is null)
+        //    {
+        //        return new Result<Deposit>(0, "Рабочее пространство не найдено");
+        //    }
 
-            workSpace.Deposits.Add(deposit);
-            return new Result<Deposit>(1, deposit, "Вклад добавлен");                     
-        }
+        //    workSpace.Deposits.Add(deposit);
+        //    return new Result<Deposit>(1, deposit, "Вклад добавлен");                     
+        //}
     }
 }

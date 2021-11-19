@@ -10,34 +10,34 @@ namespace ScroogeS_Wealth.Business
 {
     public class AccountLogic
     {
-        public Result<Account> CreateAccount(string name, decimal balance, int userId)
-        {
-            int lastId;
+        //public Result<Account> CreateAccount(string name, decimal balance, int userId)
+        //{
+        //    int lastId;
 
-            Account account = new Account(name, balance);
+        //    Account account = new Account(name, balance);
 
-            if (AccountStorage.Account.Count == 0)
-            {
-                lastId = 1;
-            }
-            else
-            {
-                lastId = CardStorage.Cards.Last().Id + 1;
-            }
-            account.Id = lastId;
+        //    if (AccountStorage.Account.Count == 0)
+        //    {
+        //        lastId = 1;
+        //    }
+        //    else
+        //    {
+        //        lastId = AccountStorage.Account.Last().Id + 1;
+        //    }
+        //    account.Id = lastId;
 
-            AccountStorage.Account.Add(account);
+        //    AccountStorage.Account.Add(account);
 
-            var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
+        //    var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
 
-            if (workSpace is null)
-            {
-                return new Result<Account>(0, "Рабочее пространство не найдено");
-            }
+        //    if (workSpace is null)
+        //    {
+        //        return new Result<Account>(0, "Рабочее пространство не найдено");
+        //    }
 
-            workSpace.Accounts.Add(account);
+        //    workSpace.Accounts.Add(account);
 
-            return new Result<Account>(1, account, "Карта добавлена");
-        }
+        //    return new Result<Account>(1, account, "Карта добавлена");
+        //}
     }
 }

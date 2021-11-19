@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,18 +7,11 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class User
+    public class User : BaseModel
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public User() { }
-
         public User(string name)
         {
             Name = name;
-        }
-        
+        }        
     }
 }
