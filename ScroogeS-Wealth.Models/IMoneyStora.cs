@@ -10,8 +10,8 @@ namespace ScroogeS_Wealth.Models
     public interface IMoneyStora : IBaseModel
     {
 
-        public Expense Expense { get; set; }
+        public List<Expense> Expense { get; set; }
 
-        public Incomes Incomes {get;set;}
+        public List<Incomes> Incomes {get;set;}
     }
 }

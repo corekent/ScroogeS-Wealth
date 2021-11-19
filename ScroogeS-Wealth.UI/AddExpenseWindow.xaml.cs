@@ -43,7 +43,9 @@ namespace ScroogeS_Wealth.UI
             }
 
             if (expenseName != "" && amount != 0)
-            {              
+            {
+                ExpenseLogic<Deposit> expense = new ExpenseLogic<Deposit>;
+                expense.Add(expenseName, amount, dateTime, 1);
             }
         }
 

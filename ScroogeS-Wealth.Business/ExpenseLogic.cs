@@ -26,7 +26,7 @@ namespace ScroogeS_Wealth.Business
 
             expense.Id = lastId;
 
-            element.Expense = expense;
+            element.Expense.Add(expense);
 
             expenseStore.Add(expense);
             store.Update(element, element.Id);

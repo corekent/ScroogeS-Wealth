@@ -10,8 +10,8 @@ namespace ScroogeS_Wealth.Models
     public class Card : BaseModel, IMoneyStora
     {
         public decimal Balance { get; set; }
-        public Expense Expense { get; set; }
-        public Incomes Incomes { get; set; }
+        public List<Expense> Expense { get; set; }
+        public List<Incomes> Incomes { get; set; }
 
         public Card(string name, decimal balance)
         {
