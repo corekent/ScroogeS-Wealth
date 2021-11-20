@@ -1,4 +1,5 @@
 ﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ScroogeS_Wealth.Storage
 {
     public class GenericStorage<T> where T: IBaseModel
     {
-        private string _filePath;
+        private string _filePath= $"{Environment.CurrentDirectory}\\Scrooge.json";
         public GenericStorage()
         {
             _filePath = GetFilePath();
@@ -74,7 +75,7 @@ namespace ScroogeS_Wealth.Storage
         private string GetFilePath()
         {
             var type = typeof(T).Name;            
-            return $"C:\\Users\\darrk\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            return $"{Environment.CurrentDirectory}\\Scrooge.json";
 
         }
     }
