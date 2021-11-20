@@ -8,34 +8,56 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class AccountLogic 
+    public class AccountLogic
     {
-        GenericStorage<Deposit> depositStore = new GenericStorage<Deposit>();
-        GenericStorage<WorkSpace> workSpaceStore = new GenericStorage<WorkSpace>();
-
-        public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
+        GenericStorage<Account> accountStore = new GenericStorage<Account>();
+        public Result<Account> CreateAccount(string name, decimal balance, int userId)
         {
             int lastId;
-            var deposits = depositStore.Get();
-            var workSpases = workSpaceStore.Get();
-            Deposit deposit = new Deposit(name, balance);
-            if (deposits.Count == 0)
+            Account account = new Account(name, balance);
+            if (accountStore.Get().Count == 0)
             {
                 lastId = 1;
             }
             else
             {
-                lastId = deposits.Last().Id + 1;
+                lastId = accountStore.Get().Last().Id + 1;
             }
-            deposit.Id = lastId;
-            deposits.Add(deposit);
-            var workSpace = workSpases.FirstOrDefault(x => x.GeneralUser.Id == userId);
-            if (workSpace is null)
+            account.Id = lastId;
+            accountStore.Get().Add(account);
+            return new Result<Account>(1, account, "Карта добавлена");
+        }
+        //public Varifi
+        public decimal GetBalance(int id)
+        {
+            var accounts = accountStore.Get();
+            var account = accounts.FirstOrDefault(x => x.Id == id);
+            decimal balance = account.Balance;
+            return balance;
+        }
+        public Result<Account> RemoveAccount(int id)
+        {
+            var account = accountStore.Get().FirstOrDefault(x => x.Id == id);
+            if (account == null)
             {
-                return new Result<Deposit>(0, "Рабочее пространство не найдено");
+                return new Result<Account>(0, "Карта не найдена");
             }
-            workSpace.Deposits.Add(deposit);
-            return new Result<Deposit>(1, deposit, "Вклад добавлен");
+            accountStore.Get().Remove(account);
+
+            return new Result<Account>(1, "Карта удалена");
+        }
+        public Result<Account> ChangeBalance(int id, decimal newbalance)
+        //возвращать что? может, decimal?
+        {
+            var account = accountStore.Get().FirstOrDefault(x => x.Id == id);
+            if (account == null)
+            {
+                return new Result<Account>(0, "Карта не найдена");
+            }
+            account.Balance = newbalance;
+            accountStore.Get().Find(x => x.Id == id).Balance = newbalance;
+
+            return new Result<Account>(1, account, "Баланс карты изменен");
         }
     }
 }
