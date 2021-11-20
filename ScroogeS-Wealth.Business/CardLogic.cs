@@ -15,7 +15,7 @@ namespace ScroogeS_Wealth.Business
         {
             int lastId;
             Card card = new Card(name, balance);
-            if(cardStore.Get().Count == 0)
+            if (cardStore.Get().Count == 0)
             {
                 lastId = 1;
             }
@@ -36,7 +36,7 @@ namespace ScroogeS_Wealth.Business
             return balance;
         }
         public Result<Card> RemoveCard(int id)
-        {        
+        {
             var card = cardStore.Get().FirstOrDefault(x => x.Id == id);
             if (card == null)
             {
@@ -61,5 +61,6 @@ namespace ScroogeS_Wealth.Business
         }
 
 
-    
+
+    }
 }

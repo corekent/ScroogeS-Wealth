@@ -25,7 +25,7 @@ namespace ScroogeS_Wealth.Business
             }
             account.Id = lastId;
             accountStore.Get().Add(account);
-            return new Result<Account>(1, account, "Карта добавлена");
+            return new Result<Account>(1, account, "Счет добавлен");
         }
         //public Varifi
         public decimal GetBalance(int id)
@@ -40,11 +40,11 @@ namespace ScroogeS_Wealth.Business
             var account = accountStore.Get().FirstOrDefault(x => x.Id == id);
             if (account == null)
             {
-                return new Result<Account>(0, "Карта не найдена");
+                return new Result<Account>(0, "Счет не найден");
             }
             accountStore.Get().Remove(account);
 
-            return new Result<Account>(1, "Карта удалена");
+            return new Result<Account>(1, "Счет удален");
         }
         public Result<Account> ChangeBalance(int id, decimal newbalance)
         //возвращать что? может, decimal?
@@ -52,12 +52,12 @@ namespace ScroogeS_Wealth.Business
             var account = accountStore.Get().FirstOrDefault(x => x.Id == id);
             if (account == null)
             {
-                return new Result<Account>(0, "Карта не найдена");
+                return new Result<Account>(0, "Счет не найден");
             }
             account.Balance = newbalance;
             accountStore.Get().Find(x => x.Id == id).Balance = newbalance;
 
-            return new Result<Account>(1, account, "Баланс карты изменен");
+            return new Result<Account>(1, account, "Баланс счета изменен");
         }
     }
 }
