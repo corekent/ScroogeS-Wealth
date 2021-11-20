@@ -28,36 +28,21 @@ namespace ScroogeS_Wealth.UI
             InitializeComponent();
         }
 
-        private void Button_CreateUser_Click(object sender, RoutedEventArgs e)
+        private void Button_TransitionToCreateUserWindow_Click(object sender, RoutedEventArgs e)
         {
-            string userName = userNameBox.Text.Trim();
-            CheckInput(userName);
-
-            if (userName != "")
-            {
-                UserLogic user = new UserLogic();
-                user.CreateUser(userName);
-                MessageBox.Show("Пользователь успешно добавлен! =)");
-            }
+            AddUserWindow addUserWindow = new AddUserWindow();
+            addUserWindow.Show();
         }
 
-        private void Button_Close_Click(object sender, RoutedEventArgs e)
+        private void Button_TransitionToCreateCardWindow_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            AddCardWindow addCardWindow = new AddCardWindow();
+            addCardWindow.Show();
+        }
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
-        private void CheckInput(string stringToCheck)
-        {
-            if (stringToCheck == "")
-            {
-                userNameBox.ToolTip = "Это поле нельзя оставлять пустым";
-                userNameBox.Background = Brushes.Red;
-            }
-            else
-            {
-                userNameBox.ToolTip = "";
-                userNameBox.Background = Brushes.Transparent;
-            }
-        }
     }
 }

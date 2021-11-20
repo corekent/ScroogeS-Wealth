@@ -40,14 +40,14 @@ namespace ScroogeS_Wealth.UI
             if (cardName != "" && balance != 0)
             {
                 CardLogic cardLogic = new CardLogic();
-                cardLogic.CreateCard(cardName, balance, CardStorage.Cards.Last().Id);
+                cardLogic.CreateCard(cardName, balance, 1);
             }
         }
 
         private void CheckInput(string cardName, string balance)
         {
             if (cardName == "")
-            { 
+            {
                 cardNameBox.ToolTip = "Это поле не может быть пустым";
                 cardNameBox.Background = Brushes.Red;
             }

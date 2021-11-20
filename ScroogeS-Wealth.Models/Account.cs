@@ -9,7 +9,6 @@ namespace ScroogeS_Wealth.Models
 {
     public class Account : BaseModel, IMoneyStora
     {
-        public decimal Balance { get; set; }
         public Expense Expense { get; set; }
         public Incomes Incomes { get; set; }
 

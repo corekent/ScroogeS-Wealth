@@ -74,7 +74,7 @@ namespace ScroogeS_Wealth.Storage
         private string GetFilePath()
         {
             var type = typeof(T).Name;            
-            return $"C:\\Users\\darrk\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            return $"C:\\Users\\Lekksha\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
 
         }
     }
