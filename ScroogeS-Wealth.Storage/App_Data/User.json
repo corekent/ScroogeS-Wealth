@@ -1,10 +1,32 @@
 [
   {
     "Id": 1,
-    "Name": "AAAAAAAAAAA"
+    "Name": "Babaduk",
+    "Balance": 0
   },
   {
     "Id": 2,
-    "Name": "аааа"
+    "Name": "Babaduk",
+    "Balance": 0
+  },
+  {
+    "Id": 3,
+    "Name": "Скрудж",
+    "Balance": 0
+  },
+  {
+    "Id": 4,
+    "Name": "Восхитительный мистер",
+    "Balance": 0
+  },
+  {
+    "Id": 5,
+    "Name": "Тестовый персонаж",
+    "Balance": 0
+  },
+  {
+    "Id": 6,
+    "Name": "Mrs Dalloway",
+    "Balance": 0
   }
 ]

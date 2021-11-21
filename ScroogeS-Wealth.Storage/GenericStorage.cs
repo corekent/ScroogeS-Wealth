@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
@@ -11,7 +12,7 @@ namespace ScroogeS_Wealth.Storage
 {
     public class GenericStorage<T> where T: IBaseModel
     {
-        private string _filePath= $"{Environment.CurrentDirectory}\\Scrooge.json";
+        private string _filePath;
         public GenericStorage()
         {
             _filePath = GetFilePath();
@@ -75,8 +76,10 @@ namespace ScroogeS_Wealth.Storage
         private string GetFilePath()
         {
             var type = typeof(T).Name;            
-            return $"{Environment.CurrentDirectory}\\Scrooge.json";
-
+            return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth3\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            //var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //var relativePath = @"subdir\opinios.csv";
+            //var fullPath = Path.Combine(appDir, relativePath);
         }
     }
 }

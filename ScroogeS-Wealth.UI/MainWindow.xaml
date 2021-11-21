@@ -5,18 +5,114 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
         mc:Ignorable="d"
-        Title="Добавление пользователя" Height="300" Width="400" WindowStyle="ThreeDBorderWindow">
-    <Grid Background="#F0DC82">
-        <Border Margin="5 5 5 5" Background="White" Padding="30" CornerRadius="30">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" Color="Black" ShadowDepth="0" />
-            </Border.Effect>
-            <StackPanel Margin="0 0 0 0">
-                <TextBlock Text="Введите имя" FontSize="13"  HorizontalAlignment="Center" FontFamily="Arial Black" FontWeight="Bold" />
-                <TextBox x:Name="userNameBox"/>
-                <Button Content="Добавить пользователя" Margin ="50 20 50 0" Click="Button_CreateUser_Click" FontFamily="SimSun-ExtB" Background="MistyRose"/>
-                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB" Background="DarkOrange"/>
-            </StackPanel>
-        </Border>
+        Title="$crooge" MinHeight="750" MinWidth="950" MaxHeight="750" MaxWidth="950" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Главное окно" Background="LightYellow" Width="90">
+                <Grid Background="LightYellow">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="411*"/>
+                        <ColumnDefinition Width="533*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Добавить пользователя" Margin ="289,50,70,600" 
+                            Click="Button_TransitionToCreateUserWindow_Click" FontWeight="Bold"
+                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
+                    <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge1.png"></Image>
+                    <ComboBox x:Name="usersComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}" DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
+                    <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название" Width="*"/>
+                            <DataGridTextColumn Header="Тип" Width="*"/>
+                            <DataGridTextColumn Header="Баланс" Width="*"/>
+                            <DataGridTemplateColumn Header="Изменить" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="deleteButton" Content="Удалить" Click="Button_Delete_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Карты" Background="PapayaWhip" Width="90">
+                <Grid Background="PapayaWhip">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="411*"/>
+                        <ColumnDefinition Width="533*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Добавить карту" Margin ="150 50 130 600" 
+                            Click="Button_TransitionToCreateCardWindow_Click" FontWeight="Bold"
+                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
+                    <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge2.png"></Image>
+                    <DataGrid x:Name="DataGridCardsInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название" Width="*"/>
+                            <DataGridTextColumn Header="Тип" Width="*"/>
+                            <DataGridTextColumn Header="Баланс" Width="*"/>
+                            <DataGridTemplateColumn Header="Изменить" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="deleteButton" Content="Удалить" Click="Button_Delete_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Счета" Background="PapayaWhip" Width="90">
+
+            </TabItem>
+            <TabItem Header="Вклады" Background="PapayaWhip" Width="90">
+
+            </TabItem>
+            <TabItem  Header="Копилка" Background="PapayaWhip" Width="90">
+                <Grid  Background="PapayaWhip">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="411*"/>
+                        <ColumnDefinition Width="533*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Добавить копилку" Margin ="263,50,65,600" 
+                            Click="Button_TransitionToCreateCashWindow_Click" FontWeight="Bold"
+                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
+                    <ComboBox x:Name="CashesComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}" DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
+                    <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge3.png"></Image>
+                    <DataGrid x:Name="DataGridCashesInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="*"/>
+                            <DataGridTextColumn Header="Баланс" Binding="{Binding Path=Balance}" Width="*"/>
+                            <DataGridTemplateColumn Header="Изменить" IsReadOnly="False" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="deleteButton" Content="Удалить" Click="Button_Delete_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Доходы" Background="PapayaWhip" Width="90">
+
+            </TabItem>
+            <TabItem Header="Расходы" Background="PapayaWhip" Width="90">
+
+            </TabItem>
+            <TabItem Header="Кредиты" Background="PapayaWhip" Width="90">
+
+            </TabItem>
+            <TabItem Header="Ипотека" Background="PapayaWhip" Width="90">
+
+            </TabItem>
+            <TabItem Header="Аналитика" Background="PaleGoldenrod" Width="90">
+
+
+            </TabItem>
+
+
+        </TabControl>
     </Grid>
+
 </Window>

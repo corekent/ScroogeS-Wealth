@@ -3,6 +3,7 @@ using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,41 +24,47 @@ namespace ScroogeS_Wealth.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<User> Names { get; set; }
+        public ObservableCollection<Cash> Cashes { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_CreateUser_Click(object sender, RoutedEventArgs e)
+            GenericStorage<User> userStorage = new GenericStorage<User>();
+            var names = userStorage.Get();
+            Names = new ObservableCollection<User>(names);
+            DataContext = Names;
+            //GenericStorage<Cash> cashesStorage = new GenericStorage<Cash>();
+            //var cashes = cashesStorage.Get();
+            //Cashes = new ObservableCollection<Cash>(cashes);
+            //DataContext = Cashes;
+            //DataGridCashesInfo.ItemsSource = Cashes;
+        }            
+        private void Button_TransitionToCreateUserWindow_Click(object sender, RoutedEventArgs e)
         {
-            string userName = userNameBox.Text.Trim();
-            CheckInput(userName);
-
-            if (userName != "")
-            {
-                UserLogic user = new UserLogic();
-                user.CreateUser(userName);
-                MessageBox.Show("Пользователь успешно добавлен! =)");
-            }
+            AddUserWindow addUserWindow = new AddUserWindow();
+            addUserWindow.Show();
         }
 
-        private void Button_Close_Click(object sender, RoutedEventArgs e)
+        private void Button_TransitionToCreateCardWindow_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            AddCardWindow addCardWindow = new AddCardWindow();
+            addCardWindow.Show();
+        }
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
-        private void CheckInput(string stringToCheck)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (stringToCheck == "")
-            {
-                userNameBox.ToolTip = "Это поле нельзя оставлять пустым";
-                userNameBox.Background = Brushes.Red;
-            }
-            else
-            {
-                userNameBox.ToolTip = "";
-                userNameBox.Background = Brushes.Transparent;
-            }
+
         }
+        private void Button_TransitionToCreateCashWindow_Click(object sender, RoutedEventArgs e)
+        {
+            AddCashWindow addCashWindow = new AddCashWindow();
+            addCashWindow.Show();           
+        }
+       
     }
 }

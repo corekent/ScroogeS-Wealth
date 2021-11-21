@@ -24,7 +24,7 @@ namespace ScroogeS_Wealth.Business
                 lastId = cashStore.Get().Last().Id + 1;
             }
             cash.Id = lastId;
-            cashStore.Get().Add(cash);
+            cashStore.Add(cash);
             return new Result<Cash>(1, cash, "Копилка добавлена");
         }
         //public Varifi

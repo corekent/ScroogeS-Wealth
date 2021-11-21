@@ -29,25 +29,26 @@ namespace ScroogeS_Wealth.UI
             InitializeComponent();
         }
 
-        private void Button_AddIncome_Click(object sender, RoutedEventArgs e)
-        {
-            CheckInput(amountBox.Text, incomeNameBox.Text);
-            string expenseName = incomeNameBox.Text.Trim();
-            DateTime dateTime = DateTime.Parse(dateTimeBox.Text.Trim());
+        //private void Button_AddIncome_Click(object sender, RoutedEventArgs e)
+        //{
+        //    CheckInput(amountBox.Text, incomeNameBox.Text);
+        //    string expenseName = incomeNameBox.Text.Trim();
+        //    DateTime dateTime = DateTime.Parse(dateTimeBox.Text.Trim());
 
-            decimal amount = 0;
+        //    decimal amount = 0;
 
-            if (amountBox.Text != "")
-            {
-                amount = Convert.ToDecimal(amountBox.Text.Trim());
-            }
+        //    if (amountBox.Text != "")
+        //    {
+        //        amount = Convert.ToDecimal(amountBox.Text.Trim());
+        //    }
 
-            if (expenseName != "" && amount != 0)
-            {
-                ExpenseLogic<Deposit> expense = new ExpenseLogic<Deposit>;
-                expense.Add(expenseName, amount, dateTime, 1);
-            }
-        }
+        //    if (expenseName != "" && amount != 0)
+        //    {
+        //        ExpenseLogic<Card> expenseLogic = new ExpenseLogic<Card>();
+        //        expenseLogic.Add(expenseName, amount, dateTime, 1);
+
+        //    }
+        //}
 
         private void CheckInput(string cardName, string balance)
         {

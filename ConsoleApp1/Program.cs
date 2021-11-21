@@ -57,5 +57,7 @@ namespace ConsoleApp1
             //var appStorageFolder = Path.Combine(baseFolder, $"ScroogeS-Wealth\\App_Data\\{type}.json");
             //Console.WriteLine(appStorageFolder);
         }
+        
     }
+    
 }

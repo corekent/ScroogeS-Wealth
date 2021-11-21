@@ -47,4 +47,4 @@ namespace ScroogeS_Wealth.Business
             return lastId;
         }
     }
-}
+}  

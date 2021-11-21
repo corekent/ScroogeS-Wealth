@@ -1,0 +1,16 @@
+[
+  {
+    "Balance": 2345,
+    "Expense": null,
+    "Incomes": null,
+    "Id": 1,
+    "Name": "Кошель"
+  },
+  {
+    "Balance": 12000,
+    "Expense": null,
+    "Incomes": null,
+    "Id": 2,
+    "Name": "BigBags"
+  }
+]

@@ -39,15 +39,16 @@ namespace ScroogeS_Wealth.UI
 
             if (cardName != "" && balance != 0)
             {
-                DepositLogic cardLogic = new DepositLogic();
-                cardLogic.CreateDeposit(cardName, balance, 1);
+                CardLogic cardLogic = new CardLogic();
+                cardLogic.CreateCard(cardName, balance, 1);
+                MessageBox.Show("Карта успешно добавлена! =)");
             }
         }
 
         private void CheckInput(string cardName, string balance)
         {
             if (cardName == "")
-            { 
+            {
                 cardNameBox.ToolTip = "Это поле не может быть пустым";
                 cardNameBox.Background = Brushes.Red;
             }

@@ -8,7 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Scrooge1.png" />
+    <None Remove="Scrooge2.png" />
+    <None Remove="Scrooge3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ScroogeS-Wealth.Business\ScroogeS-Wealth.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Scrooge1.png" />
+    <Resource Include="Scrooge2.png" />
+    <Resource Include="Scrooge3.png" />
   </ItemGroup>
 
 </Project>

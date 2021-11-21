@@ -24,7 +24,7 @@ namespace ScroogeS_Wealth.Business
                 lastId = cardStore.Get().Last().Id + 1;
             }
             card.Id = lastId;
-            cardStore.Get().Add(card);
+            cardStore.Add(card);
             return new Result<Card>(1, card, "Карта добавлена");
         }
         //public Varifi
