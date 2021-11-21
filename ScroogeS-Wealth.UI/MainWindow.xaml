@@ -18,7 +18,7 @@
                             Click="Button_TransitionToCreateUserWindow_Click" FontWeight="Bold"
                             FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
                     <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge1.png"></Image>
-                    <ComboBox Margin ="89,50,270,600" ItemsSource="{Binding names}" Grid.Column="1" Background="Gold"/>
+                    <ComboBox x:Name="usersComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}" DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
                     <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Width="*"/>
