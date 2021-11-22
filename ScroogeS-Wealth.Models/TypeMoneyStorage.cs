@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public abstract class TypeMoneyStorage<T> where T : IBaseModel
+    public abstract class TypeMoneyStorage<T> where T : Product
     {
         public abstract Result<T> Create(string name, decimal balance, int id);
         public abstract Result<T> Remove(int id);

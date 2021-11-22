@@ -7,15 +7,8 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Account : IBaseModel, IMoneyModel
+    public class Account : Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Balance { get; set; }
-        public List<Expense> Expenses { get; set; }
-
-        public List<Income> Incomes { get; set; }
-
         public Account(string name, decimal balance)
         {
             Name = name;

@@ -37,7 +37,6 @@ namespace ScroogeS_Wealth.Business
             var element = FindId(id);
             element.Balance = newBalance;
             return new Result<Cash>(1, element, "баланс изменен");
-
         }
         public override decimal GetBalance(int id)
         {
