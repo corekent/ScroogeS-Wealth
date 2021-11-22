@@ -1,3 +1,14 @@
 [
-  
+  {
+    "Id": 1,
+    "Name": "PipiskaExpence",
+    "Amount": 100,
+    "Date": "2021-11-22T15:30:21.2453704+03:00"
+  },
+  {
+    "Id": 2,
+    "Name": "PipiskaExpence",
+    "Amount": 100,
+    "Date": "2021-11-22T15:36:54.0699806+03:00"
+  }
 ]

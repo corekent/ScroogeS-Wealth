@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class GenericLogic<T> where T : BaseModel
+    public class GenericLogic<T> 
     {
         //GenericStorage<T> Store = new GenericStorage<T>();
         //public Result<T> Create(string name, decimal balance,)

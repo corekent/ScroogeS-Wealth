@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class IncomeLogic : Money<T>
+    public class IncomeLogic 
     {
 
     }

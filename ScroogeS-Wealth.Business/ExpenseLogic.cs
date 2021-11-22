@@ -12,7 +12,7 @@ namespace ScroogeS_Wealth.Business
     public class ExpenseLogic<T, V> where T : Product where V : IBaseModel
     {
         GenericStorage<T> elementStore = new GenericStorage<T>();
-        GenericStorage<V> expenseStore = new GenericStorage<V>();
+        GenericStorage<Expense> expenseStore = new GenericStorage<Expense>();
 
         public  Result<V> Create(string name, decimal amount, DateTime date, int fromId)
         {
@@ -23,55 +23,51 @@ namespace ScroogeS_Wealth.Business
             {
                 return new Result<V>(0, "сущность не найдена");
             }
-            Expense expense = new Expense(name, amount, date);
+            var expense = new Expense(name, amount, date);
             int lastId = CreateId(expenses);
             expense.Id = lastId;
+            expenseStore.Add(expense);
             element.Expenses.Add(expense);
             element.Balance -= amount;
             elementStore.Update(element, element.Id);
             return new Result<V>(1, "расход добавлен");
         }
-        public abstract Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId, double interval)
+        public  Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId, int interval)
         {
-            V expense = Create(name, amount, date, fromId);
+            var expense = Create(name, amount, date, fromId);
             date.AddMonths(interval);
-            V expenseNext = Create(name, amount, date, fromId);
+            var expenseNext = Create(name, amount, date, fromId);
             return new Result<V>(1, "расход будет учтен в следующем месяце");
         }
-        public override Result<V> Remove(int id)
+        public  Result<V> Remove(int id)
         {
-            Expense element = FindId(id);
+            var element = FindId(id);
             expenseStore.Get().Remove(element);
             return new Result<V>(1, "расход удален");
         }
-        public override Result<V> SetName(int id, string newName)
+        public Result<V> SetName(int id, string newName)
         {
             var element = FindId(id);
             element.Name = newName;
             return new Result<V>(1, "название изменено");
         }
-        public override Result<V> SetCategorie(int id, string newName)
+        public Result<V> SetCategorie(int id, string newName)
         {
             return new Result<V>(1, "категория изменена ");
-
         }
-        public override Result<V> SetAmount(int id, decimal newBalance)
-        {
-            var element = FindId(id);
-            element.Amount = newBalance;
-            return new Result<V>(1, "сумма изменена");
-        }
-        private Result<V> FindId(int id)
+        //public Result<V> SetAmount(int id, decimal newBalance)
+        //{
+        //    var element = FindId(id);
+        //    element.Balance = newBalance;
+        //    return new Result<V>(1, "сумма изменена");
+        //}
+        private Expense FindId(int id)
         {
             var elements = expenseStore.Get();
             var element = elements.FirstOrDefault(x => x.Id == id);
-            if (element is null)
-            {
-                return null;
-            }
-            return new Result<V>(1, element,"");
+            return element;
         }
-        private int CreateId(List<V> expenses)
+        private int CreateId(List<Expense> expenses)
         {
             int lastId;
             if (expenses.Count == 0)
@@ -90,7 +86,7 @@ namespace ScroogeS_Wealth.Business
             return new Result<T>(1, element, "");
         }
 
-        public override Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId)
+        public  Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId)
         {
             throw new NotImplementedException();
         }

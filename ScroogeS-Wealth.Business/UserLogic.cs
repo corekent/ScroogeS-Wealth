@@ -11,6 +11,7 @@ namespace ScroogeS_Wealth.Business
     public class UserLogic
     {
         GenericStorage<User> userStore = new GenericStorage<User>();
+
         public Result<User> CreateUser(string name)
         {
             var users = userStore.Get();
@@ -18,6 +19,8 @@ namespace ScroogeS_Wealth.Business
             int id = Varification(users);
             user.Id = id;
             userStore.Add(user);
+            WorkSpaceLogic<User> workSpace = new WorkSpaceLogic<User>();
+            workSpace.Create(id);
             return new Result<User>(1, user, "ok");
         }
         public int Varification(List<User> users)

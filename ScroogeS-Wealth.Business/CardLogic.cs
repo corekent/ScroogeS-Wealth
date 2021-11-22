@@ -15,9 +15,10 @@ namespace ScroogeS_Wealth.Business
         {
             var elements = elementStore.Get();
             Card element = new Card(name, balance);
-            int Id = CreateId(elements);
-            element.Id = Id;
+            int cardId = CreateId(elements);
+            element.Id = cardId;
             elementStore.Add(element);
+            BindWorkSpace(cardId, id);
             return new Result<Card>(1, element, "Карта добавлена");
         }
         public override Result<Card> Remove(int id)
@@ -47,7 +48,8 @@ namespace ScroogeS_Wealth.Business
         public override void BindWorkSpace(int cardId, int workSpaceId)
         {
             GenericStorage<WorkSpace> workSpaces = new GenericStorage<WorkSpace>();
-            var workSpace = workSpaces.Get().FirstOrDefault(x => x.Id == workSpaceId);
+            var worksps = workSpaces.Get();
+            var workSpace = worksps.FirstOrDefault(x => x.Id == workSpaceId);
             var element = FindId(cardId);
             workSpace.Cards.Add(element);
         }

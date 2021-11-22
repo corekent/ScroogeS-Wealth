@@ -12,10 +12,17 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //GenericStorage<Expense> depositDate = new GenericStorage<Expense>();
-            //GenericStorage<Card> userDate = new GenericStorage<Card>();
-            //ExpenseLogic<Card> expenseLogic = new ExpenseLogic<Card>();
-            //expenseLogic.Add("PipiskaExpence", 100, DateTime.Now, 2);
+            UserLogic userDate = new UserLogic();
+            userDate.CreateUser("Suka");
+            userDate.CreateUser("Suka2");
+            userDate.CreateUser("Suka3");
+            Console.WriteLine(userDate);
+            CardLogic card = new CardLogic();
+            card.Create("Xuita", 333, 1);
+            Console.WriteLine(card);
+            ExpenseLogic<Card, Expense> expenseLogic = new ExpenseLogic<Card, Expense>();
+            expenseLogic.Create("PipiskaExpence", 100, DateTime.Now, 1);
+            Console.WriteLine(expenseLogic);
             //var card = userDate.Get().FirstOrDefault(x => x.Id == 2);
             //Console.WriteLine(card.Expense);
             //foreach (var us in userDate.Get())

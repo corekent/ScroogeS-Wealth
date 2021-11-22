@@ -1,49 +1,23 @@
 [
   {
-    "Balance": 400,
-    "Expense": null,
-    "Incomes": null,
-    "Id": 0,
-    "Name": "Kisa"
-  },
-  {
-    "Balance": 400,
-    "Expense": null,
-    "Incomes": null,
     "Id": 1,
-    "Name": "Kisa"
+    "Name": "Xuita",
+    "Balance": 333,
+    "Expenses": [],
+    "Incomes": []
   },
   {
-    "Balance": 400,
-    "Expense": {
-      "Amount": 100,
-      "Date": "2021-11-19T16:29:56.9976327+03:00",
-      "Id": 3,
-      "Name": "PipiskaExpence"
-    },
-    "Incomes": null,
     "Id": 2,
-    "Name": "Pipiska2"
+    "Name": "Xuita",
+    "Balance": 333,
+    "Expenses": [],
+    "Incomes": []
   },
   {
-    "Balance": 400,
-    "Expense": null,
-    "Incomes": null,
     "Id": 3,
-    "Name": "Pipiska3"
-  },
-  {
-    "Balance": 400,
-    "Expense": null,
-    "Incomes": null,
-    "Id": 4,
-    "Name": "Pipiska4"
-  },
-  {
-    "Balance": 400,
-    "Expense": null,
-    "Incomes": null,
-    "Id": 5,
-    "Name": "Pipiska5"
+    "Name": "Xuita",
+    "Balance": 333,
+    "Expenses": [],
+    "Incomes": []
   }
 ]
