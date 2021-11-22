@@ -30,6 +30,10 @@ namespace ScroogeS_Wealth.Business
             elementStore.Update(element, element.Id);
             return new Result<T>(1, "расход добавлен");
         }
+        public abstract Result<T> CreateConstExpense(string name, decimal amount, DateTime date, int fromId)
+        {
+
+        }
         public override Result<T> Remove(int id)
         {
             var element = FindId(id);
