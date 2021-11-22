@@ -32,7 +32,7 @@ namespace ScroogeS_Wealth.Storage
                 elements = new List<T>();
             }
             return elements;
-        }
+        } // Remove
         public T Add(T element)
         {
             var elements = Get();

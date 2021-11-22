@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace ScroogeS_Wealth.Models
 {
-    public interface IBaseModel
+    public class ExpenseСategorieModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
+        //сдлеать enum????
     }
 }

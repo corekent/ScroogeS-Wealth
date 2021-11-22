@@ -9,31 +9,61 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class ExpenseLogic<T> where T: IMoneyStora
+    public class ExpenseLogic<T> : Money<T> where T : IBaseModel
     {
-        GenericStorage<T> store = new GenericStorage<T>();
+        GenericStorage<T> elementStore = new GenericStorage<T>();
         GenericStorage<Expense> expenseStore = new GenericStorage<Expense>();
 
-        public Result<Expense> Add(string name, decimal amount, DateTime time, int fromId)
+        public override Result<T> Create(string name, decimal amount, DateTime date, int fromId)
         {
             var expenses = expenseStore.Get();
-
-            var element = store.Get().FirstOrDefault(x => x.Id == fromId);
-            
-            Expense expense = new Expense(name, amount, time);
-
-            int lastId = Varification(expenses);
-
+            var elements = elementStore.Get();
+            var element = elements.FirstOrDefault(x => x.Id == fromId);
+            if (element is null)
+            {
+                return new Result<T>(0, "сущность не найдена");
+            }
+            Expense expense = new Expense(name, amount, date);
+            int lastId = CreateId(expenses);
             expense.Id = lastId;
-
-            element.Expense.Add(expense);
-
             expenseStore.Add(expense);
-            store.Update(element, element.Id);
-            
-            return new Result<Expense>(1, "расход добавлен");
+            elementStore.Update(element, element.Id);
+            return new Result<T>(1, "расход добавлен");
         }
-        private int Varification(List<Expense> expenses)
+        public override Result<T> Remove(int id)
+        {
+            var element = FindId(id);
+            expenseStore.Get().Remove(element);
+            return new Result<T>(1, "расход удален");
+        }
+        public override Result<T> SetName(int id, string newName)
+        {
+            var element = FindId(id);
+            element.Name = newName;
+            return new Result<T>(1, "название изменено");
+        }
+        public override Result<T> SetCategorie(int id, string newName)
+        {
+            return new Result<T>(1, "категория изменена ");
+
+        }
+        public override Result<T> SetAmount(int id, decimal newBalance)
+        {
+            var element = FindId(id);
+            element.Amount = newBalance;
+            return new Result<T>(1, "сумма изменена");
+        }
+        private Expense FindId(int id)
+        {
+            var elements = expenseStore.Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            if (element is null)
+            {
+                return null;
+            }
+            return element;
+        }
+        private int CreateId(List<Expense> expenses)
         {
             int lastId;
             if (expenses.Count == 0)

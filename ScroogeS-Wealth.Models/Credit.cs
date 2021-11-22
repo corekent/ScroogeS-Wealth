@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public interface IMoneyStora : IBaseModel
+    public class Credit : IBaseModel
     {
-
-        public List<Expense> Expense { get; set; }
-
-        public List<Incomes> Incomes {get;set;}
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

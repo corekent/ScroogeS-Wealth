@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class WorkSpace : BaseModel, IBaseModel
+    public class WorkSpace : IBaseModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
         public User GeneralUser { get; set; }
         public List<Card> Cards { get; set; } = new List<Card>();
         public List<Deposit> Deposits { get; set; } = new List<Deposit>();
