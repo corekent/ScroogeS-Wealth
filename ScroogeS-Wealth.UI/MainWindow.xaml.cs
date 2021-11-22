@@ -33,12 +33,12 @@ namespace ScroogeS_Wealth.UI
             GenericStorage<User> userStorage = new GenericStorage<User>();
             var names = userStorage.Get();
             Names = new ObservableCollection<User>(names);
-            DataContext = Names;
-            //GenericStorage<Cash> cashesStorage = new GenericStorage<Cash>();
-            //var cashes = cashesStorage.Get();
-            //Cashes = new ObservableCollection<Cash>(cashes);
-            //DataContext = Cashes;
-            //DataGridCashesInfo.ItemsSource = Cashes;
+            usersComboBox.ItemsSource = Names;
+            DataGridUserInfo.ItemsSource = Names;
+            GenericStorage<Cash> cashesStorage = new GenericStorage<Cash>();
+            var cashes = cashesStorage.Get();
+            Cashes = new ObservableCollection<Cash>(cashes);
+            DataGridCashesInfo.ItemsSource = Cashes;
         }            
         private void Button_TransitionToCreateUserWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -51,8 +51,10 @@ namespace ScroogeS_Wealth.UI
             AddCardWindow addCardWindow = new AddCardWindow();
             addCardWindow.Show();
         }
-        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        private void ButtonCash_Delete_Click(object sender, RoutedEventArgs e)
         {
+            CashLogic cashLogic = new CashLogic();
+            //cashLogic.RemoveCash()
 
         }
 

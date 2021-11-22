@@ -19,10 +19,10 @@
                             FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
                     <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge1.png"></Image>
                     <ComboBox x:Name="usersComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}" DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
-                    <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
+                    <DataGrid x:Name="DataGridUserInfo"  ItemsSource="{Binding}" Margin="0,0,500,0" Grid.ColumnSpan="2" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Width="*"/>
-                            <DataGridTextColumn Header="Тип" Width="*"/>
+                            <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="*"/>
+                            <DataGridTextColumn Header="Тип" Binding="{Binding Path=Balance}" Width="*"/>
                             <DataGridTextColumn Header="Баланс" Width="*"/>
                             <DataGridTemplateColumn Header="Изменить" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -47,7 +47,7 @@
                     <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge2.png"></Image>
                     <DataGrid x:Name="DataGridCardsInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Width="*"/>
+                            <DataGridTextColumn Header="Название"   Width="*"/>
                             <DataGridTextColumn Header="Тип" Width="*"/>
                             <DataGridTextColumn Header="Баланс" Width="*"/>
                             <DataGridTemplateColumn Header="Изменить" Width="*">
@@ -73,19 +73,18 @@
                         <ColumnDefinition Width="411*"/>
                         <ColumnDefinition Width="533*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Добавить копилку" Margin ="263,50,65,600" 
+                    <Button Content="Добавить копилку" Margin ="190,48,150,602" 
                             Click="Button_TransitionToCreateCashWindow_Click" FontWeight="Bold"
                             FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
-                    <ComboBox x:Name="CashesComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}" DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
-                    <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge3.png"></Image>
+                    <Image Margin ="110,146,78,110"  Grid.Column="1" Source="/Scrooge3.png"></Image>
                     <DataGrid x:Name="DataGridCashesInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}" Width="*"/>
                             <DataGridTextColumn Header="Баланс" Binding="{Binding Path=Balance}" Width="*"/>
-                            <DataGridTemplateColumn Header="Изменить" IsReadOnly="False" Width="*">
+                            <DataGridTemplateColumn Header="" IsReadOnly="False" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button x:Name="deleteButton" Content="Удалить" Click="Button_Delete_Click"/>
+                                        <Button x:Name="CashDeleteButton" Content="Удалить" Click="ButtonCash_Delete_Click"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

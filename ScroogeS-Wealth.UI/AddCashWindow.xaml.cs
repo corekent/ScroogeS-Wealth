@@ -37,19 +37,27 @@ namespace ScroogeS_Wealth.UI
                 cashNameBox.ToolTip = "";
                 cashNameBox.Background = Brushes.Transparent;
             }
-
+            //не работает, надо что-то другое
+            //try
+            //{
+            //    decimal b = Convert.ToDecimal(balance);
+            //}
+            //catch
+            //{
+            //    balanceBox.ToolTip = "Некорректный ввод: введите цифры";
+            //    balanceBox.Background = Brushes.Red;
+            //}
+            var val = balance.Trim(new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
+            if (string.IsNullOrEmpty(val))
+            {
+                balanceBox.ToolTip = "Некорректный ввод: введите цифры";
+                 balanceBox.Background = Brushes.Red;
+            }
             if (balance == "")
             {
                 balanceBox.ToolTip = "Это поле не может быть пустым";
                 balanceBox.Background = Brushes.Red;
             }
-            
-            //if (!IsDigit(balance, decimal ))
-            //{
-            //    balanceBox.ToolTip = "Некорректный ввод: введите цифры";
-            //    balanceBox.Background = Brushes.Red;
-            //}
-
             else
             {
                 balanceBox.ToolTip = "";
@@ -57,10 +65,7 @@ namespace ScroogeS_Wealth.UI
             }
         }
 
-        //private bool IsDigit(string balance, object )
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
 
         private void Button_Close_Click(object sender, RoutedEventArgs e)
         {
