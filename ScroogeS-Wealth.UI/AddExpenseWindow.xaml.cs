@@ -29,55 +29,65 @@ namespace ScroogeS_Wealth.UI
             InitializeComponent();
         }
 
-        private void Button_AddIncome_Click(object sender, RoutedEventArgs e)
-        {
-            CheckInput(amountBox.Text, incomeNameBox.Text);
-            string expenseName = incomeNameBox.Text.Trim();
-            DateTime dateTime = DateTime.Parse(dateTimeBox.Text.Trim());
+        //private void Button_AddIncome_Click(object sender, RoutedEventArgs e)
+        //{
+        //    CheckInput(amountBox.Text, incomeNameBox.Text);
+        //    string expenseName = incomeNameBox.Text.Trim();
+        //    DateTime dateTime = DateTime.Parse(dateTimeBox.Text.Trim());
 
-            decimal amount = 0;
+        //    decimal amount = 0;
 
-            if (amountBox.Text != "")
-            {
-                amount = Convert.ToDecimal(amountBox.Text.Trim());
-            }
+        //    if (amountBox.Text != "")
+        //    {
+        //        amount = Convert.ToDecimal(amountBox.Text.Trim());
+        //    }
 
+<<<<<<< HEAD
             if (expenseName != "" && amount != 0)
             {
                 ExpenseLogic<Deposit> expense = new ExpenseLogic<Deposit>;
                 expense.Add(expenseName, amount, dateTime, 1);
             }
         }
+=======
+        //    if (expenseName != "" && amount != 0)
+        //    {
+        //        ExpenseLogic<Card> expenseLogic = new ExpenseLogic<Card>();
+        //        expenseLogic.Add(expenseName, amount, dateTime, 1);
+                
+        //    }
+        //}
+>>>>>>> newUIBegins
 
-        private void CheckInput(string cardName, string balance)
-        {
-            //if (cardName == "")
-            //{
-            //    cardNameBox.ToolTip = "Это поле не может быть пустым";
-            //    cardNameBox.Background = Brushes.Red;
-            //}
-            //else
-            //{
-            //    cardNameBox.ToolTip = "";
-            //    cardNameBox.Background = Brushes.Transparent;
-            //}
+        //private void CheckInput(string cardName, string balance)
+        //{
+        //    //if (cardName == "")
+        //    //{
+        //    //    cardNameBox.ToolTip = "Это поле не может быть пустым";
+        //    //    cardNameBox.Background = Brushes.Red;
+        //    //}
+        //    //else
+        //    //{
+        //    //    cardNameBox.ToolTip = "";
+        //    //    cardNameBox.Background = Brushes.Transparent;
+        //    //}
 
-            //if (balance == "")
-            //{
-            //    balanceBox.ToolTip = "Это поле не может быть пустым";
-            //    balanceBox.Background = Brushes.Red;
-            //}
-            //else
-            //{
-            //    balanceBox.ToolTip = "";
-            //    balanceBox.Background = Brushes.Transparent;
-            //}
-        }
+        //    //if (balance == "")
+        //    //{
+        //    //    balanceBox.ToolTip = "Это поле не может быть пустым";
+        //    //    balanceBox.Background = Brushes.Red;
+        //    //}
+        //    //else
+        //    //{
+        //    //    balanceBox.ToolTip = "";
+        //    //    balanceBox.Background = Brushes.Transparent;
+        //    //}
+        //}
 
-        private void Button_Close_Click(object sender, RoutedEventArgs e)
-        {
-            Hide();
-        }
+        //private void Button_Close_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Hide();
+        //}
 
     }
 }

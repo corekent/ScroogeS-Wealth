@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
         mc:Ignorable="d"
         Title="Добавление расхода" Height="300" Width="400">
-    <Grid Background="#F0DC82">
+    <!--<Grid Background="#F0DC82">
         <Border Margin="5 5 5 5" Background="White" Padding="30" CornerRadius="15">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Color="Black" ShadowDepth="0" />
@@ -22,5 +22,5 @@
                 <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB" Background="DarkOrange"/>
             </StackPanel>
         </Border>
-    </Grid>
+    </Grid>-->
 </Window>
