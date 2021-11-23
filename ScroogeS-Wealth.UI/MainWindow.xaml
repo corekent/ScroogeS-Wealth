@@ -14,11 +14,9 @@
                         <ColumnDefinition Width="411*"/>
                         <ColumnDefinition Width="533*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Добавить пользователя" Margin ="289,50,70,600" 
-                            Click="Button_TransitionToCreateUserWindow_Click" FontWeight="Bold"
-                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
-                    <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge1.png"></Image>
-                    <ComboBox x:Name="usersComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}" DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
+                    <Image Margin ="95,200,94,50"  Grid.Column="1" Source="/Scrooge1.png"></Image>
+                    <ComboBox x:Name="usersComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}"
+                              DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
                     <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Width="*"/>
@@ -27,39 +25,24 @@
                             <DataGridTemplateColumn Header="Изменить" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button x:Name="deleteButton" Content="Удалить" Click="Button_Delete_Click"/>
+                                        <Button x:Name="deleteUserButton" Content="Удалить" Click="Button_Delete_Click"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBox x:Name="userNameBox" Grid.Column="1" Margin="313,50,52,0" TextWrapping="Wrap"
+                             VerticalAlignment="Top" Height="28"/>
+                    <Button Content="Удалить пользователя" Grid.Column="1" HorizontalAlignment="Left"
+                            Margin ="90 125 50 500" VerticalAlignment="Top" Height="28" Width="170"
+                            Background="DarkOrange" FontWeight="Bold" Click="Button_DeleteUser_Click"/>
+                    <Button Content="Добавить пользователя"  Margin ="311,126,52,525"
+                            Click="Button_AddUser_Click" FontWeight="Bold"
+                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Карты" Background="PapayaWhip" Width="90">
-                <Grid Background="PapayaWhip">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="411*"/>
-                        <ColumnDefinition Width="533*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Добавить карту" Margin ="150 50 130 600" 
-                            Click="Button_TransitionToCreateCardWindow_Click" FontWeight="Bold"
-                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
-                    <Image Margin ="139,150,50,100"  Grid.Column="1" Source="/Scrooge2.png"></Image>
-                    <DataGrid x:Name="DataGridCardsInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Width="*"/>
-                            <DataGridTextColumn Header="Тип" Width="*"/>
-                            <DataGridTextColumn Header="Баланс" Width="*"/>
-                            <DataGridTemplateColumn Header="Изменить" Width="*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button x:Name="deleteButton" Content="Удалить" Click="Button_Delete_Click"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
+
             </TabItem>
             <TabItem Header="Счета" Background="PapayaWhip" Width="90">
 
