@@ -1,3 +1,22 @@
 [
-  
+  {
+    "Id": 1,
+    "Name": "Юзер1",
+    "workSpaceId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "микроЮзер2",
+    "workSpaceId": 2
+  },
+  {
+    "Id": 3,
+    "Name": "Юзер1",
+    "workSpaceId": 3
+  },
+  {
+    "Id": 4,
+    "Name": "микроЮзер2",
+    "workSpaceId": 4
+  }
 ]

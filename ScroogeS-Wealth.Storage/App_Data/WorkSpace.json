@@ -1,3 +1,34 @@
 [
-
+  {
+    "Id": 1,
+    "Name": null,
+    "Cards": [],
+    "Deposits": [],
+    "Accounts": [],
+    "Cash": []
+  },
+  {
+    "Id": 2,
+    "Name": null,
+    "Cards": [],
+    "Deposits": [],
+    "Accounts": [],
+    "Cash": []
+  },
+  {
+    "Id": 3,
+    "Name": null,
+    "Cards": [],
+    "Deposits": [],
+    "Accounts": [],
+    "Cash": []
+  },
+  {
+    "Id": 4,
+    "Name": null,
+    "Cards": [],
+    "Deposits": [],
+    "Accounts": [],
+    "Cash": []
+  }
 ]
