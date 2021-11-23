@@ -13,15 +13,14 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             UserLogic userDate = new UserLogic();
-            userDate.CreateUser("Suka");
-            userDate.CreateUser("Suka2");
-            userDate.CreateUser("Suka3");
+            userDate.CreateUser("Юзер1");
+            userDate.CreateUser("микроЮзер2");
             Console.WriteLine(userDate);
             CardLogic card = new CardLogic();
-            card.Create("Xuita", 333, 1);
+            card.Create("Xuta", 333, 1);
             Console.WriteLine(card);
             ExpenseLogic<Card, Expense> expenseLogic = new ExpenseLogic<Card, Expense>();
-            expenseLogic.Create("PipiskaExpence", 100, DateTime.Now, 1);
+            expenseLogic.Create("СадаДажеНеДойдет", 100, DateTime.Now, 1);
             Console.WriteLine(expenseLogic);
             //var card = userDate.Get().FirstOrDefault(x => x.Id == 2);
             //Console.WriteLine(card.Expense);

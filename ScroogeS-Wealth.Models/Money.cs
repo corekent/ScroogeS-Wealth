@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public abstract class Money<T, V> where T : Product where V : Product
+    public abstract class Money<T, V> where T : BeginModel where V : BeginModel
     {
         public abstract Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId, double interval);
         public abstract Result<T> CreateConstExpense(string name, decimal amount, DateTime date, int fromId);

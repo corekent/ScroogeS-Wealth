@@ -14,16 +14,17 @@ namespace ScroogeS_Wealth.Business
 
         public Result<User> CreateUser(string name)
         {
-            var users = userStore.Get();
             User user = new User(name);
-            int id = Varification(users);
+            var users = userStore.Get();
+            WorkSpaceLogic workSpaceLogic = new WorkSpaceLogic();
+            var workSpace = workSpaceLogic.Create();
+            int id = CreateId(users);
             user.Id = id;
+            user.workSpaceId = workSpace.Id;
             userStore.Add(user);
-            WorkSpaceLogic<User> workSpace = new WorkSpaceLogic<User>();
-            workSpace.Create(id);
             return new Result<User>(1, user, "ok");
         }
-        public int Varification(List<User> users)
+        public int CreateId(List<User> users)
         {
             int lastId;
             if (users.Count == 0)

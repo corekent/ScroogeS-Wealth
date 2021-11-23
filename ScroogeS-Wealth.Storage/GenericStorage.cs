@@ -1,4 +1,5 @@
 ﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,17 +23,17 @@ namespace ScroogeS_Wealth.Storage
         public List<T> Get()
         {
             string textFromFile = File.ReadAllText(_filePath);
-            List<T> elements;
+            List<T> elements = new List<T>();
             try
             {
                 elements = JsonSerializer.Deserialize<List<T>>(textFromFile);
             }
-            catch
+            catch(Exception ex)
             {
                 elements = new List<T>();
             }
             return elements;
-        } // Remove
+        } 
         public T Add(T element)
         {
             var elements = Get();

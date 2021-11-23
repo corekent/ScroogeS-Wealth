@@ -9,35 +9,26 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class WorkSpaceLogic<T> where T : IBaseModel
+    public class WorkSpaceLogic 
     {
         GenericStorage<WorkSpace> workSpaceStore = new GenericStorage<WorkSpace>();
-        GenericStorage<User> userStore = new GenericStorage<User>();
         public Result<WorkSpace> Get(int userId)
         {
-           var workSpace = workSpaceStore.Get().FirstOrDefault(x => x.GeneralUser.Id == userId);
+            var workSpace = workSpaceStore.Get().FirstOrDefault(x => x.Id == userId);
             if(workSpace is null)
             {
                 return new Result<WorkSpace>(0, "Рабочее пространство не найдено");
             }
+            
             return new Result<WorkSpace>(1, workSpace, "Ок");
         }
 
-        public Result<WorkSpace> Create(int userId)
+        public WorkSpace Create()
         {
-            var user = userStore.Get().FirstOrDefault(x => x.Id == userId);
-            if (user == null)
-            {
-                return new Result<WorkSpace>(0, "юзен не найден");
-
-            }
-            WorkSpace workSpace = new WorkSpace(user);
-            var workSpaces = workSpaceStore.Get();
-            int id = CreateId(workSpaces);
-            workSpace.Id = id;
+            WorkSpace workSpace = new WorkSpace();
+            workSpace.Id = CreateId(workSpaceStore.Get());
             workSpaceStore.Add(workSpace);
-            return new Result<WorkSpace>(1, workSpace, "пространство добавлено");
-
+            return workSpace;
         }
         private int CreateId(List<WorkSpace> workSpaces)
         {

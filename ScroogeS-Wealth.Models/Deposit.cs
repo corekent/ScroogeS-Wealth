@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Deposit : Product
+    public class Deposit : BeginModel, IBaseModel
     {
+        public Deposit() { }
+
         public Deposit(string name, decimal balance)
         {
             Name = name;
