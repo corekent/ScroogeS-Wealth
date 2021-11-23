@@ -10,23 +10,32 @@ namespace ScroogeS_Wealth.Business
 {
     public class UserLogic
     {
+        GenericStorage<User> userStore = new GenericStorage<User>();
+
         public Result<User> CreateUser(string name)
         {
-            int lastId;
             User user = new User(name);
-            if (UserStorage.Users.Count == 0)
+            var users = userStore.Get();
+            WorkSpaceLogic workSpaceLogic = new WorkSpaceLogic();
+            var workSpace = workSpaceLogic.Create();
+            int id = CreateId(users);
+            user.Id = id;
+            user.workSpaceId = workSpace.Id;
+            userStore.Add(user);
+            return new Result<User>(1, user, "ok");
+        }
+        public int CreateId(List<User> users)
+        {
+            int lastId;
+            if (users.Count == 0)
             {
                 lastId = 1;
             }
             else
             {
-                lastId = UserStorage.Users.Last().Id + 1;
+                lastId = users.Last().Id + 1;
             }
-            user.Id = lastId;
-            UserStorage.Users.Add(user);
-            WorkSpace workSpace = new WorkSpace(user);
-            WorkSpaceStorage.workSpaces.Add(workSpace);
-            return new Result<User>(1, user,"ok");
+            return lastId;
         }
     }
 }

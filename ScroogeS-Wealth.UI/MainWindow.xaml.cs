@@ -3,6 +3,7 @@ using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,41 +24,54 @@ namespace ScroogeS_Wealth.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<User> _users;
         public MainWindow()
         {
             InitializeComponent();
+            GenericStorage<User> users = new GenericStorage<User>();
+            _users = new ObservableCollection<User>(users.Get());
+            usersComboBox.ItemsSource = _users;
         }
 
-        private void Button_Create_User_Click(object sender, RoutedEventArgs e)
+        private void Button_AddUser_Click(object sender, RoutedEventArgs e)
         {
             string userName = userNameBox.Text.Trim();
-            string cardName = cardNameBox.Text.Trim();
-            int moneyAmount = Convert.ToInt32(moneyAmountBox.Text.Trim());
+            CheckInput(userName);
 
-            if (userName == "")
+            if (userName != "")
             {
-                userNameBox.ToolTip ="Это поле нельзя оставлять пустым";
-                userNameBox.Background = Brushes.Red;
+                UserLogic user = new UserLogic();
+                user.CreateUser(userName);
+                User user1 = new User(userName);
+                _users.Add(user1);
+                MessageBox.Show("Пользователь успешно добавлен! =)");
             }
-            else if (moneyAmountBox.Text.Contains(" ") || moneyAmountBox.Text.Contains("?"))
+        }
+
+        private void CheckInput(string stringToCheck)
+        {
+            if (stringToCheck == "")
             {
-                moneyAmountBox.ToolTip = "Это поле введено некорректно";
-                moneyAmountBox.Background = Brushes.Red;
+                userNameBox.ToolTip = "Это поле нельзя оставлять пустым";
+                userNameBox.Background = Brushes.Red;
             }
             else
             {
                 userNameBox.ToolTip = "";
                 userNameBox.Background = Brushes.Transparent;
-                moneyAmountBox.ToolTip = "";
-                moneyAmountBox.Background = Brushes.Transparent;
-
-                UserLogic user = new UserLogic();
-                user.CreateUser(userName);
-                CardLogic card = new CardLogic();
-                card.CreateCard(cardName, moneyAmount, UserStorage.Users.Last().Id);
-                MessageBox.Show("Пользователь успешно добавлен =)");
             }
-
         }
+
+        private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }

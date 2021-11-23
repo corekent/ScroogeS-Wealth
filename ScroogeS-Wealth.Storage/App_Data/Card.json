@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Name": "Xuta",
+    "Balance": 233,
+    "Expenses": [
+      {
+        "Id": 1,
+        "Name": "СадаДажеНеДойдет",
+        "Amount": 100,
+        "Date": "2021-11-23T16:38:47.6167888+03:00"
+      }
+    ],
+    "Incomes": []
+  },
+  {
+    "Id": 2,
+    "Name": "Xuta",
+    "Balance": 333,
+    "Expenses": [],
+    "Incomes": []
+  }
+]

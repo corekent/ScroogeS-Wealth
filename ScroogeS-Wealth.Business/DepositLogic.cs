@@ -1,4 +1,5 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using Core;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -8,35 +9,86 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class DepositLogic
+    public class DepositLogic : TypeMoneyStorage<Deposit>
     {
-        public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
+        GenericStorage<Deposit> elementStore = new GenericStorage<Deposit>();
+        public override Result<Deposit> Create(string name, decimal balance, int id)
+        {
+            var elements = elementStore.Get();
+            Deposit element = new Deposit(name, balance);
+            int Id = CreateId(elements);
+            element.Id = Id;
+            elementStore.Add(element);
+            return new Result<Deposit>(1, element, "Карта добавлена");
+        }
+        public override Result<Deposit> Remove(int id)
+        {
+            var element = FindId(id);
+            elementStore.Get().Remove(element);
+            return new Result<Deposit>(1, element, " удалено");
+        }
+        public override Result<Deposit> SetName(int id, string newName)
+        {
+            var element = FindId(id);
+            element.Name = newName;
+            return new Result<Deposit>(1, element, "название изменено");
+        }
+        public override Result<Deposit> SetBalance(int id, decimal newBalance)
+        {
+            var element = FindId(id);
+            element.Balance = newBalance;
+            return new Result<Deposit>(1, element, "баланс изменен");
+        }
+        public override decimal GetBalance(int id)
+        {
+            var element = FindId(id);
+            return element.Balance;
+        }
+        public override void BindWorkSpace(int elementId, int workSpaceId)
+        {
+            GenericStorage<WorkSpace> workSpaces = new GenericStorage<WorkSpace>();
+            var workSpace = workSpaces.Get().FirstOrDefault(x => x.Id == workSpaceId);
+            var element = FindId(elementId);
+            workSpace.Deposits.Add(element);
+        }
+        private Deposit FindId(int id)
+        {
+            var elements = elementStore.Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            if (element is null)
+            {
+                return null;
+            }
+            return element;
+        }
+        private int CreateId(List<Deposit> elements)
         {
             int lastId;
-
-            Deposit deposit = new Deposit(name, balance);
-
-            if (DepositStorage.Deposits.Count == 0)
+            if (elements.Count == 0)
             {
                 lastId = 1;
             }
             else
             {
-                lastId = DepositStorage.Deposits.Last().Id + 1;
+                lastId = elements.Last().Id + 1;
             }
-            deposit.Id = lastId;
-
-            DepositStorage.Deposits.Add(deposit);
-
-            var workSpace = WorkSpaceStorage.workSpaces.FirstOrDefault(x => x.GeneralUser.Id == userId);
-
-            if (workSpace is null)
-            {
-                return new Result<Deposit>(0, "Рабочее пространство не найдено");
-            }
-
-            workSpace.Deposits.Add(deposit);
-            return new Result<Deposit>(1, deposit, "Вклад добавлен");                     
+            return lastId;
+        }
+        public decimal CalcAnountProcent(double procent, DateTime dateStart, DateTime dateEnd)
+        {
+            double everyDayProcent = procent / 365;
+            dateEnd.Subtract(dateStart);
+            TimeSpan diff = dateEnd - dateStart;
+            int days = diff.Days;
+            decimal amount = (decimal)everyDayProcent * days;
+            return amount;
+        }
+        public decimal CalcAmount(int id, double procent, DateTime dateStart, DateTime dateEnd)
+        {
+            decimal balance = GetBalance(id);
+            decimal amountProcent = CalcAnountProcent(procent, dateStart, dateEnd);
+            balance = balance + amountProcent;
+            return balance;
         }
     }
 }

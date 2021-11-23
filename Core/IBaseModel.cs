@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScroogeS_Wealth.Storage
+namespace Core
 {
-    class IncomesStorage
+    public interface IBaseModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
     }
 }

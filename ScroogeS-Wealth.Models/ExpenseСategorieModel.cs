@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Expenses
+    public class ExpenseСategorieModel
     {
-        public decimal Amount { get; set; }
-        public Card FromCard { get; set; }
+        //сдлеать enum????
     }
 }
