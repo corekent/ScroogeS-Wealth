@@ -2,19 +2,9 @@
 using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace ScroogeS_Wealth.UI
 {
@@ -23,41 +13,31 @@ namespace ScroogeS_Wealth.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<User> Names { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            GenericStorage<User> userStorage = new GenericStorage<User>();
+            var names = userStorage.Get();
+            Names = new ObservableCollection<User>(names);
+            DataContext = Names;
         }
 
-        private void Button_CreateUser_Click(object sender, RoutedEventArgs e)
+        private void Button_TransitionToCreateUserWindow_Click(object sender, RoutedEventArgs e)
         {
-            string userName = userNameBox.Text.Trim();
-            CheckInput(userName);
-
-            if (userName != "")
-            {
-                UserLogic user = new UserLogic();
-                user.CreateUser(userName);
-                MessageBox.Show("Пользователь успешно добавлен! =)");
-            }
+            AddUserWindow addUserWindow = new AddUserWindow();
+            addUserWindow.Show();
         }
 
-        private void Button_Close_Click(object sender, RoutedEventArgs e)
+        private void Button_TransitionToCreateCardWindow_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            AddCardWindow addCardWindow = new AddCardWindow();
+            addCardWindow.Show();
+        }
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
-        private void CheckInput(string stringToCheck)
-        {
-            if (stringToCheck == "")
-            {
-                userNameBox.ToolTip = "Это поле нельзя оставлять пустым";
-                userNameBox.Background = Brushes.Red;
-            }
-            else
-            {
-                userNameBox.ToolTip = "";
-                userNameBox.Background = Brushes.Transparent;
-            }
-        }
     }
 }

@@ -1,0 +1,23 @@
+﻿<Window x:Class="ScroogeS_Wealth.UI.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
+        mc:Ignorable="d"
+        Title="Добавление нового пользователя" MinHeight="250" MinWidth="350" MaxHeight="250" MaxWidth="350" WindowStyle="ThreeDBorderWindow">
+    <Grid Background="#F0DC82">
+        <Border Margin="5 5 5 5" Background="White" Padding="30" CornerRadius="15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Color="Black" ShadowDepth="0" />
+            </Border.Effect>
+            <StackPanel Margin="0 0 0 0">
+                <TextBlock Text="Введите имя" HorizontalAlignment="Center"/>
+                <TextBox x:Name="userNameBox"/>
+
+                <Button Content="Добавить пользователя" Margin ="50 20 50 0" Click="Button_CreateUser_Click" FontFamily="SimSun-ExtB" Background="MistyRose"/>
+                <Button Content="Закрыть" Margin ="50 10 50 0" Click="Button_Close_Click" FontFamily="SimSun-ExtB" Background="DarkOrange"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
