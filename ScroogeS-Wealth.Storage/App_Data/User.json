@@ -1,32 +1,22 @@
 [
   {
     "Id": 1,
-    "Name": "Mother",
-    "Balance": 0
+    "Name": "Юзер1",
+    "workSpaceId": 1
   },
   {
     "Id": 2,
-    "Name": "Bro",
-    "Balance": 0
+    "Name": "микроЮзер2",
+    "workSpaceId": 2
   },
   {
     "Id": 3,
-    "Name": "Lekksha",
-    "Balance": 0
+    "Name": "Юзер1",
+    "workSpaceId": 3
   },
   {
     "Id": 4,
-    "Name": "Ekaterina",
-    "Balance": 0
-  },
-  {
-    "Id": 5,
-    "Name": "Manya",
-    "Balance": 0
-  },
-  {
-    "Id": 6,
-    "Name": "KRYAKRYA",
-    "Balance": 0
+    "Name": "микроЮзер2",
+    "workSpaceId": 4
   }
 ]

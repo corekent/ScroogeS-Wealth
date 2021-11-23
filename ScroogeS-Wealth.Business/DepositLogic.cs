@@ -9,42 +9,78 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class DepositLogic
+    public class DepositLogic : TypeMoneyStorage<Deposit>
     {
-        GenericStorage<Deposit> depositStore = new GenericStorage<Deposit>();
-        GenericStorage<WorkSpace> workSpaceStore = new GenericStorage<WorkSpace>();
-
-        public Result<Deposit> CreateDeposit(string name, decimal balance, int userId)
+        GenericStorage<Deposit> elementStore = new GenericStorage<Deposit>();
+        public override Result<Deposit> Create(string name, decimal balance, int id)
+        {
+            var elements = elementStore.Get();
+            Deposit element = new Deposit(name, balance);
+            int Id = CreateId(elements);
+            element.Id = Id;
+            elementStore.Add(element);
+            return new Result<Deposit>(1, element, "Карта добавлена");
+        }
+        public override Result<Deposit> Remove(int id)
+        {
+            var element = FindId(id);
+            elementStore.Get().Remove(element);
+            return new Result<Deposit>(1, element, " удалено");
+        }
+        public override Result<Deposit> SetName(int id, string newName)
+        {
+            var element = FindId(id);
+            element.Name = newName;
+            return new Result<Deposit>(1, element, "название изменено");
+        }
+        public override Result<Deposit> SetBalance(int id, decimal newBalance)
+        {
+            var element = FindId(id);
+            element.Balance = newBalance;
+            return new Result<Deposit>(1, element, "баланс изменен");
+        }
+        public override decimal GetBalance(int id)
+        {
+            var element = FindId(id);
+            return element.Balance;
+        }
+        public override void BindWorkSpace(int elementId, int workSpaceId)
+        {
+            GenericStorage<WorkSpace> workSpaces = new GenericStorage<WorkSpace>();
+            var workSpace = workSpaces.Get().FirstOrDefault(x => x.Id == workSpaceId);
+            var element = FindId(elementId);
+            workSpace.Deposits.Add(element);
+        }
+        private Deposit FindId(int id)
+        {
+            var elements = elementStore.Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            if (element is null)
+            {
+                return null;
+            }
+            return element;
+        }
+        private int CreateId(List<Deposit> elements)
         {
             int lastId;
-            var deposits = depositStore.Get();
-            var workSpases = workSpaceStore.Get();
-            Deposit deposit = new Deposit(name, balance);
-            if (deposits.Count == 0)
+            if (elements.Count == 0)
             {
                 lastId = 1;
             }
             else
             {
-                lastId = deposits.Last().Id + 1;
+                lastId = elements.Last().Id + 1;
             }
-            deposit.Id = lastId;
-            deposits.Add(deposit);
-            var workSpace = workSpases.FirstOrDefault(x => x.GeneralUser.Id == userId);
-            if (workSpace is null)
-            {
-                return new Result<Deposit>(0, "Рабочее пространство не найдено");
-            }
-            workSpace.Deposits.Add(deposit);
-            return new Result<Deposit>(1, deposit, "Вклад добавлен");
+            return lastId;
         }
-        public decimal CalcAnountProcent(double procent, DateTime dateStart, DateTime dateEnd )
+        public decimal CalcAnountProcent(double procent, DateTime dateStart, DateTime dateEnd)
         {
             double everyDayProcent = procent / 365;
             dateEnd.Subtract(dateStart);
-            TimeSpan diff = dateEnd - dateStart;            
-            int days = diff.Days;            
-            decimal amount = (decimal)everyDayProcent * days;            
+            TimeSpan diff = dateEnd - dateStart;
+            int days = diff.Days;
+            decimal amount = (decimal)everyDayProcent * days;
             return amount;
         }
         public decimal CalcAmount(int id, double procent, DateTime dateStart, DateTime dateEnd)
@@ -52,13 +88,6 @@ namespace ScroogeS_Wealth.Business
             decimal balance = GetBalance(id);
             decimal amountProcent = CalcAnountProcent(procent, dateStart, dateEnd);
             balance = balance + amountProcent;
-            return balance;
-        }
-        public decimal GetBalance(int id)
-        {
-            var deposits = depositStore.Get();
-            var dep = deposits.FirstOrDefault(x => x.Id == id);
-            decimal balance = dep.Balance;
             return balance;
         }
     }

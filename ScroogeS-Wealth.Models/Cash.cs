@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Cash : BaseModel, IMoneyStora
+    public class Cash : BeginModel, IBaseModel
     {
-        public Expense Expense { get; set; }
-        public Incomes Incomes { get; set; }
+        public Cash() { }
 
         public Cash(string name, decimal balance)
         {

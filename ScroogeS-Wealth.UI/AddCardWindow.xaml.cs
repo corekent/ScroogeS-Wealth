@@ -39,8 +39,13 @@ namespace ScroogeS_Wealth.UI
 
             if (cardName != "" && balance != 0)
             {
+<<<<<<< HEAD
+                DepositLogic cardLogic = new DepositLogic();
+                //cardLogic.CreateDeposit(cardName, balance, 1);
+=======
                 CardLogic cardLogic = new CardLogic();
                 cardLogic.CreateCard(cardName, balance, 1);
+>>>>>>> newUIBegins
             }
         }
 

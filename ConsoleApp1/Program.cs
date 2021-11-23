@@ -12,18 +12,24 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            GenericStorage<Expense> depositDate = new GenericStorage<Expense>();
-            GenericStorage<Card> userDate = new GenericStorage<Card>();
-            ExpenseLogic<Card> expenseLogic = new ExpenseLogic<Card>();
-            expenseLogic.Add("PipiskaExpence", 100, DateTime.Now, 2);
-            var card = userDate.Get().FirstOrDefault(x => x.Id == 2);
-            Console.WriteLine(card.Expense.Name);
+            UserLogic userDate = new UserLogic();
+            userDate.CreateUser("Юзер1");
+            userDate.CreateUser("микроЮзер2");
+            Console.WriteLine(userDate);
+            CardLogic card = new CardLogic();
+            card.Create("Xuta", 333, 1);
+            Console.WriteLine(card);
+            ExpenseLogic<Card, Expense> expenseLogic = new ExpenseLogic<Card, Expense>();
+            expenseLogic.Create("СадаДажеНеДойдет", 100, DateTime.Now, 1);
+            Console.WriteLine(expenseLogic);
+            //var card = userDate.Get().FirstOrDefault(x => x.Id == 2);
+            //Console.WriteLine(card.Expense);
             //foreach (var us in userDate.Get())
             //{
             //    Console.WriteLine($"Id : {us.Id}, NameExp: {us.Expense.Name}");
             //}
-            DepositLogic dep = new DepositLogic();
-            dep.CreateDeposit("aaaaa", 300, 1);
+            //DepositLogic dep = new DepositLogic();
+            //dep.CreateDeposit("aaaaa", 300, 1);
             //Console.WriteLine(acc.GetType().Name);
             //depositDate.Add(acc);
             //foreach (var cardt in depositDate.Get())
@@ -57,7 +63,5 @@ namespace ConsoleApp1
             //var appStorageFolder = Path.Combine(baseFolder, $"ScroogeS-Wealth\\App_Data\\{type}.json");
             //Console.WriteLine(appStorageFolder);
         }
-        
     }
-    
 }

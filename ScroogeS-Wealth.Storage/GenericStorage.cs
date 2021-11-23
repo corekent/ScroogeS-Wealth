@@ -1,4 +1,5 @@
 ﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,17 +23,17 @@ namespace ScroogeS_Wealth.Storage
         public List<T> Get()
         {
             string textFromFile = File.ReadAllText(_filePath);
-            List<T> elements;
+            List<T> elements = new List<T>();
             try
             {
                 elements = JsonSerializer.Deserialize<List<T>>(textFromFile);
             }
-            catch
+            catch(Exception ex)
             {
                 elements = new List<T>();
             }
             return elements;
-        }
+        } 
         public T Add(T element)
         {
             var elements = Get();
@@ -74,7 +75,7 @@ namespace ScroogeS_Wealth.Storage
         private string GetFilePath()
         {
             var type = typeof(T).Name;            
-            return $"C:\\Users\\Lekksha\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            return $"C:\\Users\\darrk\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
 
         }
     }

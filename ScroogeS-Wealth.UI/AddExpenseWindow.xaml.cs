@@ -42,6 +42,14 @@ namespace ScroogeS_Wealth.UI
         //        amount = Convert.ToDecimal(amountBox.Text.Trim());
         //    }
 
+<<<<<<< HEAD
+            if (expenseName != "" && amount != 0)
+            {
+                ExpenseLogic<Deposit> expense = new ExpenseLogic<Deposit>;
+                expense.Add(expenseName, amount, dateTime, 1);
+            }
+        }
+=======
         //    if (expenseName != "" && amount != 0)
         //    {
         //        ExpenseLogic<Card> expenseLogic = new ExpenseLogic<Card>();
@@ -49,6 +57,7 @@ namespace ScroogeS_Wealth.UI
                 
         //    }
         //}
+>>>>>>> newUIBegins
 
         //private void CheckInput(string cardName, string balance)
         //{
