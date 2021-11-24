@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  },
+  {
+    "Id": 2,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  },
+  {
+    "Id": 3,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  },
+  {
+    "Id": 4,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  },
+  {
+    "Id": 5,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  },
+  {
+    "Id": 6,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  },
+  {
+    "Id": 7,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  },
+  {
+    "Id": 8,
+    "Name": "Подушка",
+    "Balance": 450,
+    "Expenses": [],
+    "Incomes": []
+  }
+]

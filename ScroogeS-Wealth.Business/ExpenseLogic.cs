@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business
 {
-    public class ExpenseLogic<T, V> where T : BeginModel where V : IBaseModel
+    public class ExpenseLogic<T, V> where T : AssetModel where V : IBaseModel
     {
         GenericStorage<T> elementStore = new GenericStorage<T>();
         GenericStorage<Expense> expenseStore = new GenericStorage<Expense>();

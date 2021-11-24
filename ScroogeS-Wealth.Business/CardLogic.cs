@@ -15,7 +15,7 @@ namespace ScroogeS_Wealth.Business
         {
             var elements = elementStore.Get();
             Card element = new Card(name, balance);
-            int cardId = CreateId(elements);
+            int cardId = GetNextAvailableId(elements);
             element.Id = cardId;
             elementStore.Add(element);
             BindWorkSpace(cardId, id);
@@ -63,7 +63,7 @@ namespace ScroogeS_Wealth.Business
             }
             return element;
         }
-        private int CreateId(List<Card> elements)
+        private int GetNextAvailableId(List<Card> elements)
         {
             int lastId;
             if (elements.Count == 0)

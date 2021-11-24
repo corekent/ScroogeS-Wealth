@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ScroogeS_Wealth.Models
 {
-    public abstract class BeginModel : IBaseModel
+    public abstract class AssetModel : IBaseModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

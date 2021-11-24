@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Account : BeginModel, IBaseModel
+    public class Account : AssetModel, IBaseModel
     {
         public Account() { }
 
