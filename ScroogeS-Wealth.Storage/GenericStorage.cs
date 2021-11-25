@@ -88,7 +88,7 @@ namespace ScroogeS_Wealth.Storage
             return element;
         }
 
-        public int CreateId(List<T> elements)
+        public int GetNextAvailableId(List<T> elements)
         {
             int lastId;
             if (elements.Count == 0)

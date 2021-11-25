@@ -13,6 +13,5 @@ namespace ScroogeS_Wealth.Models
         public abstract Result<T> SetName(int id, string newName);
         public abstract Result<T> SetBalance(int id, decimal newBalance);
         public abstract decimal GetBalance(int id);
-        public abstract void BindWorkSpace(int assetId, int userId);
     }
 }

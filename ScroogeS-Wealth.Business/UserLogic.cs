@@ -16,7 +16,7 @@ namespace ScroogeS_Wealth.Business
         {
             User user = new User(name);
             var users = _userStore.Get();
-            int id = _userStore.CreateId(users);
+            int id = _userStore.GetNextAvailableId(users);
             user.Id = id;
             _userStore.Add(user);
             return new Result<User>(1, user, "ok");
