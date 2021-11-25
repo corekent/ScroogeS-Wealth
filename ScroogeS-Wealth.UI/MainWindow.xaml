@@ -48,7 +48,7 @@
 
             </TabItem>
             <TabItem Header="Вклады" Background="PapayaWhip" Width="90">
-
+                <local:DepositTab/>
             </TabItem>
             <TabItem Header="Копилка" Background="PapayaWhip" Width="90">
 
