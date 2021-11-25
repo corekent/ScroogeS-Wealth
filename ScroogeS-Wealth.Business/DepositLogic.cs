@@ -25,7 +25,7 @@ namespace ScroogeS_Wealth.Business
         {
             var element = FindId(id);
             elementStore.Get().Remove(element);
-            return new Result<Deposit>(1, element, " удалено");
+            return new Result<Deposit>(1, element, "Вклад был удален");
         }
         public override Result<Deposit> SetName(int id, string newName)
         {
@@ -51,6 +51,22 @@ namespace ScroogeS_Wealth.Business
             var element = FindId(elementId);
             workSpace.Deposits.Add(element);
         }
+        public decimal CalcAmountOfPercent(double percent, DateTime openDate, DateTime closeDate)
+        {
+            double everyDayPercent = percent / 365;
+            closeDate.Subtract(openDate);
+            TimeSpan diff = closeDate - openDate;
+            int days = diff.Days;
+            decimal amount = (decimal)everyDayPercent * days;
+            return amount;
+        }
+        public decimal CalcAmountOfMoney(int id, double percent, DateTime openDate, DateTime closeDate)
+        {
+            decimal balance = GetBalance(id);
+            decimal percentAmount = CalcAmountOfPercent(percent, openDate, closeDate);
+            balance += percentAmount;
+            return balance;
+        }
         private Deposit FindId(int id)
         {
             var elements = elementStore.Get();
@@ -73,22 +89,6 @@ namespace ScroogeS_Wealth.Business
                 lastId = elements.Last().Id + 1;
             }
             return lastId;
-        }
-        public decimal CalcAnountProcent(double procent, DateTime dateStart, DateTime dateEnd)
-        {
-            double everyDayProcent = procent / 365;
-            dateEnd.Subtract(dateStart);
-            TimeSpan diff = dateEnd - dateStart;
-            int days = diff.Days;
-            decimal amount = (decimal)everyDayProcent * days;
-            return amount;
-        }
-        public decimal CalcAmount(int id, double procent, DateTime dateStart, DateTime dateEnd)
-        {
-            decimal balance = GetBalance(id);
-            decimal amountProcent = CalcAnountProcent(procent, dateStart, dateEnd);
-            balance = balance + amountProcent;
-            return balance;
         }
     }
 }

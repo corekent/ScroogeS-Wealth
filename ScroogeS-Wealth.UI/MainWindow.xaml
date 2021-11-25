@@ -25,7 +25,7 @@
                             <DataGridTemplateColumn Header="Изменить" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button x:Name="deleteUserButton" Content="Удалить" Click="Button_Delete_Click"/>
+                                        <Button x:Name="deleteDataButton" Content="Удалить" Click="Button_DeleteData_Click"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -42,13 +42,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Карты" Background="PapayaWhip" Width="90">
-
+                
             </TabItem>
             <TabItem Header="Счета" Background="PapayaWhip" Width="90">
 
             </TabItem>
             <TabItem Header="Вклады" Background="PapayaWhip" Width="90">
-
+                <local:DepositTab/>
             </TabItem>
             <TabItem Header="Копилка" Background="PapayaWhip" Width="90">
 

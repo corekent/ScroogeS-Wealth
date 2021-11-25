@@ -24,6 +24,12 @@ namespace ScroogeS_Wealth.Business
             userStore.Add(user);
             return new Result<User>(1, user, "ok");
         }
+        public Result<User> RemoveUser(int id)
+        {
+            var user = FindId(id);
+            userStore.Get().Remove(user);
+            return new Result<User>(1, "Пользователь удален");
+        }
         public int CreateId(List<User> users)
         {
             int lastId;
@@ -36,6 +42,12 @@ namespace ScroogeS_Wealth.Business
                 lastId = users.Last().Id + 1;
             }
             return lastId;
+        }
+        private User FindId(int id)
+        {
+            var elements = userStore.Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            return element;
         }
     }
 }
