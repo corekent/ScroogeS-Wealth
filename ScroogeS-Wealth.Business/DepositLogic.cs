@@ -21,12 +21,7 @@ namespace ScroogeS_Wealth.Business
             elementStore.Add(element);
             return new Result<Deposit>(1, element, "Карта добавлена");
         }
-        public override Result<Deposit> Remove(int id)
-        {
-            var element = FindId(id);
-            elementStore.Get().Remove(element);
-            return new Result<Deposit>(1, element, " удалено");
-        }
+
         public override Result<Deposit> SetName(int id, string newName)
         {
             var element = FindId(id);

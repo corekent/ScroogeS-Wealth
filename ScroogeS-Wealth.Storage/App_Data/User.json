@@ -2,41 +2,43 @@
   {
     "Id": 1,
     "Name": "Юзер1",
-    "workSpaceId": 1
+    "Balance": 666,
+    "Cards": [],
+    "Deposits": [],
+    "Accounts": [],
+    "Cash": [
+      {
+        "Id": 1,
+        "Name": "Xuta",
+        "Balance": 333,
+        "Expenses": [],
+        "Incomes": []
+      },
+      {
+        "Id": 2,
+        "Name": "Xuta",
+        "Balance": 333,
+        "Expenses": [],
+        "Incomes": []
+      }
+    ]
   },
   {
     "Id": 2,
-    "Name": "микроЮзер2",
-    "workSpaceId": 2
+    "Name": "Юзер1",
+    "Balance": 0,
+    "Cards": [],
+    "Deposits": [],
+    "Accounts": [],
+    "Cash": []
   },
   {
     "Id": 3,
     "Name": "Юзер1",
-    "workSpaceId": 3
-  },
-  {
-    "Id": 4,
-    "Name": "микроЮзер2",
-    "workSpaceId": 4
-  },
-  {
-    "Id": 5,
-    "Name": "Псина",
-    "workSpaceId": 5
-  },
-  {
-    "Id": 6,
-    "Name": "Псина",
-    "workSpaceId": 6
-  },
-  {
-    "Id": 7,
-    "Name": "Псина",
-    "workSpaceId": 7
-  },
-  {
-    "Id": 8,
-    "Name": "dfgdfg",
-    "workSpaceId": 8
+    "Balance": 0,
+    "Cards": [],
+    "Deposits": [],
+    "Accounts": [],
+    "Cash": []
   }
 ]

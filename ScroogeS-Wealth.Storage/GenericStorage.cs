@@ -11,7 +11,9 @@ namespace ScroogeS_Wealth.Storage
 {
     public class GenericStorage<T> where T: IBaseModel
     {
+
         private string _filePath;
+        
         public GenericStorage()
         {
             _filePath = GetFilePath();
@@ -20,6 +22,7 @@ namespace ScroogeS_Wealth.Storage
                 File.Create(_filePath);
             }
         }
+        
         public List<T> Get()
         {
             string textFromFile = File.ReadAllText(_filePath);
@@ -33,7 +36,9 @@ namespace ScroogeS_Wealth.Storage
                 elements = new List<T>();
             }
             return elements;
-        } 
+        }
+        
+        
         public T Add(T element)
         {
             var elements = Get();
@@ -72,11 +77,35 @@ namespace ScroogeS_Wealth.Storage
 
             return element;
         }
+        public T FindById(int id)
+        {
+            var elements = Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            if (element is null)
+            {
+                return default;
+            }
+            return element;
+        }
+
+        public int CreateId(List<T> elements)
+        {
+            int lastId;
+            if (elements.Count == 0)
+            {
+                lastId = 1;
+            }
+            else
+            {
+                lastId = elements.Last().Id + 1;
+            }
+            return lastId;
+        }
+
         private string GetFilePath()
         {
             var type = typeof(T).Name;            
-            return $"C:\\Users\\Lekksha\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
-
+            return $"C:\\Users\\darrk\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
         }
     }
 }

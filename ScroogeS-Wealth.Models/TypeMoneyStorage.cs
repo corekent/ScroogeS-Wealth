@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public abstract class TypeMoneyStorage<T> where T : BeginModel
+    public abstract class TypeMoneyStorage<T> where T : AssetModel
     {
         public abstract Result<T> Create(string name, decimal balance, int id);
-        public abstract Result<T> Remove(int id);
         public abstract Result<T> SetName(int id, string newName);
-        //public abstract Result<T> SetOfOwnership(int elementId, int newUserId);
         public abstract Result<T> SetBalance(int id, decimal newBalance);
         public abstract decimal GetBalance(int id);
-        public abstract void BindWorkSpace(int cardId, int workSpaceId);
+        public abstract void BindWorkSpace(int assetId, int userId);
     }
 }

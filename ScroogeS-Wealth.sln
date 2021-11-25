@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScroogeS-Wealth.Storage", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{6849F9A2-5272-49AF-B3DA-CC348C724BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{4D70AF1F-3B8D-4650-8496-9802227290C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{4D70AF1F-3B8D-4650-8496-9802227290C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScroogeS-Wealth.Business.Tests", "ScroogeS-Wealth.Business.Tests\ScroogeS-Wealth.Business.Tests.csproj", "{D1B7F605-2398-4A1D-85BB-F2C50143CBFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4D70AF1F-3B8D-4650-8496-9802227290C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D70AF1F-3B8D-4650-8496-9802227290C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D70AF1F-3B8D-4650-8496-9802227290C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1B7F605-2398-4A1D-85BB-F2C50143CBFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B7F605-2398-4A1D-85BB-F2C50143CBFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B7F605-2398-4A1D-85BB-F2C50143CBFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B7F605-2398-4A1D-85BB-F2C50143CBFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
