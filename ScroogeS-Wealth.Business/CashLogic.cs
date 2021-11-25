@@ -29,7 +29,7 @@ namespace ScroogeS_Wealth.Business
             user.Cash.Add(element);
             user.Balance += balance;
             _userStorage.Update(user, user.Id);            
-            return new Result<Cash>(1, element, "ok");            
+            return new Result<Cash>(1, element, "создано");            
         }
         
         public override Result<Cash> SetName(int id, string newName)
