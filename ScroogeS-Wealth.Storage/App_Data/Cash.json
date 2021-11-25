@@ -1,57 +1,22 @@
 [
   {
     "Id": 1,
-    "Name": "Подушка",
-    "Balance": 450,
-    "Expenses": [],
+    "Name": "Xuta",
+    "Balance": 233,
+    "Expenses": [
+      {
+        "Id": 2,
+        "Name": "narcota",
+        "Amount": 100,
+        "Date": "2021-11-25T14:48:41.888556+03:00"
+      }
+    ],
     "Incomes": []
   },
   {
     "Id": 2,
-    "Name": "Подушка",
-    "Balance": 450,
-    "Expenses": [],
-    "Incomes": []
-  },
-  {
-    "Id": 3,
-    "Name": "Подушка",
-    "Balance": 450,
-    "Expenses": [],
-    "Incomes": []
-  },
-  {
-    "Id": 4,
-    "Name": "Подушка",
-    "Balance": 450,
-    "Expenses": [],
-    "Incomes": []
-  },
-  {
-    "Id": 5,
-    "Name": "Подушка",
-    "Balance": 450,
-    "Expenses": [],
-    "Incomes": []
-  },
-  {
-    "Id": 6,
-    "Name": "Подушка",
-    "Balance": 450,
-    "Expenses": [],
-    "Incomes": []
-  },
-  {
-    "Id": 7,
-    "Name": "Подушка",
-    "Balance": 450,
-    "Expenses": [],
-    "Incomes": []
-  },
-  {
-    "Id": 8,
-    "Name": "Подушка",
-    "Balance": 450,
+    "Name": "Xuta",
+    "Balance": 333,
     "Expenses": [],
     "Incomes": []
   }

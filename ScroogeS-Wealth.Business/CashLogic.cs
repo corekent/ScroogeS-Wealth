@@ -11,67 +11,53 @@ namespace ScroogeS_Wealth.Business
     public class CashLogic : TypeMoneyStorage<Cash>
     {
         GenericStorage<Cash> _storage = new GenericStorage<Cash>();
-        public override Result<Cash> Create(string name, decimal balance, int id)
+        GenericStorage<User> _userStorage = new GenericStorage<User>();
+
+        public override Result<Cash> Create(string name, decimal balance, int userId)
         {
             var elements = _storage.Get();
             Cash element = new Cash(name, balance);
-            int Id = CreateId(elements);
-            element.Id = Id;
+            int cashId = _storage.CreateId(elements);
+            element.Id = cashId;
             _storage.Add(element);
-            return new Result<Cash>(1, element, "ok");
+            var users = _userStorage.Get();
+            var user = users.FirstOrDefault(x => x.Id == userId);
+            if (user is null)
+            {
+                return new Result<Cash>(0, "сущность не найдена");
+            }
+            user.Cash.Add(element);
+            user.Balance += balance;
+            _userStorage.Update(user, user.Id);            
+            return new Result<Cash>(1, element, "ok");            
         }
-        public override Result<Cash> Remove(int id)
-        {
-            var element = FindById(id);
-            _storage.Get().Remove(element);
-            return new Result<Cash>(1, element, " удалено");
-        }
+        
         public override Result<Cash> SetName(int id, string newName)
         {
-            var element = FindById(id);
+            var element = _storage.FindById(id);
             element.Name = newName;
             return new Result<Cash>(1, element, "название изменено");
         }
+        
         public override Result<Cash> SetBalance(int id, decimal newBalance)
         {
-            var element = FindById(id);
+            var element = _storage.FindById(id);
             element.Balance = newBalance;
             return new Result<Cash>(1, element, "баланс изменен");
         }
+        
         public override decimal GetBalance(int id)
         {
-            var element = FindById(id);
+            var element = _storage.FindById(id);
             return element.Balance;
         }
+
         public override void BindWorkSpace(int elementId, int workSpaceId)
         {
             GenericStorage<WorkSpace> workSpaces = new GenericStorage<WorkSpace>();
             var workSpace = workSpaces.Get().FirstOrDefault(x => x.Id == workSpaceId);
-            var element = FindById(elementId);
+            var element = _storage.FindById(elementId);
             workSpace.Cash.Add(element);
-        }
-        private Cash FindById(int id)
-        {
-            var elements = _storage.Get();
-            var element = elements.FirstOrDefault(x => x.Id == id);
-            if (element is null)
-            {
-                return null;
-            }
-            return element;
-        }
-        private int CreateId(List<Cash> elements)
-        {
-            int lastId;
-            if (elements.Count == 0)
-            {
-                lastId = 1;
-            }
-            else
-            {
-                lastId = elements.Last().Id + 1;
-            }
-            return lastId;
         }
     }
 }

@@ -21,12 +21,7 @@ namespace ScroogeS_Wealth.Business
             BindWorkSpace(cardId, id);
             return new Result<Card>(1, element, "Карта добавлена");
         }
-        public override Result<Card> Remove(int id)
-        {
-            var element = FindId(id);
-            elementStore.Get().Remove(element);
-            return new Result<Card>(1, element, " удалено");
-        }
+
         public override Result<Card> SetName(int id, string newName)
         {
             var element = FindId(id);
