@@ -36,17 +36,30 @@ namespace ScroogeS_Wealth.Models
             Result<T> m = obj as Result<T>;
             if (m as Result<T> == null)
                 return false;
-            bool temp = Body.Equals(m.Body);
+            bool temp=true;
+            if (Body!=null)
+            { temp = Body.Equals(m.Body); }            
             return m.Status == Status && m.Message == Message && temp;
         }
 
         public override int GetHashCode()
         {
-            int unitCode;
-            if (Message == "ok")
-                unitCode = 1;
-            else unitCode = 2;
-
+            int unitCode=0;
+            switch (Message)
+            {
+                case "создано":
+                    unitCode = 1;
+                    break;
+                case "сущность не найдена":
+                     unitCode = 2;
+                    break;
+                case "название изменено":
+                     unitCode = 3;
+                    break;
+                case "баланс изменен":
+                    unitCode = 4;
+                    break;
+            }           
             return (int)Status + unitCode;
         }
     }

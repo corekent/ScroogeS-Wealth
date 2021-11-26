@@ -22,7 +22,7 @@ namespace ScroogeS_Wealth.Models
                 return false;
             Cash m = obj as Cash;
             if (m as Cash == null)
-                return false;
+                return false;           
             return m.Name == Name && m.Balance == Balance;
         }
 
