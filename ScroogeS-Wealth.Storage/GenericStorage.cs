@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
@@ -25,6 +26,10 @@ namespace ScroogeS_Wealth.Storage
         
         public List<T> Get()
         {
+            //if (!File.Exists(_filePath))
+            //{
+            //    using (File.Create(_filePath));
+            //}
             string textFromFile = File.ReadAllText(_filePath);
             List<T> elements = new List<T>();
             try
@@ -105,6 +110,7 @@ namespace ScroogeS_Wealth.Storage
         private string GetFilePath()
         {
             var type = typeof(T).Name;            
+
             return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
         }
     }

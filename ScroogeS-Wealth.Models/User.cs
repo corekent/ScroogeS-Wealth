@@ -9,6 +9,7 @@ namespace ScroogeS_Wealth.Models
         public string Name { get; set; }
         public decimal Balance { get; set; }
         public List<Card> Cards { get; set; }
+        public List<Credit> Credits { get; set; }
         public List<Deposit> Deposits { get; set; }
         public List<Account> Accounts { get; set; }
         public List<Cash> Cash { get; set; }
