@@ -38,19 +38,46 @@ namespace ScroogeS_Wealth.UI
             string userName = userNameBox.Text.Trim();
             CheckInput(userName);
 
-            if (userName != "")
+            if (userName != "" && CheckForSameName(userName) == false)
             {
                 UserLogic user = new UserLogic();
                 user.CreateUser(userName);
-                User user1 = new User(userName);
-                _users.Add(user1);
+                User userToAdd = new User(userName);
+                _users.Add(userToAdd);
                 MessageBox.Show("Пользователь успешно добавлен! =)");
             }
         }
 
+        private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            User user = (User)usersComboBox.SelectedItem;
+            _users.Remove(user);
+            int id = user.Id;
+            MessageBox.Show($"Пользователь {user.Name} удален!");
+            UserLogic userToDelete = new UserLogic();
+           // userToDelete.RemoveUser(id);
+        }
+
+        private bool CheckForSameName(string name)
+        {
+            foreach (var user in _users)
+            {
+                if (name == user.Name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void CheckInput(string stringToCheck)
         {
-            if (stringToCheck == "")
+            if (CheckForSameName(stringToCheck) == true)
+            {
+                userNameBox.ToolTip = "Пользователь с таким именем уже существует";
+                userNameBox.Background = Brushes.Red;
+            }
+            else if (stringToCheck == "")
             {
                 userNameBox.ToolTip = "Это поле нельзя оставлять пустым";
                 userNameBox.Background = Brushes.Red;
@@ -62,16 +89,10 @@ namespace ScroogeS_Wealth.UI
             }
         }
 
-        private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
+        private void Button_DeleteData_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void Button_Delete_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        
     }
 }
