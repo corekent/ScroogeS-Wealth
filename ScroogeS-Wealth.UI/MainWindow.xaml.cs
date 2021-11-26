@@ -28,14 +28,18 @@ namespace ScroogeS_Wealth.UI
         public MainWindow()
         {
             InitializeComponent();
+            usersComboBox.ItemsSource = _users;
+        }
+        public ObservableCollection<User> GetUserList()
+        {
             GenericStorage<User> users = new GenericStorage<User>();
             _users = new ObservableCollection<User>(users.Get());
-            usersComboBox.ItemsSource = _users;
+            return _users;
         }
 
         private void Button_AddUser_Click(object sender, RoutedEventArgs e)
         {
-            string userName = userNameBox.Text.Trim();
+            string userName = userNameBox.Text.Trim(); 
             CheckInput(userName);
 
             if (userName != "" && CheckForSameName(userName) == false)

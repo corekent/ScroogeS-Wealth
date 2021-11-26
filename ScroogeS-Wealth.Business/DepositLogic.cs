@@ -11,33 +11,33 @@ namespace ScroogeS_Wealth.Business
 {
     public class DepositLogic : TypeMoneyStorage<Deposit>
     {
-        GenericStorage<Deposit> elementStore = new GenericStorage<Deposit>();
-        public override Result<Deposit> Create(string name, decimal balance, int id)
+        private GenericStorage<Deposit> _storage = new GenericStorage<Deposit>();
+        public override Result<Deposit> Create(string name, decimal balance, int userId)
         {
-            var elements = elementStore.Get();
-            Deposit element = new Deposit(name, balance);
-            int Id = CreateId(elements);
-            element.Id = Id;
-            elementStore.Add(element);
-            return new Result<Deposit>(1, element, "Карта добавлена");
+            var deposits = _storage.Get();
+            Deposit deposit = new Deposit(name, balance);
+            int Id = CreateId(deposits);
+            deposit.Id = Id;
+            _storage.Add(deposit);
+            return new Result<Deposit>(1, deposit, "Карта добавлена");
         }
         public override Result<Deposit> Remove(int id)
         {
             var element = FindId(id);
-            elementStore.Get().Remove(element);
+            _storage.Get().Remove(element);
             return new Result<Deposit>(1, element, "Вклад был удален");
         }
         public override Result<Deposit> SetName(int id, string newName)
         {
             var element = FindId(id);
             element.Name = newName;
-            return new Result<Deposit>(1, element, "название изменено");
+            return new Result<Deposit>(1, element, "Название изменено");
         }
         public override Result<Deposit> SetBalance(int id, decimal newBalance)
         {
             var element = FindId(id);
             element.Balance = newBalance;
-            return new Result<Deposit>(1, element, "баланс изменен");
+            return new Result<Deposit>(1, element, "Баланс изменен");
         }
         public override decimal GetBalance(int id)
         {
@@ -69,7 +69,7 @@ namespace ScroogeS_Wealth.Business
         }
         private Deposit FindId(int id)
         {
-            var elements = elementStore.Get();
+            var elements = _storage.Get();
             var element = elements.FirstOrDefault(x => x.Id == id);
             if (element is null)
             {

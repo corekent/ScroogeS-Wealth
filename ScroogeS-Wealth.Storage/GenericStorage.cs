@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
 namespace ScroogeS_Wealth.Storage
 {
-    public class GenericStorage<T> where T: IBaseModel
+    public class GenericStorage<T> where T : IBaseModel
     {
         private string _filePath;
         public GenericStorage()
@@ -17,23 +18,30 @@ namespace ScroogeS_Wealth.Storage
             _filePath = GetFilePath();
             if (!File.Exists(_filePath))
             {
-                File.Create(_filePath);
+                File.Create(_filePath).Close();
             }
         }
         public List<T> Get()
         {
+            if (!File.Exists(_filePath))
+            {
+                File.Create(_filePath);
+            }
             string textFromFile = File.ReadAllText(_filePath);
             List<T> elements = new List<T>();
+
             try
             {
                 elements = JsonSerializer.Deserialize<List<T>>(textFromFile);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 elements = new List<T>();
             }
+
             return elements;
-        } 
+        }
+
         public T Add(T element)
         {
             var elements = Get();
@@ -74,9 +82,15 @@ namespace ScroogeS_Wealth.Storage
         }
         private string GetFilePath()
         {
-            var type = typeof(T).Name;            
-            return $"C:\\Users\\Lekksha\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            var type = typeof(T).Name;
+            var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var relativePath = $"{type}.json";
+            return Path.Combine(appDir, relativePath);
 
+            //var baseFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            //var appStorageFolder = Path.Combine(baseFolder, "ScroogeS-Wealth");
+            //return Path.Combine(appStorageFolder, relativePath);
+            //return $"C:\\Users\\Lekksha\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
         }
     }
 }
