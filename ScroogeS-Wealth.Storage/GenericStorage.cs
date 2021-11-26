@@ -80,6 +80,31 @@ namespace ScroogeS_Wealth.Storage
 
             return element;
         }
+        public T FindById(int id)
+        {
+            var elements = Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            if (element is null)
+            {
+                return default;
+            }
+            return element;
+        }
+
+        public int GetNextAvailableId(List<T> elements)
+        {
+            int lastId;
+            if (elements.Count == 0)
+            {
+                lastId = 1;
+            }
+            else
+            {
+                lastId = elements.Last().Id + 1;
+            }
+            return lastId;
+        }
+
         private string GetFilePath()
         {
             var type = typeof(T).Name;
@@ -87,10 +112,7 @@ namespace ScroogeS_Wealth.Storage
             var relativePath = $"{type}.json";
             return Path.Combine(appDir, relativePath);
 
-            //var baseFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            //var appStorageFolder = Path.Combine(baseFolder, "ScroogeS-Wealth");
-            //return Path.Combine(appStorageFolder, relativePath);
-            //return $"C:\\Users\\Lekksha\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            //return $"C:\\Users\\darrk\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
         }
     }
 }
