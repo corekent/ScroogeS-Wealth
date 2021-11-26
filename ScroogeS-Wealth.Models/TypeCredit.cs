@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public enum TypeCredit
+    public enum TypeCredit 
     {
         mortgage = 1,
         installment = 2,

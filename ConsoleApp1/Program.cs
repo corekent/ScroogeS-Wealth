@@ -17,7 +17,7 @@ namespace ConsoleApp1
  
             CashLogic cash = new CashLogic();
             cash.Create("Xuta", 333, 1);
-
+          
             ExpenseLogic<Cash, Expense> expense = new ExpenseLogic<Cash, Expense>();
             expense.Create("narcota", 100, DateTime.Now, 1);
 
