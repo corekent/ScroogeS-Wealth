@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public enum Category
+    public enum CategoryExpense
     {
         Product,
     }

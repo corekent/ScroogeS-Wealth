@@ -41,7 +41,54 @@ namespace ScroogeS_Wealth.Business
         }
         private int CalcMonth(DateTime dateStart, DateTime dateEnd)
         {
-
+            GenericStorage<WorkSpace> workSpaces = new GenericStorage<WorkSpace>();
+            var worksps = workSpaces.Get();
+            var workSpace = worksps.FirstOrDefault(x => x.Id == workSpaceId);
+            var element = FindId(cardId);
+            workSpace.Credits.Add(element);
+        }
+        public Credit FindId(int id)
+        {
+            var elements = elementStore.Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            if (element is null)
+            {
+                return null;
+            }
+            return element;
+        }
+        private int CreateId(List<Credit> elements)
+        {
+            int lastId;
+            if (elements.Count == 0)
+            {
+                lastId = 1;
+            }
+            else
+            {
+                lastId = elements.Last().Id + 1;
+            }
+            return lastId;
+        }
+        
+        {
+            double percentMonth = percentYears / 12;
+            int creditTerm = CalcMonthCount(dateStart, dateEnd);
+            decimal monthAmount = Convert.ToDecimal((allSum * percentMonth) / (1 - (1 + percentMonth) * (1 - creditTerm)));
+            return monthAmount;
+        }
+        private int CalcMonthCount(DateTime dateStart, DateTime dateEnd)
+        {
+            dateEnd.Subtract(dateStart);
+            TimeSpan diff = dateEnd - dateStart;
+            int days = diff.Days;
+            return days;
+        }
+        public decimal GetMonthlyPayment(decimal allSum, DateTime dateEnd)
+        {
+            int month = CalcMonthCount(DateTime.Now, dateEnd);
+            decimal monthAmount = allSum / month;
+            return monthAmount;
         }
     }
 }
