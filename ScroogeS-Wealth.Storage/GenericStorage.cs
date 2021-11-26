@@ -25,6 +25,10 @@ namespace ScroogeS_Wealth.Storage
         
         public List<T> Get()
         {
+            if (!File.Exists(_filePath))
+            {
+                File.Create(_filePath);
+            }
             string textFromFile = File.ReadAllText(_filePath);
             List<T> elements = new List<T>();
             try
@@ -104,8 +108,9 @@ namespace ScroogeS_Wealth.Storage
 
         private string GetFilePath()
         {
-            var type = typeof(T).Name;            
-            return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            var type = typeof(T).Name;
+            return $"C:\\Users\\моё чудо\\OneDrive\\Рабочий стол\\скруджи\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            //return $"./{type}.json";
         }
     }
 }
