@@ -17,5 +17,11 @@ namespace ScroogeS_Wealth.Business.HelpersCalc
             int days = diff.Days;
             return days;
         }
+        public static int CalcMonthCount(DateTime dateStart, DateTime dateEnd)
+        {
+            var span = dateEnd - dateStart;
+            int months = (int)Math.Ceiling(span.TotalDays / 30.4);
+            return months;
+        }
     }
 }
