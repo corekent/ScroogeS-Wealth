@@ -1,4 +1,5 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using Core;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -24,26 +25,26 @@ namespace ScroogeS_Wealth.Business
             var user = users.FirstOrDefault(x => x.Id == userId);
             if (user is null)
             {
-                return new Result<Cash>(0, "сущность не найдена");
+                return new Result<Cash>(0, ServiceMessages.entityNotFound);
             }
             user.Cash.Add(element);
             user.Balance += balance;
             _userStorage.Update(user, user.Id);            
-            return new Result<Cash>(1, element, "создано");            
+            return new Result<Cash>(1, element, ServiceMessages.Created);            
         }
         
         public override Result<Cash> SetName(int id, string newName)
         {
             var element = _storage.FindById(id);
             element.Name = newName;
-            return new Result<Cash>(1, element, "название изменено");
+            return new Result<Cash>(1, element, ServiceMessages.nameChanged);
         }
         
         public override Result<Cash> SetBalance(int id, decimal newBalance)
         {
             var element = _storage.FindById(id);
             element.Balance = newBalance;
-            return new Result<Cash>(1, element, "баланс изменен");
+            return new Result<Cash>(1, element, ServiceMessages.balanceChanged);
         }
         
         public override decimal GetBalance(int id)

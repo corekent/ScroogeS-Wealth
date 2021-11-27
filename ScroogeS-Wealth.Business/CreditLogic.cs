@@ -1,4 +1,5 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using Core;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,12 @@ namespace ScroogeS_Wealth.Business
             var user = users.FirstOrDefault(x => x.Id == userId);
             if (user is null)
             {
-                return new Result<Credit>(0, "сущность не найдена");
+                return new Result<Credit>(0, ServiceMessages.entityNotFound);
             }
             user.Credits.Add(element);
             user.Balance += balance;
             _userStorage.Update(user, user.Id);
-            return new Result<Credit>(1, element, "ok");
+            return new Result<Credit>(1, element, ServiceMessages.Created);
         }
         public void СhooseTypeOfLoan()
         {
@@ -39,24 +40,24 @@ namespace ScroogeS_Wealth.Business
         {
 
         }
-        private int CalcMonth(DateTime dateStart, DateTime dateEnd)
-        {
-            GenericStorage<WorkSpace> workSpaces = new GenericStorage<WorkSpace>();
-            var worksps = workSpaces.Get();
-            var workSpace = worksps.FirstOrDefault(x => x.Id == workSpaceId);
-            var element = FindId(cardId);
-            workSpace.Credits.Add(element);
-        }
-        public Credit FindId(int id)
-        {
-            var elements = elementStore.Get();
-            var element = elements.FirstOrDefault(x => x.Id == id);
-            if (element is null)
-            {
-                return null;
-            }
-            return element;
-        }
+        //private int CalcMonth(DateTime dateStart, DateTime dateEnd)
+        //{
+        //    GenericStorage<WorkSpace> workSpaces = new GenericStorage<WorkSpace>();
+        //    var worksps = workSpaces.Get();
+        //    var workSpace = worksps.FirstOrDefault(x => x.Id == workSpaceId);
+        //    var element = FindId(cardId);
+        //    workSpace.Credits.Add(element);
+        //}
+        //public Credit FindId(int id)
+        //{
+        //    var elements = elementStore.Get();
+        //    var element = elements.FirstOrDefault(x => x.Id == id);
+        //    if (element is null)
+        //    {
+        //        return null;
+        //    }
+        //    return element;
+        //}
         private int CreateId(List<Credit> elements)
         {
             int lastId;
@@ -71,24 +72,24 @@ namespace ScroogeS_Wealth.Business
             return lastId;
         }
         
-        {
-            double percentMonth = percentYears / 12;
-            int creditTerm = CalcMonthCount(dateStart, dateEnd);
-            decimal monthAmount = Convert.ToDecimal((allSum * percentMonth) / (1 - (1 + percentMonth) * (1 - creditTerm)));
-            return monthAmount;
-        }
-        private int CalcMonthCount(DateTime dateStart, DateTime dateEnd)
-        {
-            dateEnd.Subtract(dateStart);
-            TimeSpan diff = dateEnd - dateStart;
-            int days = diff.Days;
-            return days;
-        }
-        public decimal GetMonthlyPayment(decimal allSum, DateTime dateEnd)
-        {
-            int month = CalcMonthCount(DateTime.Now, dateEnd);
-            decimal monthAmount = allSum / month;
-            return monthAmount;
-        }
+        //{
+        //    double percentMonth = percentYears / 12;
+        //    int creditTerm = CalcMonthCount(dateStart, dateEnd);
+        //    decimal monthAmount = Convert.ToDecimal((allSum * percentMonth) / (1 - (1 + percentMonth) * (1 - creditTerm)));
+        //    return monthAmount;
+        //}
+        //private int CalcMonthCount(DateTime dateStart, DateTime dateEnd)
+        //{
+        //    dateEnd.Subtract(dateStart);
+        //    TimeSpan diff = dateEnd - dateStart;
+        //    int days = diff.Days;
+        //    return days;
+        //}
+        //public decimal GetMonthlyPayment(decimal allSum, DateTime dateEnd)
+        //{
+        //    int month = CalcMonthCount(DateTime.Now, dateEnd);
+        //    decimal monthAmount = allSum / month;
+        //    return monthAmount;
+        //}
     }
 }
