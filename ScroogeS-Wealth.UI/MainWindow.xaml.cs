@@ -25,11 +25,13 @@ namespace ScroogeS_Wealth.UI
     public partial class MainWindow : Window
     {
         private ObservableCollection<User> _users;
+
         public MainWindow()
         {
             InitializeComponent();
             usersComboBox.ItemsSource = _users;
         }
+
         public ObservableCollection<User> GetUserList()
         {
             GenericStorage<User> users = new GenericStorage<User>();
@@ -40,9 +42,9 @@ namespace ScroogeS_Wealth.UI
         private void Button_AddUser_Click(object sender, RoutedEventArgs e)
         {
             string userName = userNameBox.Text.Trim(); 
-            CheckInput(userName);
+            CheckInputData(userName);
 
-            if (userName != "" && CheckForSameName(userName) == false)
+            if (userName != "" && CheckUsersForSameName(userName) == false)
             {
                 UserLogic user = new UserLogic();
                 user.CreateUser(userName);
@@ -62,7 +64,7 @@ namespace ScroogeS_Wealth.UI
             userToDelete.RemoveUser(id);
         }
 
-        private bool CheckForSameName(string name)
+        private bool CheckUsersForSameName(string name)
         {
             foreach (var user in _users)
             {
@@ -74,11 +76,11 @@ namespace ScroogeS_Wealth.UI
             return false;
         }
 
-        private void CheckInput(string stringToCheck)
+        private void CheckInputData(string stringToCheck)
         {
-            if (CheckForSameName(stringToCheck) == true)
+            if (CheckUsersForSameName(stringToCheck))
             {
-                userNameBox.ToolTip = "Пользователь с таким именем уже существует";
+                userNameBox.ToolTip = "Это имя уже занято";
                 userNameBox.Background = Brushes.Red;
             }
             else if (stringToCheck == "")
@@ -89,7 +91,7 @@ namespace ScroogeS_Wealth.UI
             else
             {
                 userNameBox.ToolTip = "";
-                userNameBox.Background = Brushes.Transparent;
+                userNameBox.Background = Brushes.White;
             }
         }
 

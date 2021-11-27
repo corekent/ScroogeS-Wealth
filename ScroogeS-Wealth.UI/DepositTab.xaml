@@ -33,9 +33,9 @@
                    Grid.Row="1" Height="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="depositBalanceBox" Grid.Column="1" Grid.Row="1"
                    Height="28" VerticalAlignment="Center"/>
-        <TextBlock Text="Дата открытия:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+        <TextBlock Text="Дата открытия вклада:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
                    Grid.Row="2" Height="17" HorizontalAlignment="Right" />
-        <DatePicker x:Name="depositOpenDateBox" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
+        <DatePicker x:Name="depositOpeningDatePicker" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
                    Height="25"/>
         <TextBlock Text="Введите процент:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
                    Grid.Row="3" Height="17" HorizontalAlignment="Right"/>
@@ -47,9 +47,10 @@
                      Grid.Row="4" Grid.Column="1" FontSize="14" FontWeight="Normal" Width="234"  VerticalAlignment="Center"/>
         <RadioButton x:Name="increaseAndDecreaseDepositRadioBtn" Content="Вклад на пополнение и снятие" Grid.Column="1"
                      Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="222" FontSize="14" Grid.ColumnSpan="2"/>
-        <Slider HorizontalAlignment="Left" Margin="188,0,0,0" Grid.Row="6" VerticalAlignment="Center" Width="384" Grid.ColumnSpan="3"/>
-        <Button Content="Добавить вклад" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold"
-                Grid.Row="7" VerticalAlignment="Center" Background="gold" Click="Button_AddDeposit_Click"/>
-
+        <!--<Slider HorizontalAlignment="Left" Margin="213,55,0,0" Grid.Row="5" VerticalAlignment="Top" Width="384" Grid.ColumnSpan="3"
+                Minimum="3" Maximum="12" IsSnapToTickEnabled="True" TickFrequency="3" Grid.RowSpan="2"
+                ValueChanged="slider1_ValueChanged" Value="{Binding MoneyAmountWithPercent}"/>-->
+        <Button Content="Добавить вклад" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold" Height="40" Width="120"
+                Grid.Row="7" VerticalAlignment="Top" Background="gold" Click="Button_AddDeposit_Click"/>
     </Grid>
 </UserControl>
