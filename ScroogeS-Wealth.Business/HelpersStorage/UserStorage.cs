@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScroogeS_Wealth.Business
+namespace ScroogeS_Wealth.Business.HelpersStorage
 {
-    public class UserLogic
+    public class UserStorage
     {
         private GenericStorage<User> _userStore = new GenericStorage<User>();
 

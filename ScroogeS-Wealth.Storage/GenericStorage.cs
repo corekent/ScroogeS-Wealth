@@ -57,6 +57,19 @@ namespace ScroogeS_Wealth.Storage
             File.WriteAllText(_filePath, jsonToWrite);
             return element;
         }
+        public void Remove(int id)
+        {
+            var elements = Get();
+            var element = elements.FirstOrDefault(x => x.Id == id);
+            elements.Remove(element);
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            };
+            string jsonToWrite = JsonSerializer.Serialize(elements, options);
+            File.WriteAllText(_filePath, jsonToWrite);
+        }
 
         public T Update(T element, int elementId)
         {

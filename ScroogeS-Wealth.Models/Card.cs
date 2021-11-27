@@ -9,9 +9,6 @@ namespace ScroogeS_Wealth.Models
 {
     public class Card : AssetModel, IMoneyModel
     {
-        public Expense Expense { get; set; }
-        public Income Incomes { get; set; }
-
         public Card(string name, decimal balance)
         {
             Name = name;

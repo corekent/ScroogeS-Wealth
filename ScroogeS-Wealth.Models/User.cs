@@ -21,6 +21,7 @@ namespace ScroogeS_Wealth.Models
             Deposits = new List<Deposit>();
             Accounts = new List<Account>();
             Cash = new List<Cash>();
+            Credits = new List<Credit>();
         }
     }
 }

@@ -7,32 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScroogeS_Wealth.Business
+namespace ScroogeS_Wealth.Business.HelpersStorage
 {
-    public class ExpenseLogic<T, V> where T : AssetModel where V : IBaseModel
+    public class ExpenseStorage<T, V> where T : AssetModel where V : IBaseModel
     {
-        GenericStorage<T> _elementStore = new GenericStorage<T>();
-        GenericStorage<Expense> _expenseStore = new GenericStorage<Expense>();
+        GenericStorage<T> _elementStorage = new GenericStorage<T>();
+        GenericStorage<Expense> _expenseStorage = new GenericStorage<Expense>();
 
-        public  Result<V> Create(string name, decimal amount, DateTime date, int fromId)
+        public Result<V> Create(string name, decimal amount, DateTime date, int fromId)
         {
-            var expenses = _expenseStore.Get();
-            var elements = _elementStore.Get();
+            var expenses = _expenseStorage.Get();
+            var elements = _elementStorage.Get();
             var element = elements.FirstOrDefault(x => x.Id == fromId);
             if (element is null)
             {
                 return new Result<V>(0, ServiceMessages.entityNotFound);
             }
             var expense = new Expense(name, amount, date);
-            int lastId = _expenseStore.GetNextAvailableId(expenses);
+            int lastId = _expenseStorage.GetNextAvailableId(expenses);
             expense.Id = lastId;
-            _expenseStore.Add(expense);
+            _expenseStorage.Add(expense);
             element.Expenses.Add(expense);
             element.Balance -= amount;
-            _elementStore.Update(element, element.Id);
+            _elementStorage.Update(element, element.Id);
             return new Result<V>(1, ServiceMessages.expenseAdded);
         }
-        public  Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId, int interval)
+        public Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId, int interval)////
         {
             var expense = Create(name, amount, date, fromId);
             date.AddMonths(interval);
@@ -41,24 +41,19 @@ namespace ScroogeS_Wealth.Business
         }
         public Result<V> SetName(int id, string newName)
         {
-            var element = _expenseStore.FindById(id);
+            var element = _expenseStorage.FindById(id);
             element.Name = newName;
             return new Result<V>(1, ServiceMessages.nameChanged);
         }
-        public Result<V> SetCategorie(int id, string newName)
+        public Result<V> SetCategory(int id, string newName)////
         {
             return new Result<V>(1, ServiceMessages.categoryChanged);
         }
         public Result<V> SetAmount(int id, decimal newBalance)
         {
-            var element = _expenseStore.FindById(id);
+            var element = _expenseStorage.FindById(id);
             element.Amount = newBalance;
             return new Result<V>(1, ServiceMessages.summChanged);
-        }
-
-        public  Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

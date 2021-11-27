@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScroogeS_Wealth.Models
+namespace ScroogeS_Wealth.Business.HelpersStorage
 {
-    public class ExpenseСategorieModel
+    class CreditStorage
     {
-        //сдлеать enum????
+
     }
 }
