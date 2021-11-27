@@ -1,4 +1,5 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using Core;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace ScroogeS_Wealth.Business
             int id = _userStore.GetNextAvailableId(users);
             user.Id = id;
             _userStore.Add(user);
-            return new Result<User>(1, user, "ok");
+            return new Result<User>(1, user, ServiceMessages.Created);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using Core;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -18,20 +19,20 @@ namespace ScroogeS_Wealth.Business
             int Id = _elementStore.GetNextAvailableId(elements);
             element.Id = Id;
             _elementStore.Add(element);
-            return new Result<Account>(1, element, "Карта добавлена");
+            return new Result<Account>(1, element, ServiceMessages.Created);
         }
 
         public override Result<Account> SetName(int id, string newName)
         {
             var element = _elementStore.FindById(id);
             element.Name = newName;
-            return new Result<Account>(1, element, "название изменено");
+            return new Result<Account>(1, element, ServiceMessages.nameChanged);
         }
         public override Result<Account> SetBalance(int id, decimal newBalance)
         {
             var element = _elementStore.FindById(id);
             element.Balance = newBalance;
-            return new Result<Account>(1, element, "баланс изменен");
+            return new Result<Account>(1, element, ServiceMessages.balanceChanged);
 
         }
         public override decimal GetBalance(int id)

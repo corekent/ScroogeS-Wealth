@@ -12,7 +12,7 @@ namespace ScroogeS_Wealth.Business.Tests
             _cashLogic = new CashLogic();
         }
 
-        [TestCase(0, "Подушка", 450, 1)]
+        [TestCase(0, "Кошель", 450, 1)]
         public void CreateTest(int index, string name, decimal balance, int id)
         {
             Result<Cash> actual = _cashLogic.Create(name, balance, id);
@@ -20,7 +20,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(3, "Подушка", 450, 100)]
+        [TestCase(3, "Кошель", 450, 100)]
         public void NegativeCreateTest(int index, string name, decimal balance, int userId)
         {
             Result<Cash> actual = _cashLogic.Create(name, balance, userId);
@@ -38,7 +38,7 @@ namespace ScroogeS_Wealth.Business.Tests
         //    Assert.AreEqual(expected, actual);
         //}
 
-        [TestCase(1,"Подушка",450,"Под подушкой", 1)]
+        [TestCase(1,"Кошель",450,"Под подушкой", 1)]
         public void SetnameTest(int index, string name, decimal balance, string newName, int userId)
         {
             Result<Cash> temp = _cashLogic.Create(name, balance, userId);
@@ -48,7 +48,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
         
-        [TestCase(2, "Подушка", 450, 1450, 1)]
+        [TestCase(2, "Кошель", 450, 1450, 1)]
         public void SetBalanceTest(int index, string name, decimal balance, decimal newBalance, int userId)
         {
             Result<Cash> temp = _cashLogic.Create(name, balance, userId);
@@ -58,7 +58,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase( "Подушка", 450, 450, 1)]
+        [TestCase("Кошель", 450, 450, 1)]
         public void GetBalanceTest(string name, decimal balance, decimal expBalance, int userId)
         {
             Result<Cash> temp = _cashLogic.Create(name, balance, userId);
