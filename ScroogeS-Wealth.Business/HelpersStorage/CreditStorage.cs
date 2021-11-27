@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Core;
+using ScroogeS_Wealth.Models;
+using ScroogeS_Wealth.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +11,40 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
 {
     class CreditStorage
     {
+        GenericStorage<Credit> _creditStorage = new GenericStorage<Credit>();
+        GenericStorage<User> _userStorage = new GenericStorage<User>();
 
+        public Result<Credit> Create(string name, decimal balance, int userId, DateTime dateStart, DateTime dateEnd)
+        {
+            var credits = _creditStorage.Get();
+            Credit credit = new Credit(name, balance, dateStart, dateEnd);
+            int creditId = _creditStorage.GetNextAvailableId(credits);
+            credit.Id = creditId;
+            _creditStorage.Add(credit);
+            var users = _userStorage.Get();
+            var user = users.FirstOrDefault(x => x.Id == userId);
+            if (user is null)
+            {
+                return new Result<Credit>(0, ServiceMessages.entityNotFound);
+            }
+            user.Credits.Add(credit);
+            user.Balance += balance;
+            _userStorage.Update(user, user.Id);
+            return new Result<Credit>(1, credit, ServiceMessages.Created);
+        }
+        public Result<Credit> SetName(int id, string newName)
+        {
+            var credit = _creditStorage.FindById(id);
+            credit.Name = newName;
+            return new Result<Credit>(1, credit, ServiceMessages.nameChanged);
+        }
+        public void СhooseTypeOfLoan()
+        {
+
+        }
+        private void Mortgage()
+        {
+
+        }
     }
 }
