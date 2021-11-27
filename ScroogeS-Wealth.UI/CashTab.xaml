@@ -7,21 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="PapayaWhip">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="411*"/>
+            <ColumnDefinition Width="533*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Выберите пользователя" FontSize="14" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="2" Height="17" Margin="266,10,0,0"/>
-        <ComboBox x:Name="userComboBox" Grid.Column="2" VerticalAlignment="Center"
-                  Margin="40,0,40,0" ItemsSource="{Binding}" DisplayMemberPath="Name"/>
+        
+        <Image Margin ="150,215,39,35"  Grid.Column="1" Source="/Scrooge3.png"></Image>
+        <TextBlock Text="Выберите пользователя" FontSize="14" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="17" Margin="182,35,0,0"/>
+        <ComboBox x:Name="userComboBox" VerticalAlignment="Top"
+                  Margin="117,75,60,0" ItemsSource="{Binding}" DisplayMemberPath="Name" Height="20" Grid.Column="1"/>
+        <TextBlock Text="Выберите копилку" FontSize="14" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="17" Margin="200,111,0,0"/>
+        <ComboBox x:Name="CashComboBox" VerticalAlignment="Top"
+                  Margin="117,135,60,0" ItemsSource="{Binding}" DisplayMemberPath="Name" Height="20" Grid.Column="1"/>
+        <DataGrid x:Name="DataGridCashInfo" Margin="0,0,410,0" Grid.ColumnSpan="2" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название"  Binding="{Binding Path=Name}"  Width="*" />
+                <DataGridTextColumn Header="Баланс" Binding="{Binding Path=Balance}" Width="*"/>
+                <DataGridTemplateColumn Header="Изменить" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                           
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
 
 
     </Grid>
