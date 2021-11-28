@@ -29,16 +29,7 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
             user.Deposits.Add(deposit);
             user.Balance += balance;
             _userStorage.Update(user, user.Id);
-            _depositStorage.Add(deposit);
-            var users = _userStorage.Get();
-            var user = users.FirstOrDefault(x => x.Id == userId);
-            if (user is null)
-            {
-                return new Result<Deposit>(0, ServiceMessages.entityNotFound);
-            }
-            user.Deposits.Add(deposit);
-            user.Balance += balance;
-            _userStorage.Update(user, user.Id);
+            _depositStorage.Add(deposit);            
             return new Result<Deposit>(1, deposit, ServiceMessages.Created);
         }
 
