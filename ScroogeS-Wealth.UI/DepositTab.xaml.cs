@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ScroogeS_Wealth.Models;
+using ScroogeS_Wealth.Storage;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,8 +74,8 @@ namespace ScroogeS_Wealth.UI
             if (depositName != "" && CheckDepositsForSameName(depositName) == false
                 && balance != 0 && percent != 0 && date != default && user != null)
             {
-                DepositLogic deposit = new DepositLogic();
-                deposit.Create(depositName, balance, 1);
+                //DepositLogic deposit = new DepositLogic();
+                //deposit.Create(depositName, balance, 1);
             }
         }
 
