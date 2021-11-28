@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business.Tests
 {
-    class IncomeTestData
+    public class IncomeTestData
     {
         public static Card GetCardForTests()
         {
