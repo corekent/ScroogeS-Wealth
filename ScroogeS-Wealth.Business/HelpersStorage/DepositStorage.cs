@@ -12,12 +12,22 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
     public class DepositStorage : TypeMoneyStorage<Deposit>
     {
         GenericStorage<Deposit> _depositStorage = new GenericStorage<Deposit>();
+        GenericStorage<User> _userStorage = new GenericStorage<User>();
         public override Result<Deposit> Create(string name, decimal balance, int userId)
         {
             var deposits = _depositStorage.Get();
             Deposit deposit = new Deposit(name, balance);
             int Id = _depositStorage.GetNextAvailableId(deposits);
             deposit.Id = Id;
+            var users = _userStorage.Get();
+            var user = users.FirstOrDefault(x => x.Id == userId);
+            if (user is null)
+            {
+                return new Result<Deposit>(0, ServiceMessages.entityNotFound);
+            }
+            user.Deposits.Add(deposit);
+            user.Balance += balance;
+            _userStorage.Update(user, user.Id);
             _depositStorage.Add(deposit);
             return new Result<Deposit>(1, deposit, ServiceMessages.Created);
         }

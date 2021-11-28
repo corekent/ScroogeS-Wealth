@@ -20,5 +20,15 @@ namespace ScroogeS_Wealth.Models
             Amount = amount;
             Date = date;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Income m = obj as Income;
+            if (m as Income == null)
+                return false;
+            return m.Name == Name && m.Date == Date && m.Amount==Amount;
+
+        }
     }
 }
