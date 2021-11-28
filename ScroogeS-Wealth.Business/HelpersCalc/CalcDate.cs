@@ -12,7 +12,6 @@ namespace ScroogeS_Wealth.Business.HelpersCalc
     {        
         public static int CountDays(DateTime dateStart, DateTime dateEnd)
         {
-            dateEnd.Subtract(dateStart);
             TimeSpan diff = dateEnd - dateStart;
             int days = diff.Days;
             return days;
