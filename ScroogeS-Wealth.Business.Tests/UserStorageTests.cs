@@ -26,5 +26,19 @@ namespace ScroogeS_Wealth.Business.Tests
             Result<User> expected = UserTestData.GetResultForTest(index);
             Assert.AreEqual(expected, actual);
         }
+        [TestCase(2, 1)]
+        public void RemoveTest(int index, int id)
+        {
+            Result<User> actual = _userStorage.Remove(id);
+            Result<User> expected = UserTestData.GetResultForTest(index);
+            Assert.AreEqual(expected, actual);
+        }
+        [TestCase(3, 10)]
+        public void RemoveNegativeTest(int index, int id)
+        {
+            Result<User> actual = _userStorage.Remove(id);
+            Result<User> expected = UserTestData.GetResultForTest(index);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

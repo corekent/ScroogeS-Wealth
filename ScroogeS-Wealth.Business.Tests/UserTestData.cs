@@ -13,10 +13,14 @@ namespace ScroogeS_Wealth.Business.Tests
         public static Result<User> GetResultForTest(int index)
         {
             User user1 = new User("Mika");
-            Result<User> temp1 = new Result<User>(1, user1, ServiceMessages.Created);
+            Result<User> created = new Result<User>(1, user1, ServiceMessages.Created);
+            Result<User> removed = new Result<User>(1, ServiceMessages.deletionCompleted);
+            Result<User> removedNegative = new Result<User>(0, ServiceMessages.entityNotFound);
             return index switch
             {
-                1 => temp1,
+                1 => created,
+                2 => removed,
+                3 => removedNegative,
                 _ => throw new NotImplementedException(),
             };
         }
