@@ -20,15 +20,6 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
             Deposit deposit = new Deposit(name, balance);
             int Id = _depositStorage.GetNextAvailableId(deposits);
             deposit.Id = Id;
-            var users = _userStorage.Get();
-            var user = users.FirstOrDefault(x => x.Id == userId);
-            if (user is null)
-            {
-                return new Result<Deposit>(0, ServiceMessages.entityNotFound);
-            }
-            user.Deposits.Add(deposit);
-            user.Balance += balance;
-            _userStorage.Update(user, user.Id);
             _depositStorage.Add(deposit);
             var users = _userStorage.Get();
             var user = users.FirstOrDefault(x => x.Id == userId);
