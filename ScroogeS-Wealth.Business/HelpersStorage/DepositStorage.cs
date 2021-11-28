@@ -12,7 +12,7 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
     public class DepositStorage : TypeMoneyStorage<Deposit>
     {
         GenericStorage<Deposit> _depositStorage = new GenericStorage<Deposit>();
-        public override Result<Deposit> Create(string name, decimal balance, int id)
+        public override Result<Deposit> Create(string name, decimal balance, int userId)
         {
             var deposits = _depositStorage.Get();
             Deposit deposit = new Deposit(name, balance);

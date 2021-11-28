@@ -9,13 +9,12 @@ namespace ScroogeS_Wealth.Models
 {
     public class Cash : AssetModel, IBaseModel
     {
-        public Cash() { }
-
         public Cash(string name, decimal balance)
         {
             Name = name;
             Balance = balance;
         }
+
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -24,11 +23,6 @@ namespace ScroogeS_Wealth.Models
             if (m as Cash == null)
                 return false;           
             return m.Name == Name && m.Balance == Balance;
-        }
-
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
         }
     }
 }
