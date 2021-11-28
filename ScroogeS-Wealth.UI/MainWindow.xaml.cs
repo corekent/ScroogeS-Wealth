@@ -26,20 +26,30 @@ namespace ScroogeS_Wealth.UI
     public partial class MainWindow : Window
     {
         private ObservableCollection<User> _users;
+        private ObservableCollection<Deposit> _deposits;
+        private ObservableCollection<Card> _cards;
+        private ObservableCollection<Account> _accounts;
+        private ObservableCollection<Cash> _cash;
+
         public MainWindow()
         {
             InitializeComponent();
+            usersComboBox.ItemsSource = _users;
+        }
+
+        public ObservableCollection<User> GetUserList()
+        {
             GenericStorage<User> users = new GenericStorage<User>();
             _users = new ObservableCollection<User>(users.Get());
-            usersComboBox.ItemsSource = _users;
+            return _users;
         }
 
         private void Button_AddUser_Click(object sender, RoutedEventArgs e)
         {
             string userName = userNameBox.Text.Trim();
-            CheckInput(userName);
+            CheckInputData(userName);
 
-            if (userName != "" && CheckForSameName(userName) == false)
+            if (userName != "" && CheckUsersForSameName(userName) == false)
             {
                 UserStorage user = new UserStorage();
                 user.CreateUser(userName);
@@ -56,10 +66,11 @@ namespace ScroogeS_Wealth.UI
             int id = user.Id;
             MessageBox.Show($"Пользователь {user.Name} удален!");
             UserStorage userToDelete = new UserStorage();
-           // userToDelete.RemoveUser(id);
+            //userToDelete.Remove(id);
+
         }
 
-        private bool CheckForSameName(string name)
+        private bool CheckUsersForSameName(string name)
         {
             foreach (var user in _users)
             {
@@ -71,11 +82,11 @@ namespace ScroogeS_Wealth.UI
             return false;
         }
 
-        private void CheckInput(string stringToCheck)
+        private void CheckInputData(string stringToCheck)
         {
-            if (CheckForSameName(stringToCheck) == true)
+            if (CheckUsersForSameName(stringToCheck))
             {
-                userNameBox.ToolTip = "Пользователь с таким именем уже существует";
+                userNameBox.ToolTip = "Это имя уже занято";
                 userNameBox.Background = Brushes.Red;
             }
             else if (stringToCheck == "")
@@ -86,7 +97,7 @@ namespace ScroogeS_Wealth.UI
             else
             {
                 userNameBox.ToolTip = "";
-                userNameBox.Background = Brushes.Transparent;
+                userNameBox.Background = Brushes.White;
             }
         }
 
