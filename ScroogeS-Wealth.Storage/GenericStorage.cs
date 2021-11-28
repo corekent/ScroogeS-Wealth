@@ -122,9 +122,12 @@ namespace ScroogeS_Wealth.Storage
 
         private string GetFilePath()
         {
-            var type = typeof(T).Name;            
-
-            return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            var type = typeof(T).Name;
+            var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var relativePath = $"{type}.json";
+            var fullPath = Path.Combine(appDir, relativePath);
+            return fullPath;
+            //return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
         }
     }
 }
