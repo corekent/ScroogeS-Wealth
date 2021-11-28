@@ -4,7 +4,7 @@ using ScroogeS_Wealth.Models;
 
 namespace ScroogeS_Wealth.Business.Tests
 {
-    public class CashLogicTests
+    public class CashStorageTests
     {
         private CashStorage _cashStorage;
         [SetUp]
