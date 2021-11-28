@@ -1,4 +1,5 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using ScroogeS_Wealth.Business.HelpersStorage;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -60,8 +61,9 @@ namespace ScroogeS_Wealth.UI
 
             if (accountName != "" && CheckAccountsForSameName(accountName) == false && balance != 0 && user != null)
             {
-                //DepositLogic deposit = new DepositLogic();
-                //deposit.Create(depositName, balance, 1);
+                AccountStorage accountStorage = new AccountStorage();
+                accountStorage.Create(accountName, balance, userId);
+                MessageBox.Show($"Счет добавлен пользователю {user.Name}!=)");
             }
         }
 

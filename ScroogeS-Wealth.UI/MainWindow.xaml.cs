@@ -53,8 +53,7 @@ namespace ScroogeS_Wealth.UI
             if (userName != "" && CheckUsersForSameName(userName) == false)
             {
                 UserStorage user = new UserStorage();
-                user.CreateUser(userName);
-                User userToAdd = new User(userName);
+                User userToAdd = user.CreateUser(userName).Body;
                 _users.Add(userToAdd);
                 MessageBox.Show("Пользователь успешно добавлен! =)");
             }
@@ -63,8 +62,8 @@ namespace ScroogeS_Wealth.UI
         private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
         {
             User user = (User)usersComboBox.SelectedItem;
-            _users.Remove(user);
             int userId = user.Id;
+            _users.Remove(user);
             UserStorage userStorage = new UserStorage();
             userStorage.Remove(userId);
             MessageBox.Show($"Пользователь {user.Name} удален!");
