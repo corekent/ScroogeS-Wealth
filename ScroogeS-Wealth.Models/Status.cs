@@ -8,7 +8,7 @@ namespace ScroogeS_Wealth.Models
 {
     public enum Status
     {
-        Bad = 0,
-        Ok = 1
+        Bad,
+        Ok
     }
 }

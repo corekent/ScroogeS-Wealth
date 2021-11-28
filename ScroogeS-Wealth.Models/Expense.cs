@@ -13,15 +13,12 @@ namespace ScroogeS_Wealth.Models
         public string Name { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
-        public Expense()
-        {
-        }
+
         public Expense(string name, decimal amount, DateTime date)
         {
             Name = name;
             Amount = amount;
             Date = date;
         }
-
     }
 }
