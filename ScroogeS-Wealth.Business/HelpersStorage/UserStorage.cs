@@ -24,6 +24,11 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
         }
         public Result<User> Remove(int id)
         {
+            var user = _userStore.Get().FirstOrDefault(x => x.Id == id);
+            if (user is null)
+            {
+                return new Result<User>(0, ServiceMessages.entityNotFound);
+            }
             _userStore.Remove(id);
             return new Result<User>(1, ServiceMessages.deletionCompleted);
         }
