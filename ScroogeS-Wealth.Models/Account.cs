@@ -9,8 +9,6 @@ namespace ScroogeS_Wealth.Models
 {
     public class Account : AssetModel, IBaseModel
     {
-        public Account() { }
-
         public Account(string name, decimal balance)
         {
             Name = name;

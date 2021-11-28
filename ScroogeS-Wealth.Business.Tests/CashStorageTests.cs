@@ -8,6 +8,7 @@ namespace ScroogeS_Wealth.Business.Tests
 {
     public class CashStorageTests
     {
+
         private CashStorage _cashStorage = new CashStorage();
         private GenericStorage<User> _users = new GenericStorage<User>();
         [SetUp]
@@ -23,7 +24,9 @@ namespace ScroogeS_Wealth.Business.Tests
         }
 
 
-        [TestCase(0, "Кошель", 450, 1)]
+
+
+        [TestCase(0, "ГЉГ®ГёГҐГ«Гј", 450, 1)]
         public void CreateTest(int index, string name, decimal balance, int id)
         {
             Result<Cash> actual = _cashStorage.Create(name, balance, id);
@@ -31,7 +34,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(3, "Кошель", 450, 100)]
+        [TestCase(3, "ГЉГ®ГёГҐГ«Гј", 450, 100)]
         public void NegativeCreateTest(int index, string name, decimal balance, int userId)
         {
             Result<Cash> actual = _cashStorage.Create(name, balance, userId);
@@ -39,9 +42,9 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        
 
-        [TestCase(1,"Кошель",450,"Под подушкой", 1)]
+
+        [TestCase(1,"ГЉГ®ГёГҐГ«Гј",450,"ГЏГ®Г¤ ГЇГ®Г¤ГіГёГЄГ®Г©", 1)]
         public void SetnameTest(int index, string name, decimal balance, string newName, int userId)
         {
             Result<Cash> temp = _cashStorage.Create(name, balance, userId);
@@ -51,7 +54,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
         
-        [TestCase(2, "Кошель", 450, 1450, 1)]
+        [TestCase(2, "ГЉГ®ГёГҐГ«Гј", 450, 1450, 1)]
         public void SetBalanceTest(int index, string name, decimal balance, decimal newBalance, int userId)
         {
             Result<Cash> temp = _cashStorage.Create(name, balance, userId);
@@ -61,7 +64,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("Кошель", 450, 450, 1)]
+        [TestCase("ГЉГ®ГёГҐГ«Гј", 450, 450, 1)]
         public void GetBalanceTest(string name, decimal balance, decimal expBalance, int userId)
         {
             Result<Cash> temp = _cashStorage.Create(name, balance, userId);

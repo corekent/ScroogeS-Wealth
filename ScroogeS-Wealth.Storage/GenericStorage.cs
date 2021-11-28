@@ -127,6 +127,7 @@ namespace ScroogeS_Wealth.Storage
             var relativePath = $"{type}.json";
             var fullPath = Path.Combine(appDir, relativePath);
             return fullPath;
+
         }
     }
 }
