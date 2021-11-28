@@ -30,10 +30,10 @@ namespace ScroogeS_Wealth.Business.Tests
             Income income1 = new Income("Gift", 5000, date1);
             Income income2 = new Income("Deal", 50000, date2);
             Income income3 = new Income("Pay", 1450, date3);
-            Result<Income> temp1 = new Result<Income>(1, ServiceMessages.Created);
-            Result<Income> temp2 = new Result<Income>(1, ServiceMessages.nameChanged);
-            Result<Income> temp3 = new Result<Income>(1, ServiceMessages.balanceChanged);
-            Result<Income> temp4 = new Result<Income>(0, ServiceMessages.entityNotFound);
+            //Result<Income> temp1 = new Result<Income>(1, ServiceMessages.Created);
+            //Result<Income> temp2 = new Result<Income>(1, ServiceMessages.nameChanged);
+            //Result<Income> temp3 = new Result<Income>(1, ServiceMessages.summChanged);
+            //Result<Income> temp4 = new Result<Income>(0, ServiceMessages.entityNotFound);
             return index switch
             {
                 0 => income1,
@@ -53,7 +53,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Income income3 = new Income("Pay", 1450, date3);
             Result<Income> temp1 = new Result<Income>(1, ServiceMessages.incomeAdded);
             Result<Income> temp2 = new Result<Income>(1, ServiceMessages.nameChanged);
-            Result<Income> temp3 = new Result<Income>(1, ServiceMessages.balanceChanged);
+            Result<Income> temp3 = new Result<Income>(1, ServiceMessages.summChanged);
             Result<Income> temp4 = new Result<Income>(0, ServiceMessages.entityNotFound);
             return index switch
             {
