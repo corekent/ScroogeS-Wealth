@@ -6,7 +6,35 @@
              xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="PapayaWhip">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Выберите пользователя" FontSize="14" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold"
+                   HorizontalAlignment="Center"  Height="17" />
+        <ComboBox x:Name="usersComboBox" Grid.Column="2" VerticalAlignment="Bottom"
+                  Margin="40,0,40,0" ItemsSource="{Binding}" DisplayMemberPath="Name"/>
+        <TextBlock Text="Введите название:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Height="17" HorizontalAlignment="Right"/>
+        <TextBox x:Name="cardNameBox" Grid.Column="1" VerticalAlignment="Center"
+                   Height="28"/>
+        <TextBlock Text="Введите баланс:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="1" Height="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox x:Name="cardBalanceBox" Grid.Column="1" Grid.Row="1"
+                   Height="28" VerticalAlignment="Center"/>
+        <Button Content="Добавить карту" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold" Height="40" Width="120"
+                Grid.Row="3" VerticalAlignment="Top" Background="gold" Click="Button_AddCard_Click"/>
     </Grid>
 </UserControl>

@@ -21,8 +21,7 @@ namespace ScroogeS_Wealth.UI
     /// <summary>
     /// Interaction logic for CardTab.xaml
     /// </summary>
-    public partial class CardTab : UserControl
-    {
+
         public partial class CardTab : UserControl
         {
             private ObservableCollection<User> _users;
@@ -115,4 +114,5 @@ namespace ScroogeS_Wealth.UI
                 return false;
             }
         }
+    
 }
