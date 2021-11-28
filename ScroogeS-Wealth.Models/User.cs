@@ -23,5 +23,14 @@ namespace ScroogeS_Wealth.Models
             Cash = new List<Cash>();
             Credits = new List<Credit>();
         }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            User m = obj as User;
+            if (m as User == null)
+                return false;
+            return m.Name == Name;
+        }
     }
 }
