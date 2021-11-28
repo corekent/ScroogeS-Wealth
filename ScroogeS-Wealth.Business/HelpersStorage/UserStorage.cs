@@ -22,5 +22,10 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
             _userStore.Add(user);
             return new Result<User>(1, user, ServiceMessages.Created);
         }
+        public Result<User> Remove(int id)
+        {
+            _userStore.Remove(id);
+            return new Result<User>(1, ServiceMessages.deletionCompleted);
+        }
     }
 }
