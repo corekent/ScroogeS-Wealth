@@ -127,7 +127,6 @@ namespace ScroogeS_Wealth.Storage
             var relativePath = $"{type}.json";
             var fullPath = Path.Combine(appDir, relativePath);
             return fullPath;
-            //return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
         }
     }
 }

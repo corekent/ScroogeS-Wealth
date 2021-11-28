@@ -11,18 +11,18 @@ namespace ScroogeS_Wealth.Business.Tests
 {
     public class AccountStorageTests
     {
-        private AccountStorage _accountStorage;       
+        private AccountStorage _accountStorage = new AccountStorage();        
+
         [SetUp]
         public void Setup()
         {
-            _accountStorage = new AccountStorage();            
+
         }
 
         [TestCase(0, "My Precious", 20450)]
         public void CreateTest(int index, string name, decimal balance)
         {
-            User user = AccountTestData.GetUserForTests();
-            int userId = user.Id;
+            User userId = AccountTestData.GetUserForTests();
             Result<Account> actual = _accountStorage.Create(name, balance, userId);
             Result<Account> expected = AccountTestData.GetResultForTest(index);
             Assert.AreEqual(expected, actual);
@@ -42,8 +42,7 @@ namespace ScroogeS_Wealth.Business.Tests
         [TestCase(1, "MainAccount", 400350, "LovelyAccount")]
         public void SetnameTest(int index, string name, decimal balance, string newName)
         {
-            User user = AccountTestData.GetUserForTests();
-            int userId = user.Id;
+            User userId = AccountTestData.GetUserForTests();
             Result<Account> temp = _accountStorage.Create(name, balance, userId);
             Result<Account> actual = _accountStorage.SetName(temp.Body.Id, newName);
             Result<Account> expected = AccountTestData.GetResultForTest(index);
@@ -54,8 +53,7 @@ namespace ScroogeS_Wealth.Business.Tests
         [TestCase(2, "My Precious", 4050, 1450)]
         public void SetBalanceTest(int index, string name, decimal balance, decimal newBalance)
         {
-            User user = AccountTestData.GetUserForTests();
-            int userId = user.Id;
+            User userId = AccountTestData.GetUserForTests();
             Result<Account> temp = _accountStorage.Create(name, balance, userId);
             Result<Account> actual = _accountStorage.SetBalance(temp.Body.Id, newBalance);
             Result<Account> expected = AccountTestData.GetResultForTest(index);
@@ -66,8 +64,7 @@ namespace ScroogeS_Wealth.Business.Tests
         [TestCase("My Precious", 450, 450)]
         public void GetBalanceTest(string name, decimal balance, decimal expBalance)
         {
-            User user = AccountTestData.GetUserForTests();
-            int userId = user.Id;
+            User userId = AccountTestData.GetUserForTests();
             Result<Account> temp = _accountStorage.Create(name, balance, userId);
             decimal actual = _accountStorage.GetBalance(temp.Body.Id);
             decimal expected = expBalance;

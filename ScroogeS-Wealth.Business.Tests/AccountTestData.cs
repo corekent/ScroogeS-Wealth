@@ -18,6 +18,11 @@ namespace ScroogeS_Wealth.Business.Tests
             User user1 = temp.Body;
             return user1;
         }
+        public static int GetUserId(User user)
+        {
+            int userId = user.Id;
+            return userId;
+        }
         public static Result<Account> GetResultForTest(int index)
         {
             Account account1 = new Account("My Precious", 20450);
