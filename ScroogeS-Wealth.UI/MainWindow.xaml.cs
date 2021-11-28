@@ -25,6 +25,10 @@ namespace ScroogeS_Wealth.UI
     public partial class MainWindow : Window
     {
         private ObservableCollection<User> _users;
+        private ObservableCollection<Deposit> _deposits;
+        private ObservableCollection<Card> _cards;
+        private ObservableCollection<Account> _accounts;
+        private ObservableCollection<Cash> _cash;
 
         public MainWindow()
         {
@@ -62,6 +66,7 @@ namespace ScroogeS_Wealth.UI
             MessageBox.Show($"Пользователь {user.Name} удален!");
             UserLogic userToDelete = new UserLogic();
             userToDelete.RemoveUser(id);
+            
         }
 
         private bool CheckUsersForSameName(string name)

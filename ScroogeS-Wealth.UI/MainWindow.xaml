@@ -42,10 +42,10 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Карты" Background="PapayaWhip" Width="90">
-                
+                <local:CardTab/>
             </TabItem>
             <TabItem Header="Счета" Background="PapayaWhip" Width="90">
-
+                <local:AccountTab/>
             </TabItem>
             <TabItem Header="Вклады" Background="PapayaWhip" Width="90">
                 <local:DepositTab/>
