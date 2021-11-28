@@ -77,7 +77,7 @@ namespace ScroogeS_Wealth.UI
             {
                 DepositStorage deposit = new DepositStorage();
                 deposit.Create(depositName, balance, userId);
-                MessageBox.Show("Вклад добавлен!=)");
+                MessageBox.Show($"Вклад добавлен пользователю {user.Name}!=)");
             }
         }
 
