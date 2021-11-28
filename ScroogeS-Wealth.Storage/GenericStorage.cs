@@ -26,10 +26,6 @@ namespace ScroogeS_Wealth.Storage
 
         public List<T> Get()
         {
-            //if (!File.Exists(_filePath))
-            //{
-            //    using (File.Create(_filePath)) ;
-            //}
             string textFromFile = File.ReadAllText(_filePath);
             List<T> elements = new List<T>();
             try
