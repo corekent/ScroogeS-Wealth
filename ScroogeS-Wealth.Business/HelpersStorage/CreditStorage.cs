@@ -28,7 +28,6 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
                 return new Result<Credit>(0, ServiceMessages.entityNotFound);
             }
             user.Credits.Add(credit);
-            user.Balance += balance;
             _userStorage.Update(user, user.Id);
             return new Result<Credit>(1, credit, ServiceMessages.Created);
         }
