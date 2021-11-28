@@ -48,11 +48,11 @@
                      Grid.Row="4" Grid.Column="1" FontSize="14" FontWeight="Normal" Width="234"  VerticalAlignment="Center"/>
         <RadioButton x:Name="increaseAndDecreaseDepositRadioBtn" Content="Вклад на пополнение и снятие" Grid.Column="1"
                      Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="222" FontSize="14" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="sliderText" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"/>
+        <TextBlock x:Name="sliderText" Grid.Row="5" VerticalAlignment="Center" FontSize="14" Grid.ColumnSpan="3" Margin="228,0,183,0"/>
         <Slider x:Name="depositMonthsSlider" HorizontalAlignment="Left" Margin="213,55,0,0" Grid.Row="5" VerticalAlignment="Top" Width="384" Grid.ColumnSpan="3"
                 Minimum="3" Maximum="12" IsSnapToTickEnabled="True" TickFrequency="3" Grid.RowSpan="2"
                 ValueChanged="slider1_ValueChanged" Value="{Binding MoneyAmountWithPercent}"/>
         <Button Content="Добавить вклад" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold" Height="40" Width="120"
-                Grid.Row="7" VerticalAlignment="Top" Background="gold" Click="Button_AddDeposit_Click"/>
+                Grid.Row="6" VerticalAlignment="Bottom" Background="gold" Click="Button_AddDeposit_Click"/>
     </Grid>
 </UserControl>
