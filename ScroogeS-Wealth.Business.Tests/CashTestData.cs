@@ -1,4 +1,5 @@
 ﻿using Core;
+using ScroogeS_Wealth.Business.HelpersStorage;
 using ScroogeS_Wealth.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,14 @@ namespace ScroogeS_Wealth.Business.Tests
 {
     public class CashTestData
     {
-       
+        public static User GetUserForTests()
+        {
+            UserStorage user = new UserStorage();
+            Result<User> temp = user.CreateUser("Mr.Nobody");
+            User user1 = temp.Body;
+            return user1;
+        }
+
         public static Result<Cash> GetResultForTest(int index)
         {
             Cash cash1 = new Cash("Кошель", 450);

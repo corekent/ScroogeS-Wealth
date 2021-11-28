@@ -17,6 +17,10 @@ namespace ScroogeS_Wealth.Business.Tests
         [SetUp]
         public void Setup()
         {
+            
+        }
+        public void tearDown()
+        {
             var users = _users.Get();
             int id = users.Last().Id;
             _users.Remove(id);

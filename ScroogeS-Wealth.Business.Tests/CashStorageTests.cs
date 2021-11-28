@@ -1,20 +1,27 @@
 using NUnit.Framework;
 using ScroogeS_Wealth.Business.HelpersStorage;
 using ScroogeS_Wealth.Models;
+using ScroogeS_Wealth.Storage;
+using System.Linq;
 
 namespace ScroogeS_Wealth.Business.Tests
 {
     public class CashStorageTests
     {
-        private CashStorage _cashStorage;
-        private UserStorage _user;
+        private CashStorage _cashStorage = new CashStorage();
+        private GenericStorage<User> _users = new GenericStorage<User>();
         [SetUp]
         public void Setup()
         {
-            _cashStorage = new CashStorage();
-            _user = new UserStorage();
-            _user.CreateUser("Mr.Nobody");
+
         }
+        public void tearDown()
+        {
+            var users = _users.Get();
+            int id = users.Last().Id;
+            _users.Remove(id);
+        }
+
 
         [TestCase(0, "Кошель", 450, 1)]
         public void CreateTest(int index, string name, decimal balance, int id)

@@ -14,7 +14,7 @@ namespace ScroogeS_Wealth.Business.Tests
         public static User GetUserForTests()
         {
             UserStorage user = new UserStorage();
-            Result<User> temp = user.CreateUser("Mr.Nobody");
+            Result<User> temp = user.CreateUser("Mr.AccountUser");
             User user1 = temp.Body;
             return user1;
         }
