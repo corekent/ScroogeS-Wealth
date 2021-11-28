@@ -26,15 +26,17 @@ namespace ScroogeS_Wealth.Business.Tests
 
 
 
-        [TestCase(0, "Êîøåëü", 450, 1)]
-        public void CreateTest(int index, string name, decimal balance, int id)
+        [TestCase(0, "Кошель", 450)]
+        public void CreateTest(int index, string name, decimal balance)
         {
-            Result<Cash> actual = _cashStorage.Create(name, balance, id);
+            User user = AccountTestData.GetUserForTests();
+            int userId = user.Id;
+            Result<Cash> actual = _cashStorage.Create(name, balance, userId);
             Result<Cash> expected = CashTestData.GetResultForTest(index);
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(3, "Êîøåëü", 450, 100)]
+        [TestCase(3, "Кошель", 450, 10000)]
         public void NegativeCreateTest(int index, string name, decimal balance, int userId)
         {
             Result<Cash> actual = _cashStorage.Create(name, balance, userId);
@@ -44,9 +46,11 @@ namespace ScroogeS_Wealth.Business.Tests
 
 
 
-        [TestCase(1,"Êîøåëü",450,"Ïîä ïîäóøêîé", 1)]
-        public void SetnameTest(int index, string name, decimal balance, string newName, int userId)
+        [TestCase(1, "Кошель", 450, "Под подушкой")]
+        public void SetnameTest(int index, string name, decimal balance, string newName)
         {
+            User user = AccountTestData.GetUserForTests();
+            int userId = user.Id;
             Result<Cash> temp = _cashStorage.Create(name, balance, userId);
             Result<Cash> actual = _cashStorage.SetName(temp.Body.Id, newName);
             Result<Cash> expected = CashTestData.GetResultForTest(index);
@@ -54,9 +58,11 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
         
-        [TestCase(2, "Êîøåëü", 450, 1450, 1)]
-        public void SetBalanceTest(int index, string name, decimal balance, decimal newBalance, int userId)
+        [TestCase(2, "Кошель", 450, 1450)]
+        public void SetBalanceTest(int index, string name, decimal balance, decimal newBalance)
         {
+            User user = AccountTestData.GetUserForTests();
+            int userId = user.Id;
             Result<Cash> temp = _cashStorage.Create(name, balance, userId);
             Result<Cash> actual = _cashStorage.SetBalance(temp.Body.Id, newBalance);
             Result<Cash> expected = CashTestData.GetResultForTest(index);
@@ -64,9 +70,11 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("Êîøåëü", 450, 450, 1)]
-        public void GetBalanceTest(string name, decimal balance, decimal expBalance, int userId)
+        [TestCase("Кошель", 450, 450)]
+        public void GetBalanceTest(string name, decimal balance, decimal expBalance)
         {
+            User user = AccountTestData.GetUserForTests();
+            int userId = user.Id;
             Result<Cash> temp = _cashStorage.Create(name, balance, userId);
             decimal actual = _cashStorage.GetBalance(temp.Body.Id);
             decimal expected = expBalance;            

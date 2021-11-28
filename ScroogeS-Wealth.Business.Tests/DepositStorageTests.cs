@@ -27,7 +27,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(3, "Накопительный", 210000, 100)]
+        [TestCase(3, "Накопительный", 210000, 0)]
         public void NegativeCreateTest(int idx, string name, decimal balance, int userId)
         {
             Result<Deposit> actual = _depositStorage.Create(name, balance, userId);

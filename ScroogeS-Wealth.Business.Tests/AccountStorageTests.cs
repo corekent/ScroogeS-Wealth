@@ -36,14 +36,14 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        //Метода нет такого
-        //[TestCase(3, "MainAccount", 50550, 200000)]
-        //public void NegativeCreateTest(int index, string name, decimal balance, int userId)
-        //{
-        //    Result<Account> actual = _accountStorage.Create(name, balance, userId);
-        //    Result<Account> expected = AccountTestData.GetResultForTest(index);
-        //    Assert.AreEqual(expected, actual);
-        //}
+        
+        [TestCase(3, "MainAccount", 50550, 200000)]
+        public void NegativeCreateTest(int index, string name, decimal balance, int userId)
+        {
+            Result<Account> actual = _accountStorage.Create(name, balance, userId);
+            Result<Account> expected = AccountTestData.GetResultForTest(index);
+            Assert.AreEqual(expected, actual);
+        }
 
 
 
