@@ -10,21 +10,21 @@ namespace ScroogeS_Wealth.Business.HelpersCalc
     public static class CalcFormula
     {
 
-        public static decimal CalcAmount(int id, double procent, DateTime dateStart, DateTime dateEnd)
+        public static decimal CalcBalance(decimal balance, decimal percent, DateTime openingDate, int months)
         {
             var deposit = new DepositStorage();
-            decimal balance = deposit.GetBalance(id);
-            decimal amountProcent = CalcAnountProcent(procent, dateStart, dateEnd);
-            balance = balance + amountProcent;
+            DateTime closingDate = openingDate.AddMonths(months);
+            decimal amountOfPercent = CalcAmountOfPercent(percent, openingDate, closingDate);
+            balance += balance * (amountOfPercent / 100);
             return balance;
         }
 
-        public static decimal CalcAnountProcent(double procent, DateTime dateStart, DateTime dateEnd)
+        public static decimal CalcAmountOfPercent(decimal percent, DateTime openingDate, DateTime closingDate)
         {
-            double everyDayProcent = procent / 365;
-            int days = CalcDate.CountDays(dateStart, dateEnd);
-            decimal amount = (decimal)everyDayProcent * days;
-            return amount;
+            decimal everyDayPercent = percent / 365;
+            int days = CalcDate.CountDays(openingDate, closingDate);
+            decimal amountOfPercent = (decimal)everyDayPercent * days;
+            return amountOfPercent;
         }
 
         public static decimal CalcMortgageMonthAmout(double allSum, double percentYears, DateTime dateStart, DateTime dateEnd)

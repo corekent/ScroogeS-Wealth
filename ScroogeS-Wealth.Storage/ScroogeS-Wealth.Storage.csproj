@@ -9,8 +9,4 @@
     <ProjectReference Include="..\Core\ScroogeS-Wealth.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-
 </Project>

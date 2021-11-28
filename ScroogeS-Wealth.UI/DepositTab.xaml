@@ -13,16 +13,46 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Выберите пользователя" FontSize="14" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="2" Height="17" Margin="266,10,0,0"/>
-        <ComboBox x:Name="userComboBox" Grid.Column="2" VerticalAlignment="Center"
+        <TextBlock Text="Выберите пользователя" FontSize="14" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold"
+                   HorizontalAlignment="Center"  Height="17" />
+        <ComboBox x:Name="usersComboBox" Grid.Column="2" VerticalAlignment="Bottom"
                   Margin="40,0,40,0" ItemsSource="{Binding}" DisplayMemberPath="Name"/>
-
-
+        <TextBlock Text="Введите название:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Height="17" HorizontalAlignment="Right"/>
+        <TextBox x:Name="depositNameBox" Grid.Column="1" VerticalAlignment="Center"
+                   Height="28"/>
+        <TextBlock Text="Введите сумму:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="1" Height="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox x:Name="depositBalanceBox" Grid.Column="1" Grid.Row="1"
+                   Height="28" VerticalAlignment="Center"/>
+        <TextBlock Text="Дата открытия вклада:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="2" Height="17" HorizontalAlignment="Right" />
+        <DatePicker x:Name="depositOpeningDatePicker" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
+                   Height="25"/>
+        <TextBlock Text="Введите процент:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="3" Height="17" HorizontalAlignment="Right"/>
+        <TextBox x:Name="depositPercentBox" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
+                   Height="28"/>
+        <TextBlock Text="Выберите тип вклада:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="4" Height="17" HorizontalAlignment="Right"/>
+        <RadioButton x:Name="increaseDepositRadioBtn" Content="Вклад на пополнение" HorizontalAlignment="Left"
+                     Grid.Row="4" Grid.Column="1" FontSize="14" FontWeight="Normal" Width="234"  VerticalAlignment="Center"/>
+        <RadioButton x:Name="increaseAndDecreaseDepositRadioBtn" Content="Вклад на пополнение и снятие" Grid.Column="1"
+                     Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="222" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="sliderText" Grid.Row="5" VerticalAlignment="Center" FontSize="14" Grid.ColumnSpan="3" Margin="228,0,183,0"/>
+        <Slider x:Name="depositMonthsSlider" HorizontalAlignment="Left" Margin="213,55,0,0" Grid.Row="5" VerticalAlignment="Top" Width="384" Grid.ColumnSpan="3"
+                Minimum="3" Maximum="12" IsSnapToTickEnabled="True" TickFrequency="3" Grid.RowSpan="2"
+                ValueChanged="slider1_ValueChanged" Value="{Binding MoneyAmountWithPercent}"/>
+        <Button Content="Добавить вклад" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold" Height="40" Width="120"
+                Grid.Row="6" VerticalAlignment="Bottom" Background="gold" Click="Button_AddDeposit_Click"/>
     </Grid>
 </UserControl>
