@@ -13,7 +13,7 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
     {
         GenericStorage<Account> _accountStorage = new GenericStorage<Account>();
         GenericStorage<User> _userStorage = new GenericStorage<User>();
-        
+
         public override Result<Account> Create(string name, decimal balance, int userId)
         {
             var accounts = _accountStorage.Get();
