@@ -16,5 +16,14 @@ namespace ScroogeS_Wealth.Models
             Name = name;
             Balance = balance;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Account m = obj as Account;
+            if (m as Account == null)
+                return false;
+            return m.Name == Name && m.Balance == Balance;
+        }
     }
 }

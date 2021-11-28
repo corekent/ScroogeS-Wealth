@@ -14,7 +14,7 @@ namespace ScroogeS_Wealth.Storage
     {
 
         private string _filePath;
-        
+
         public GenericStorage()
         {
             _filePath = GetFilePath();
@@ -23,12 +23,12 @@ namespace ScroogeS_Wealth.Storage
                 File.Create(_filePath);
             }
         }
-        
+
         public List<T> Get()
         {
             //if (!File.Exists(_filePath))
             //{
-            //    using (File.Create(_filePath));
+            //    using (File.Create(_filePath)) ;
             //}
             string textFromFile = File.ReadAllText(_filePath);
             List<T> elements = new List<T>();
@@ -36,14 +36,14 @@ namespace ScroogeS_Wealth.Storage
             {
                 elements = JsonSerializer.Deserialize<List<T>>(textFromFile);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 elements = new List<T>();
             }
             return elements;
         }
-        
-        
+
+
         public T Add(T element)
         {
             var elements = Get();
@@ -122,9 +122,12 @@ namespace ScroogeS_Wealth.Storage
 
         private string GetFilePath()
         {
-            var type = typeof(T).Name;            
-
-            return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
+            var type = typeof(T).Name;
+            var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var relativePath = $"{type}.json";
+            var fullPath = Path.Combine(appDir, relativePath);
+            return fullPath;
+            //return $"C:\\Users\\user\\source\\repos\\ScroogeS-Wealth\\ScroogeS-Wealth.Storage\\App_Data\\{type}.json";
         }
     }
 }

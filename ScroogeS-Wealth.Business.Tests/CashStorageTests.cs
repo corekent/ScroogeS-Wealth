@@ -4,13 +4,16 @@ using ScroogeS_Wealth.Models;
 
 namespace ScroogeS_Wealth.Business.Tests
 {
-    public class CashLogicTests
+    public class CashStorageTests
     {
         private CashStorage _cashStorage;
+        private UserStorage _user;
         [SetUp]
         public void Setup()
         {
             _cashStorage = new CashStorage();
+            _user = new UserStorage();
+            _user.CreateUser("Mr.Nobody");
         }
 
         [TestCase(0, "Кошель", 450, 1)]
@@ -29,15 +32,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestCase(1, 1, 1, "Подушка", 450)]
-        //public void Remove(int index, int indexExp, int id, string name, decimal balance)
-        //{
-        //    //List<Cash> temp = CashTestData.GetListForTest(index);
-        //    Result<Cash> temp = _cashLogic.Create(name, balance, id);
-        //    Result<Cash> actual = _cashLogic.Remove(temp.Body.Id);
-        //    Result<Cash> expected = CashTestData.GetResultForTest(indexExp);
-        //    Assert.AreEqual(expected, actual);
-        //}
+        
 
         [TestCase(1,"Кошель",450,"Под подушкой", 1)]
         public void SetnameTest(int index, string name, decimal balance, string newName, int userId)
