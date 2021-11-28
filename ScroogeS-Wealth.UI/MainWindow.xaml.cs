@@ -1,4 +1,5 @@
 ﻿using ScroogeS_Wealth.Business;
+using ScroogeS_Wealth.Business.HelpersStorage;
 using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
@@ -40,7 +41,7 @@ namespace ScroogeS_Wealth.UI
 
             if (userName != "" && CheckForSameName(userName) == false)
             {
-                UserLogic user = new UserLogic();
+                UserStorage user = new UserStorage();
                 user.CreateUser(userName);
                 User userToAdd = new User(userName);
                 _users.Add(userToAdd);
@@ -54,7 +55,7 @@ namespace ScroogeS_Wealth.UI
             _users.Remove(user);
             int id = user.Id;
             MessageBox.Show($"Пользователь {user.Name} удален!");
-            UserLogic userToDelete = new UserLogic();
+            UserStorage userToDelete = new UserStorage();
            // userToDelete.RemoveUser(id);
         }
 
