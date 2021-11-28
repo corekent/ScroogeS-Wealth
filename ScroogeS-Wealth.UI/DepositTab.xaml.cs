@@ -1,4 +1,6 @@
-﻿using ScroogeS_Wealth.Models;
+﻿using ScroogeS_Wealth.Business.HelpersCalc;
+using ScroogeS_Wealth.Business.HelpersStorage;
+using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,6 @@ namespace ScroogeS_Wealth.UI
         private ObservableCollection<User> _users;
         private ObservableCollection<Deposit> _deposits;
         private MainWindow _mainWindow = Window.GetWindow(Application.Current.MainWindow) as MainWindow;
-        public decimal MoneyAmountWithPercent { get; set; }
 
         public DepositTab()
         {
@@ -74,8 +75,9 @@ namespace ScroogeS_Wealth.UI
             if (depositName != "" && CheckDepositsForSameName(depositName) == false
                 && balance != 0 && percent != 0 && date != default && user != null)
             {
-                //DepositLogic deposit = new DepositLogic();
-                //deposit.Create(depositName, balance, 1);
+                DepositStorage deposit = new DepositStorage();
+                deposit.Create(depositName, balance, userId);
+                MessageBox.Show($"Вклад добавлен пользователю {user.Name}!=)");
             }
         }
 
@@ -140,6 +142,31 @@ namespace ScroogeS_Wealth.UI
                 }
             }
             return false;
+        }
+
+        private void slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            decimal balance = 0;
+
+            if (CheckInputDecimal(depositBalanceBox))
+            {
+                balance = Convert.ToDecimal(depositBalanceBox.Text);
+            }
+            decimal percent = 0;
+
+            if (CheckInputDecimal(depositPercentBox))
+            {
+                percent = Convert.ToDecimal(depositPercentBox.Text);
+            }
+            DateTime date = default;
+
+            if (CheckInputDateTime(depositOpeningDatePicker))
+            {
+                date = depositOpeningDatePicker.SelectedDate.Value.Date;
+            }
+            int months = Convert.ToInt32(depositMonthsSlider.Value);
+            decimal newBalance = Math.Round(CalcFormula.CalcBalance(balance, percent, date, months));
+            sliderText.Text = $"Через {depositMonthsSlider.Value.ToString()} месяцев у вас будет {newBalance} рублей"; 
         }
     }
 }

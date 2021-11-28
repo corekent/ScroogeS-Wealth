@@ -35,6 +35,7 @@ namespace ScroogeS_Wealth.UI
         {
             InitializeComponent();
             usersComboBox.ItemsSource = _users;
+            UserStorage user = new UserStorage();
         }
 
         public ObservableCollection<User> GetUserList()
@@ -63,11 +64,10 @@ namespace ScroogeS_Wealth.UI
         {
             User user = (User)usersComboBox.SelectedItem;
             _users.Remove(user);
-            int id = user.Id;
+            int userId = user.Id;
+            UserStorage userStorage = new UserStorage();
+            userStorage.Remove(userId);
             MessageBox.Show($"Пользователь {user.Name} удален!");
-            UserStorage userToDelete = new UserStorage();
-            //userToDelete.Remove(id);
-
         }
 
         private bool CheckUsersForSameName(string name)

@@ -18,11 +18,20 @@
                     <ComboBox x:Name="usersComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}"
                               DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
                     <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="Turquoise"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                                <Setter Property="BorderBrush" Value="black"/>
+                            </Style>
+
+                        </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" Width="*"/>
-                            <DataGridTextColumn Header="Тип" Width="*"/>
-                            <DataGridTextColumn Header="Баланс" Width="*"/>
-                            <DataGridTemplateColumn Header="Изменить" Width="*">
+                            <DataGridTextColumn Header="  Название" Width="*"/>
+                            <DataGridTextColumn Header="  Тип" Width="*"/>
+                            <DataGridTextColumn Header="  Баланс" Width="*"/>
+                            <DataGridTemplateColumn Header="  Удаление" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button x:Name="deleteDataButton" Content="Удалить" Click="Button_DeleteData_Click"/>
