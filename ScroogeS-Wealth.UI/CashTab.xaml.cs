@@ -105,7 +105,7 @@ namespace ScroogeS_Wealth.UI
         {
             foreach (var cash in _cashes)
             {
-                if (accountName == deposit.Name)
+                if (accountName == cash.Name)
                 {
                     return true;
                 }
