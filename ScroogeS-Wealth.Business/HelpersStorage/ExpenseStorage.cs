@@ -32,22 +32,12 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
             _elementStorage.Update(element, element.Id);
             return new Result<V>(1, ServiceMessages.expenseAdded);
         }
-        public Result<V> CreateConstExpense(string name, decimal amount, DateTime date, int fromId, int interval)////
-        {
-            var expense = Create(name, amount, date, fromId);
-            date.AddMonths(interval);
-            var expenseNext = Create(name, amount, date, fromId);
-            return new Result<V>(1, ServiceMessages.takeIntoAccountNextMonth);
-        }
+
         public Result<V> SetName(int id, string newName)
         {
             var element = _expenseStorage.FindById(id);
             element.Name = newName;
             return new Result<V>(1, ServiceMessages.nameChanged);
-        }
-        public Result<V> SetCategory(int id, string newName)////
-        {
-            return new Result<V>(1, ServiceMessages.categoryChanged);
         }
         public Result<V> SetAmount(int id, decimal newBalance)
         {

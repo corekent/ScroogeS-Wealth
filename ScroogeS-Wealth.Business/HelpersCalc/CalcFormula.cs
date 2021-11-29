@@ -32,7 +32,7 @@ namespace ScroogeS_Wealth.Business.HelpersCalc
         {
             double percentMonth = percentYears / 12;
             int creditTerm = CalcDate.CalcMonthCount(dateStart, dateEnd);
-            decimal monthAmount = Convert.ToDecimal((allSum * percentMonth) / (1 - (1 + percentMonth) * (1 - creditTerm)));
+            decimal monthAmount = Convert.ToDecimal(allSum * percentMonth / (1 - (1 + percentMonth) * (1 - creditTerm)));
             return Math.Round(monthAmount, 2);
         }
 
