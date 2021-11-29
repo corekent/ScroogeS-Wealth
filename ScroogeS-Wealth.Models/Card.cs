@@ -13,6 +13,7 @@ namespace ScroogeS_Wealth.Models
         {
             Name = name;
             Balance = balance;
+            Type = "Карта";
         }
 
     }

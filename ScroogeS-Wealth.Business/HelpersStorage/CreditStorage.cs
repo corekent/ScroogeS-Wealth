@@ -1,4 +1,5 @@
 ﻿using Core;
+using ScroogeS_Wealth.Business.HelpersCalc;
 using ScroogeS_Wealth.Models;
 using ScroogeS_Wealth.Storage;
 using System;
@@ -9,17 +10,20 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business.HelpersStorage
 {
-    class CreditStorage
+    public class CreditStorage
     {
         GenericStorage<Credit> _creditStorage = new GenericStorage<Credit>();
         GenericStorage<User> _userStorage = new GenericStorage<User>();
 
-        public Result<Credit> Create(string name, decimal balance, int userId, DateTime dateStart, DateTime dateEnd)
+        public Result<Credit> Create(string name, decimal balance, int userId, DateTime dateStart, DateTime dateEnd, double percent, string typeCredit)
         {
             var credits = _creditStorage.Get();
             Credit credit = new Credit(name, balance, dateStart, dateEnd);
             int creditId = _creditStorage.GetNextAvailableId(credits);
             credit.Id = creditId;
+            double sum = Convert.ToDouble(balance);
+            decimal monthAmount = CalcFormula.СhooseTypeOfLoan(typeCredit, sum, percent, dateStart, dateEnd);
+            credit.MonthAmount = monthAmount;
             _creditStorage.Add(credit);
             var users = _userStorage.Get();
             var user = users.FirstOrDefault(x => x.Id == userId);
@@ -37,13 +41,6 @@ namespace ScroogeS_Wealth.Business.HelpersStorage
             credit.Name = newName;
             return new Result<Credit>(1, credit, ServiceMessages.nameChanged);
         }
-        public void СhooseTypeOfLoan()
-        {
-
-        }
-        private void Mortgage()
-        {
-
-        }
+ 
     }
 }
