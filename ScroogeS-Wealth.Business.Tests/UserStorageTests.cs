@@ -35,7 +35,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Result<User> expected = UserTestData.GetResultForTest(index);
             Assert.AreEqual(expected, actual);
         }
-        [TestCase(3, 1)]
+        [TestCase(3, 0)]
         public void RemoveNegativeTest(int index, int id)
         {
             Result<User> actual = _userStorage.Remove(id);
