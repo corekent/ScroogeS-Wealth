@@ -4,9 +4,42 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ScroogeS_Wealth.UI"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             mc:Ignorable="d" MinHeight="750" MinWidth="950" MaxHeight="750" MaxWidth="950">
+    <Grid Background="LightYellow">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="411*"/>
+            <ColumnDefinition Width="533*"/>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox x:Name="usersComboBox" Margin ="183,37,174,684"  ItemsSource="{Binding}"
+                              DisplayMemberPath="Name" Grid.Column="1" Background="Gold" SelectionChanged="ComboBox_SelectionChanged"/>
+        <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" DataContext="{Binding}">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="black"/>
+                </Style>
+
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="  Название" Width="*" Binding ="{Binding Name}"/>
+                <DataGridTextColumn Header="  Тип" Width="*"/>
+                <DataGridTextColumn Header="  Баланс" Width="*" Binding ="{Binding Balance}"/>
+                <DataGridTemplateColumn Header="  Удаление" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="deleteDataButton" Content="Удалить" Click="Button_DeleteData_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="userNameBox" Grid.Column="1" Margin="189,113,175,0" TextWrapping="Wrap"
+                             VerticalAlignment="Top" Height="28"/>
+        <Button Content="Добавить расход"  Margin ="187,425,169,287"
+                            Click="Button_AddUser_Click" FontWeight="Bold"
+                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
     </Grid>
 </UserControl>
