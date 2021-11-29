@@ -26,16 +26,13 @@ namespace ScroogeS_Wealth.UI
     public partial class MainWindow : Window
     {
         private ObservableCollection<User> _users;
-        private ObservableCollection<Deposit> _deposits;
-        private ObservableCollection<Card> _cards;
-        private ObservableCollection<Account> _accounts;
-        private ObservableCollection<Cash> _cash;
+        public string Type { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             usersComboBox.ItemsSource = _users;
-            UserStorage user = new UserStorage();
+            DataContext = Type;
         }
 
         public ObservableCollection<User> GetUserList()
@@ -43,6 +40,33 @@ namespace ScroogeS_Wealth.UI
             GenericStorage<User> users = new GenericStorage<User>();
             _users = new ObservableCollection<User>(users.Get());
             return _users;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGridUserInfo.Items.Clear();
+            User user = (User)usersComboBox.SelectedItem;
+
+            if (user.Cards.Count != 0)
+            { 
+                DataGridUserInfo.Items.Add(user.Cards);
+                
+            }
+            if (user.Accounts.Count != 0)
+            {
+                DataGridUserInfo.Items.Add(user.Accounts);
+                Type = "Счет";
+            }
+            if (user.Cash.Count != 0)
+            {
+                DataGridUserInfo.Items.Add(user.Cash);
+                Type = "Копилка";
+            }
+            if (user.Deposits.Count != 0)
+            {
+                DataGridUserInfo.Items.Add(user.Deposits);
+                Type = "Вклад";
+            }
         }
 
         private void Button_AddUser_Click(object sender, RoutedEventArgs e)

@@ -16,8 +16,8 @@
                     </Grid.ColumnDefinitions>
                     <Image Margin ="95,200,94,50"  Grid.Column="1" Source="/Scrooge1.png"></Image>
                     <ComboBox x:Name="usersComboBox" Margin ="89,50,270,600"  ItemsSource="{Binding}"
-                              DisplayMemberPath="Name" Grid.Column="1" Background="Gold"/>
-                    <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" >
+                              DisplayMemberPath="Name" Grid.Column="1" Background="Gold" SelectionChanged="ComboBox_SelectionChanged"/>
+                    <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" DataContext="{Binding}">
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                 <Setter Property="Background" Value="Turquoise"/>
@@ -28,9 +28,9 @@
 
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="  Название" Width="*"/>
-                            <DataGridTextColumn Header="  Тип" Width="*"/>
-                            <DataGridTextColumn Header="  Баланс" Width="*"/>
+                            <DataGridTextColumn Header="  Название" Width="*" Binding ="{Binding Name}"/>
+                            <DataGridTextColumn Header="  Тип" Width="*"/> 
+                            <DataGridTextColumn Header="  Баланс" Width="*" Binding ="{Binding Balance}"/>
                             <DataGridTemplateColumn Header="  Удаление" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -66,7 +66,7 @@
 
             </TabItem>
             <TabItem Header="Расходы" Background="PapayaWhip" Width="90">
-
+                <local:ExpenseTab/>
             </TabItem>
             <TabItem Header="Кредиты" Background="PapayaWhip" Width="90">
 
