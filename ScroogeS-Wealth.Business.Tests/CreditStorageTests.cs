@@ -48,7 +48,7 @@ namespace ScroogeS_Wealth.Business.Tests
             Result<Credit> expected = CreditTestData.GetResultForTest(index);
             Assert.AreEqual(expected, actual);
         }
-        [TestCase(2, "InstallmentPayment", 100000, 1, 0, 1, 0.1, "Рассрочка")]
+        [TestCase(2, "InstallmentPayment", 100000, 1, 0, 1, 0, "Рассрочка")]
         public void CreateInstallmentPaymentTest(int index, string name, decimal allSum, int userId, int idxDateStart, int idxDateEnd, double percent, string typeCredit)
         {
             User user = _users.Get().Last();

@@ -68,6 +68,28 @@ namespace ScroogeS_Wealth.Business.HelpersCalc
                 TypeCredit.InstallmentPayment => monthAmount = CalcInstallmentPayment(allSum, dateStart, dateEnd),
                 _ => throw new NotImplementedException(),
             };
-        }    
+        }
+        public static decimal GetSumExpense(List<Expense> expenseStorage)
+        {
+            decimal allSum = 0;
+            int count = expenseStorage.Count();
+            for (int i = 1; i < count; i++)
+            {
+                var expense = expenseStorage.FirstOrDefault(x => x.Id == i);
+                allSum += expense.Amount;
+            }
+            return allSum;
+        }
+        public static decimal GetSumIncome(List<Income> incomeStorage)
+        {
+            decimal allSum = 0;
+            int count = incomeStorage.Count();
+            for (int i = 1; i < count; i++)
+            {
+                var income = incomeStorage.FirstOrDefault(x => x.Id == i);
+                allSum += income.Amount;
+            }
+            return allSum;
+        }
     }
 }
