@@ -32,6 +32,7 @@ namespace ScroogeS_Wealth.UI
             InitializeComponent();
             _users = _mainWindow.GetUserList();
             usersComboBox.ItemsSource = _users;
+
         }
         private void Button_AddCredit_Click(object sender, RoutedEventArgs e)
         {
@@ -45,11 +46,11 @@ namespace ScroogeS_Wealth.UI
             {
                 balance = Convert.ToDecimal(creditBalanceBox.Text);
             }
-            decimal percent = 0;
+            double percent = 0;
 
             if (CheckInputDecimal(creditPercentBox))
             {
-                percent = Convert.ToDecimal(creditPercentBox.Text);
+                percent = Convert.ToDouble(creditPercentBox.Text);
             }
             DateTime dateStart = default;
 
@@ -81,13 +82,19 @@ namespace ScroogeS_Wealth.UI
                 userId = user.Id;
             }
 
+            string typeCredit = TypeCredit.Mortgage;
+           
+
             if (creditName != "" && CheckCreditsForSameName(creditName) == false
-                && balance != 0 && dateEnd != default && percent!=0 && dateStart != default && user != null)
+                && balance != 0 && dateEnd != default && percent != 0 && dateStart != default && user != null)
             {
                 CreditStorage credit = new CreditStorage();
-                credit.Create(creditName, balance, userId, dateStart, dateEnd);
+                var cr=credit.Create(creditName, balance, userId, dateStart, dateEnd, percent, typeCredit);
                 MessageBox.Show($"Кредит добавлен пользователю {user.Name}!=)");
+                creditPayBox.Text = Convert.ToString(cr.Body.MonthAmount);
             }
+
+           
         }
         private bool CheckInputDecimal(TextBox input)
         {
@@ -135,21 +142,32 @@ namespace ScroogeS_Wealth.UI
         }
         private bool CheckInputDateTime(DatePicker input)
         {
-        if (DateTime.TryParse(input.Text, out _))
-        {
-            input.ToolTip = "";
-            input.Background = Brushes.White;
-            return true;
+            if (DateTime.TryParse(input.Text, out _))
+            {
+                input.ToolTip = "";
+                input.Background = Brushes.White;
+                return true;
+            }
+            else
+            {
+                input.ToolTip = "Это поле введено некорректно";
+                input.Background = Brushes.Red;
+                return false;
+            }
         }
-        else
-        {
-            input.ToolTip = "Это поле введено некорректно";
-            input.Background = Brushes.Red;
-            return false;
-        }
-    }
-    }
 
-    
-    
-}
+
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (MortgageButton == sender)
+            {
+                string typeCredit = TypeCredit.Mortgage;
+            }
+
+        }
+
+
+
+
+    } }

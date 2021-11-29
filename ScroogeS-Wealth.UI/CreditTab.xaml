@@ -56,10 +56,15 @@
                    Height="28" Margin="0,20,0,0" Grid.Column="1" Grid.Row="4"/>
         <TextBlock Text="Тип кредита:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
                    Grid.Row="6" Height="17" HorizontalAlignment="Right"/>
-        <ComboBox x:Name="CreditTypeComboBox" Grid.Column="1" VerticalAlignment="Center" Grid.Row="6" ItemsSource="{Binding}" DisplayMemberPath="Name" Height="37"/>
+        <RadioButton GroupName="TypeCredit"  x:Name="MortgageButton"  Content="Ипотека"  HorizontalAlignment="Left"
+                     Grid.Row="6" Grid.Column="1" FontSize="14" FontWeight="Normal" Width="93"  VerticalAlignment="Center" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="TypeCredit"   Content="Кредит" x:Name="LoanButton" Grid.Column="1" 
+                     Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="90" FontSize="14" Margin="98,0,0,8" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="TypeCredit" x:Name="InstallmentPayment"  Content="Рассрочка" Grid.Column="1" 
+                     Grid.Row="6" VerticalAlignment="Top" HorizontalAlignment="Left" Width="195" FontSize="14" Grid.ColumnSpan="2" Margin="193,15,0,0" Checked="RadioButton_Checked"/>
         <TextBlock Text="Cумма выплаты:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
                    Grid.Row="7" Height="17" HorizontalAlignment="Right"/>
-        <TextBox x:Name="creditPayBox" Grid.Column="1" Grid.Row="7"/>
+        <TextBlock x:Name="creditPayBox" Grid.Column="1" Grid.Row="7"/>
         <Button Content="Добавить кредит" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" Height="40" Width="120"
                 Grid.Row="8" VerticalAlignment="Center" Background="gold" Click="Button_AddCredit_Click" Margin="78,0,0,0"/>
     </Grid>
