@@ -69,7 +69,7 @@
 
             </TabItem>
             <TabItem Header="Кредиты" Background="PapayaWhip" Width="90">
-
+                <local:CreditTab/>
             </TabItem>
             <TabItem Header="Ипотека" Background="PapayaWhip" Width="90">
 

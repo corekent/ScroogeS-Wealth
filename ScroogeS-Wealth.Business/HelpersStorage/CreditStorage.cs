@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Business.HelpersStorage
 {
-    class CreditStorage
+   public class CreditStorage
     {
         GenericStorage<Credit> _creditStorage = new GenericStorage<Credit>();
         GenericStorage<User> _userStorage = new GenericStorage<User>();
