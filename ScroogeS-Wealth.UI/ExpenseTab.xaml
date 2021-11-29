@@ -21,9 +21,9 @@
 
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="  Пользователь" Width="*" Binding ="{Binding Name}"/>
+                <DataGridTextColumn Header="  Пользователь" Width="*" Binding ="{Binding Path=Name}"/>
                 <DataGridTextColumn Header="  Категория" Width="*" Binding ="{Binding Name}"/>
-                <DataGridTextColumn Header="  Сумма" Width="*" Binding ="{Binding Balance}"/>
+                <DataGridTextColumn Header="  Сумма" Width="*" Binding ="{Binding Path = Amount}"/>
                 <DataGridTextColumn Header="  Дата" Width="*" Binding ="{Binding Date}"/>
                 <DataGridTemplateColumn Header="  Удаление" Width="*">
                     <DataGridTemplateColumn.CellTemplate>

@@ -1,7 +1,9 @@
 ﻿using ScroogeS_Wealth.Business.HelpersStorage;
 using ScroogeS_Wealth.Models;
+using ScroogeS_Wealth.Storage;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +24,15 @@ namespace ScroogeS_Wealth.UI
     /// </summary>
     public partial class ExpenseTab : UserControl
     {
+        private ObservableCollection<User> _users;
+        private ObservableCollection<Expense> _expenses;
+        private MainWindow _mainWindow = Window.GetWindow(Application.Current.MainWindow) as MainWindow;
         public ExpenseTab()
         {
             InitializeComponent();
+            DataGridUserInfo.ItemsSource = _expenses;
+            _users = _mainWindow.GetUserList();
+            usersComboBox.ItemsSource = _users;
         }
 
         private void Button_AddUser_Click(object sender, RoutedEventArgs e)
