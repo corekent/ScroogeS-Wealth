@@ -27,47 +27,25 @@ namespace ScroogeS_Wealth.UI
             InitializeComponent();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DataGridUserInfo.Items.Clear();
-            User user = (User)usersComboBox.SelectedItem;
-
-            if (user.Cards.Count != 0)
-            {
-                DataGridUserInfo.Items.Add(user.Cards);
-            }
-
-            if (user.Accounts.Count != 0)
-            {
-                DataGridUserInfo.Items.Add(user.Accounts);
-            }
-
-            if (user.Cash.Count != 0)
-            {
-                DataGridUserInfo.Items.Add(user.Cash);
-            }
-
-            if (user.Deposits.Count != 0)
-            {
-                DataGridUserInfo.Items.Add(user.Deposits);
-            }
-        }
-
         private void Button_AddUser_Click(object sender, RoutedEventArgs e)
         {
-            string userName = userNameBox.Text.Trim();
-            CheckInputData(userName);
+            string expenseName = expenseNameBox.Text.Trim();
+            var user = usersComboBox.SelectedItem;
 
-            if (userName != "" && CheckUsersForSameName(userName) == false)
+            if (expenseName != "")
             {
-                UserStorage user = new UserStorage();
-                User userToAdd = user.CreateUser(userName).Body;
-                //_users.Add(userToAdd);
-                MessageBox.Show("Пользователь успешно добавлен! =)");
+                //ExpenseStorage<, Expense> expenseStorage = new ExpenseStorage<,Expense>();
+                //User userToAdd = user.CreateUser(expenseName).Body;
+                ////_users.Add(userToAdd);
+                //MessageBox.Show("Пользователь успешно добавлен! =)");
             }
         }
 
-        private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
+            private void Button_DeleteUser_Click(object sender, RoutedEventArgs e)
         {
             User user = (User)usersComboBox.SelectedItem;
             int userId = user.Id;
@@ -75,37 +53,6 @@ namespace ScroogeS_Wealth.UI
             UserStorage userStorage = new UserStorage();
             userStorage.Remove(userId);
             MessageBox.Show($"Пользователь {user.Name} удален!");
-        }
-
-        private bool CheckUsersForSameName(string name)
-        {
-            //foreach (var user in _users)
-            //{
-            //    if (name == user.Name)
-            //    {
-            //        return true;
-            //    }
-            //}
-            return false;
-        }
-
-        private void CheckInputData(string stringToCheck)
-        {
-            if (CheckUsersForSameName(stringToCheck))
-            {
-                userNameBox.ToolTip = "Это имя уже занято";
-                userNameBox.Background = Brushes.Red;
-            }
-            else if (stringToCheck == "")
-            {
-                userNameBox.ToolTip = "Это поле нельзя оставлять пустым";
-                userNameBox.Background = Brushes.Red;
-            }
-            else
-            {
-                userNameBox.ToolTip = "";
-                userNameBox.Background = Brushes.White;
-            }
         }
 
         private void Button_DeleteData_Click(object sender, RoutedEventArgs e)

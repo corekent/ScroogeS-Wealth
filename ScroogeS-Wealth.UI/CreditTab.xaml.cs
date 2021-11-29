@@ -85,7 +85,7 @@ namespace ScroogeS_Wealth.UI
                 && balance != 0 && dateEnd != default && percent!=0 && dateStart != default && user != null)
             {
                 CreditStorage credit = new CreditStorage();
-                credit.Create(creditName, balance, userId, dateStart, dateEnd);
+                //credit.Create(creditName, balance, userId, dateStart, dateEnd);
                 MessageBox.Show($"Кредит добавлен пользователю {user.Name}!=)");
             }
         }

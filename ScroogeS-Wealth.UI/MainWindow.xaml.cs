@@ -32,7 +32,6 @@ namespace ScroogeS_Wealth.UI
         {
             InitializeComponent();
             usersComboBox.ItemsSource = _users;
-            DataContext = Type;
         }
 
         public ObservableCollection<User> GetUserList()
@@ -47,25 +46,29 @@ namespace ScroogeS_Wealth.UI
             DataGridUserInfo.Items.Clear();
             User user = (User)usersComboBox.SelectedItem;
 
+            if(user == null)
+            {
+                return;
+            }
+
             if (user.Cards.Count != 0)
             { 
                 DataGridUserInfo.Items.Add(user.Cards);
-                
             }
+
             if (user.Accounts.Count != 0)
             {
                 DataGridUserInfo.Items.Add(user.Accounts);
-                Type = "Счет";
             }
+
             if (user.Cash.Count != 0)
             {
                 DataGridUserInfo.Items.Add(user.Cash);
-                Type = "Копилка";
             }
+
             if (user.Deposits.Count != 0)
             {
                 DataGridUserInfo.Items.Add(user.Deposits);
-                Type = "Вклад";
             }
         }
 

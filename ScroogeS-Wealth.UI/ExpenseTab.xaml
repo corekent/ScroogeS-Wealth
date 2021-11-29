@@ -10,9 +10,6 @@
             <ColumnDefinition Width="411*"/>
             <ColumnDefinition Width="533*"/>
         </Grid.ColumnDefinitions>
-
-        <ComboBox x:Name="usersComboBox" Margin ="183,37,174,684"  ItemsSource="{Binding}"
-                              DisplayMemberPath="Name" Grid.Column="1" Background="Gold" SelectionChanged="ComboBox_SelectionChanged"/>
         <DataGrid x:Name="DataGridUserInfo" Margin="0,0,500,0" Grid.ColumnSpan="2" DataContext="{Binding}">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -24,9 +21,10 @@
 
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="  Название" Width="*" Binding ="{Binding Name}"/>
-                <DataGridTextColumn Header="  Тип" Width="*"/>
-                <DataGridTextColumn Header="  Баланс" Width="*" Binding ="{Binding Balance}"/>
+                <DataGridTextColumn Header="  Пользователь" Width="*" Binding ="{Binding Name}"/>
+                <DataGridTextColumn Header="  Категория" Width="*" Binding ="{Binding Name}"/>
+                <DataGridTextColumn Header="  Сумма" Width="*" Binding ="{Binding Balance}"/>
+                <DataGridTextColumn Header="  Дата" Width="*" Binding ="{Binding Date}"/>
                 <DataGridTemplateColumn Header="  Удаление" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -36,10 +34,22 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="userNameBox" Grid.Column="1" Margin="189,113,175,0" TextWrapping="Wrap"
-                             VerticalAlignment="Top" Height="28"/>
-        <Button Content="Добавить расход"  Margin ="187,425,169,287"
-                            Click="Button_AddUser_Click" FontWeight="Bold"
-                            FontFamily="SimSun-ExtB" Background="Gold" Grid.Column="1"/>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Выбор пользователя" FontWeight="Bold" Margin="150 10 150 0" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="usersComboBox"  ItemsSource="{Binding}" Margin="150 10 150 0"
+                              DisplayMemberPath="Name" Grid.Column="1" Background="Gold" SelectionChanged="ComboBox_SelectionChanged"/>
+            <TextBlock Text="Введите категорию" FontWeight="Bold" Margin="150 10 150 0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="expenseNameBox" Grid.Column="1" TextWrapping="Wrap"
+                             VerticalAlignment="Top" Height="28" Margin="150 10 150 0"/>
+            <TextBlock Text="Введите сумму" FontWeight="Bold" Margin="150 10 150 0" HorizontalAlignment="Center"/>
+            <TextBox x:Name="amountBox" Grid.Column="1" TextWrapping="Wrap"
+                             VerticalAlignment="Top" Height="28" Margin="150 10 150 0"/>
+            <TextBlock Text="Выберите дату расхода" FontWeight="Bold" Margin="150 10 150 0" HorizontalAlignment="Center"/>
+            <DatePicker x:Name="expenseDate" Margin="150 10 150 0"/>
+            <TextBlock Text="Откуда снимаем?" FontWeight="Bold" Margin="150 10 150 0" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="from" Margin="150 10 150 0" ItemsSource="{Binding}"/>
+            <Button Content="Добавить расход" Click="Button_AddUser_Click" FontWeight="Bold"
+                            FontFamily="SimSun-ExtB" Background="Gold" Margin="150 30 150 0" Height="34"/>
+        </StackPanel>
     </Grid>
 </UserControl>

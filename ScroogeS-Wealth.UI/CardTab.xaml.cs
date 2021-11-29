@@ -66,6 +66,7 @@ namespace ScroogeS_Wealth.UI
                 CardStorage cardStorage = new CardStorage();
                 cardStorage.Create(cardName, balance, userId);
                 MessageBox.Show($"карта добавлена пользователю {user.Name}!=)");
+
             }
         }
 

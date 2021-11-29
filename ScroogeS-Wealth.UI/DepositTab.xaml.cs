@@ -148,22 +148,25 @@ namespace ScroogeS_Wealth.UI
         {
             decimal balance = 0;
 
-            if (CheckInputDecimal(depositBalanceBox))
+            if (decimal.TryParse(depositBalanceBox.Text, out _))
             {
                 balance = Convert.ToDecimal(depositBalanceBox.Text);
             }
+            else return;
             decimal percent = 0;
 
-            if (CheckInputDecimal(depositPercentBox))
+            if (decimal.TryParse(depositPercentBox.Text, out _))
             {
                 percent = Convert.ToDecimal(depositPercentBox.Text);
             }
+            else return;
             DateTime date = default;
 
-            if (CheckInputDateTime(depositOpeningDatePicker))
+            if (DateTime.TryParse(depositOpeningDatePicker.Text, out _))
             {
                 date = depositOpeningDatePicker.SelectedDate.Value.Date;
             }
+            else return;
             int months = Convert.ToInt32(depositMonthsSlider.Value);
             decimal newBalance = Math.Round(CalcFormula.CalcBalance(balance, percent, date, months));
             sliderText.Text = $"Через {depositMonthsSlider.Value.ToString()} месяцев у вас будет {newBalance} рублей"; 

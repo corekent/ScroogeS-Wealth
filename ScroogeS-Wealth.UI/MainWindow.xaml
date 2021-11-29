@@ -29,7 +29,7 @@
                         </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="  Название" Width="*" Binding ="{Binding Name}"/>
-                            <DataGridTextColumn Header="  Тип" Width="*"/> 
+                            <DataGridTextColumn Header="  Тип" Width="*" Binding ="{Binding Type}"/> 
                             <DataGridTextColumn Header="  Баланс" Width="*" Binding ="{Binding Balance}"/>
                             <DataGridTemplateColumn Header="  Удаление" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
