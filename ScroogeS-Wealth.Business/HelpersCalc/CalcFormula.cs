@@ -1,4 +1,5 @@
 ﻿using ScroogeS_Wealth.Business.HelpersStorage;
+using ScroogeS_Wealth.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace ScroogeS_Wealth.Business.HelpersCalc
             double percentMonth = percentYears / 12;
             int creditTerm = CalcDate.CalcMonthCount(dateStart, dateEnd);
             decimal monthAmount = Convert.ToDecimal((allSum * percentMonth) / (1 - (1 + percentMonth) * (1 - creditTerm)));
-            return monthAmount;
+            return Math.Round(monthAmount, 2);
         }
 
         public static decimal CalcLoanMonthAmount(double allSum, double percentYears, DateTime dateStart, DateTime dateEnd)
@@ -49,7 +50,24 @@ namespace ScroogeS_Wealth.Business.HelpersCalc
             {
                 monthAmount = Convert.ToDecimal(allSum * (percentMonth + ((percentMonth) / (Math.Pow((1 + percentMonth), countMonth) - 1))));
             }
-            return monthAmount;
+            return Math.Round(monthAmount, 2);
         }
+        public static decimal CalcInstallmentPayment(double allSum, DateTime dateStart, DateTime dateEnd)
+        {
+            int countMonth = CalcDate.CalcMonthCount(dateStart, dateEnd);
+            decimal monthAmount = Convert.ToDecimal(allSum / countMonth);
+            return Math.Round(monthAmount, 2);
+        }
+        public static decimal СhooseTypeOfLoan(string typeCredit, double allSum, double percentYears, DateTime dateStart, DateTime dateEnd)
+        {
+            decimal monthAmount;
+            return typeCredit switch
+            {
+                TypeCredit.Mortgage => monthAmount = CalcMortgageMonthAmout(allSum, percentYears, dateStart, dateEnd),
+                TypeCredit.Loan => monthAmount = CalcLoanMonthAmount(allSum, percentYears, dateStart, dateEnd),
+                TypeCredit.InstallmentPayment => monthAmount = CalcInstallmentPayment(allSum, dateStart, dateEnd),
+                _ => throw new NotImplementedException(),
+            };
+        }    
     }
 }

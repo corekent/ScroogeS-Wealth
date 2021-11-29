@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public enum TypeCredit 
+    public static class TypeCredit
     {
-        mortgage = 1,
-        installment,
-        loan
+        public const string Mortgage = "Ипотека";
+        public const string Loan = "Кредит";
+        public const string InstallmentPayment = "Рассрочка";
     }
 }
