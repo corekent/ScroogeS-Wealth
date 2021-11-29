@@ -11,7 +11,6 @@ namespace Core
         public const string entityNotFound = "Сущность не найдена";
         public const string Created = "Создано";
         public const string nameChanged = "Название изменено";
-        public const string categoryChanged = "Категория изменена";
         public const string summChanged = "Сумма изменена";
         public const string balanceChanged = "Баланс изменен";
         public const string deletionCompleted = "Удалено";

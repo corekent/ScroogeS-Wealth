@@ -22,9 +22,9 @@ namespace ScroogeS_Wealth.Business.Tests
         {
             DateTime dateStart = GetDateForTest(0);
             DateTime dateEnd = GetDateForTest(1);
-            Credit cash1 = new Credit("Ipoteka", 10000, dateStart, dateEnd);
+            Credit cash1 = new Credit("Ipoteka", 100000, dateStart, dateEnd);
             Credit cash2 = new Credit("Loan", 100000, dateStart, dateEnd);
-            Credit cash3 = new Credit("InstallmentPayment", 10000, dateStart, dateEnd);
+            Credit cash3 = new Credit("InstallmentPayment", 100000, dateStart, dateEnd);
             Result<Credit> temp1 = new Result<Credit>(1, cash1, ServiceMessages.Created);
             Result<Credit> temp2 = new Result<Credit>(1, cash2, ServiceMessages.Created);
             Result<Credit> temp3 = new Result<Credit>(1, cash3, ServiceMessages.Created);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ScroogeS_Wealth.Models
 {
-    public class Card : AssetModel, IMoneyModel
+    public class Card : AssetModel, IBaseModel
     {
         public Card(string name, decimal balance)
         {
