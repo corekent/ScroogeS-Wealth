@@ -47,10 +47,10 @@ namespace ScroogeS_Wealth.UI
             }
             decimal percent = 0;
 
-            //if (CheckInputDecimal(creditPercentBox))
-            //{
-            //    percent = Convert.ToDecimal(creditPercentBox.Text);
-            //}
+            if (CheckInputDecimal(creditPercentBox))
+            {
+                percent = Convert.ToDecimal(creditPercentBox.Text);
+            }
             DateTime dateStart = default;
 
             if (CheckInputDateTime(creditOpeningDatePicker))
@@ -82,7 +82,7 @@ namespace ScroogeS_Wealth.UI
             }
 
             if (creditName != "" && CheckCreditsForSameName(creditName) == false
-                && balance != 0 && dateEnd != default && dateStart != default && user != null)
+                && balance != 0 && dateEnd != default && percent!=0 && dateStart != default && user != null)
             {
                 CreditStorage credit = new CreditStorage();
                 credit.Create(creditName, balance, userId, dateStart, dateEnd);

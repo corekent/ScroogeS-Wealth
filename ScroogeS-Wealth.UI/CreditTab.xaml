@@ -16,6 +16,10 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -24,30 +28,39 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Выберите пользователя" FontSize="14" Grid.Column="2" VerticalAlignment="Center" FontWeight="Bold"
                    HorizontalAlignment="Center"  Height="17" />
-        <ComboBox x:Name="usersComboBox" Grid.Column="2" VerticalAlignment="Bottom"
-                  Margin="40,0,40,0" ItemsSource="{Binding}" DisplayMemberPath="Name"/>
-        <TextBlock Text="Введите название:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+        <ComboBox x:Name="usersComboBox" Grid.Column="2" VerticalAlignment="Top"
+                  Margin="51,7,30,0" ItemsSource="{Binding}" DisplayMemberPath="Name" RenderTransformOrigin="0.518,2.082" Grid.Row="1"/>
+        <TextBlock Text="Введите название:  " FontSize="14" FontWeight="Bold" Grid.Column="0" Grid.Row="0"
                    Height="17" HorizontalAlignment="Right"/>
-        <TextBox x:Name="creditNameBox" Grid.Column="1" VerticalAlignment="Center"
-                   Height="28"/>
-        <TextBlock Text="Введите сумму выплаты:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
-                   Grid.Row="1" Height="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBox x:Name="creditBalanceBox" Grid.Column="1" Grid.Row="1"
-                   Height="28" VerticalAlignment="Center"/>
+        <TextBox x:Name="creditNameBox" VerticalAlignment="Top"
+                   Height="28" Margin="0,20,0,0" Grid.Column="1" Grid.Row="0"/>
+        <TextBlock Text="Cумма кредита:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="5" Height="17" HorizontalAlignment="Right"/>
+        <TextBox x:Name="creditBalanceBox" VerticalAlignment="Top"
+                   Height="28" Margin="0,20,0,0" Grid.Column="1" Grid.Row="5"/>
         <TextBlock Text="Дата выплаты по кредиту:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
-                   Grid.Row="3" Height="17" HorizontalAlignment="Right" />
-        <DatePicker x:Name="creditMonthDatePicker" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
+                   Grid.Row="2" Height="17" HorizontalAlignment="Right" />
+        <DatePicker x:Name="creditMonthDatePicker" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
                    Height="25"/>
         <TextBlock Text="Дата открытия кредита:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
-                   Grid.Row="2" Height="17" HorizontalAlignment="Right" />
-        <DatePicker x:Name="creditOpeningDatePicker" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
+                   Grid.Row="1" Height="17" HorizontalAlignment="Right" />
+        <DatePicker x:Name="creditOpeningDatePicker" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
                    Height="25"/>
         <TextBlock Text="Дата закрытия кредита:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
-                   Grid.Row="4" Height="17" HorizontalAlignment="Right" />
-        <DatePicker x:Name="creditClosingDatePicker" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"
+                   Grid.Row="3" Height="17" HorizontalAlignment="Right" />
+        <DatePicker x:Name="creditClosingDatePicker" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
                    Height="25"/>
-       
-        <Button Content="Добавить кредит" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold" Height="40" Width="120"
-                Grid.Row="6" VerticalAlignment="Bottom" Background="gold" Click="Button_AddCredit_Click"/>
+        <TextBlock Text="Процент:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="4" Height="17" HorizontalAlignment="Right"/>
+        <TextBox x:Name="creditPercentBox"  VerticalAlignment="Top"
+                   Height="28" Margin="0,20,0,0" Grid.Column="1" Grid.Row="4"/>
+        <TextBlock Text="Тип кредита:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="6" Height="17" HorizontalAlignment="Right"/>
+        <ComboBox x:Name="CreditTypeComboBox" Grid.Column="1" VerticalAlignment="Center" Grid.Row="6" ItemsSource="{Binding}" DisplayMemberPath="Name" Height="37"/>
+        <TextBlock Text="Cумма выплаты:  " FontSize="14" FontWeight="Bold" Grid.Column="0"
+                   Grid.Row="7" Height="17" HorizontalAlignment="Right"/>
+        <TextBox x:Name="creditPayBox" Grid.Column="1" Grid.Row="7"/>
+        <Button Content="Добавить кредит" Grid.Column="1" HorizontalAlignment="Left" FontWeight="Bold" Height="40" Width="120"
+                Grid.Row="8" VerticalAlignment="Center" Background="gold" Click="Button_AddCredit_Click" Margin="78,0,0,0"/>
     </Grid>
 </UserControl>
